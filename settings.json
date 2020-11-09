@@ -1,0 +1,13 @@
+{
+    "task.problemMatchers.neverPrompt": {
+        "Clover": true
+    },
+    "editor.fontSize": 18,
+    "editor.tabSize": 2,
+    "editor.cursorStyle": "block-outline",
+    "editor.wordWrapColumn": 78,
+    "explorer.confirmDragAndDrop": false,
+    "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "git.confirmSync": false
+}

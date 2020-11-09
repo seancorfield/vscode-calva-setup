@@ -1,0 +1,98 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "ctrl+; b",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Clover: Tap block"
+    },
+    {
+        "key": "ctrl+; shift+b",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Clover: Tap top block"
+    },
+    {
+        "key": "ctrl+; c",
+        "command": "clover.break-evaluation"
+    },
+    {
+        "key": "ctrl+; d",
+        "command": "clover.doc-for-var"
+    },
+    {
+        "key": "ctrl+; shift+d",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Clover: Tap def var"
+    },
+    {
+        "key": "ctrl+; e",
+        "command": "clover.disconnect"
+    },
+    {
+        "key": "ctrl+; f",
+        "command": "clover.load-file"
+    },
+    {
+        "key": "ctrl+; j",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Clover: Tap javadoc"
+    },
+    {
+        "key": "ctrl+; k",
+        "command": "clover.clear-console"
+    },
+    {
+        "key": "ctrl+; n",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Clover: Tap ns"
+    },
+    {
+        "key": "ctrl+; r",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Clover: Tap remove ns"
+    },
+    {
+        "key": "ctrl+; shift+r",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Clover: Tap reload all ns"
+    },
+    {
+        "key": "ctrl+; s",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Clover: Tap selection"
+    },
+    {
+        "key": "ctrl+; shift+s",
+        "command": "clover.source-for-var"
+    },
+    {
+        "key": "ctrl+; t",
+        "command": "clover.run-test-for-var"
+    },
+    {
+        "key": "ctrl+; v",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Clover: Tap var"
+    },
+    {
+        "key": "ctrl+; x",
+        "command": "clover.run-tests-in-ns"
+    },
+    {
+        "key": "ctrl+; shift+x",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Clover: Tap run side tests"
+    },
+    {
+        "key": "ctrl+; y",
+        "command": "clover.connectSocketRepl"
+    },
+    {
+        "key": "ctrl+; shift+/",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Clover: Tap doc var"
+    },
+    {
+        "key": "ctrl+; .",
+        "command": "clover.go-to-var-definition"
+    }
+]
