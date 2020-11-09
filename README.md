@@ -15,7 +15,7 @@ You can either clone this repo into a temporary directory and then copy `config.
 On a Mac, the VS Code user configuration directory is as shown below:
 
 ```bash
-$ cd ~/Library/Application\\ Support/Code/User
+$ cd ~/Library/Application\ Support/Code/User
 $ git init
 $ git remote add origin https://github.com/seancorfield/vscode-clover-setup.git
 $ git fetch
@@ -36,7 +36,7 @@ $ git pull
 On Windows, the VS Code user configuration directory is likely to be:
 
 ```bash
-C:\\Users\\<username>\\AppData\\Roaming\\Code\\User
+C:\Users\<username>\AppData\Roaming\Code\User
 ```
 
 I run VS Code in Remote-WSL2 mode so my `config.cljs` file for Clover is in `~/.config/clover/` on Linux so the symlink works as above. If you run VS Code with Clover in local mode, you'll have to copy `config.cljs` and keep it in sync manually.
