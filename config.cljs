@@ -42,7 +42,7 @@
   (p/let [block (editor/get-var)]
     (when (seq (:text block))
       (-> block
-          (update :text #(str "#'" %))
+          (update :text #(str "(or (find-ns '" % ") (resolve '" % "))"))
           (update :text wrap-in-tap)
           (editor/eval-and-render)))))
 
