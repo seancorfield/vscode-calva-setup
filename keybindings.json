@@ -94,5 +94,9 @@
     {
         "key": "ctrl+; .",
         "command": "clover.go-to-var-definition"
+    },
+    {
+      "key": "cmd+e cmd+j",
+      "command": "workbench.action.joinAllGroups"
     }
 ]
