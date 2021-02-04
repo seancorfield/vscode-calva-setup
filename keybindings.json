@@ -96,7 +96,7 @@
         "command": "clover.go-to-var-definition"
     },
     {
-      "key": "cmd+e cmd+j",
+      "key": "ctrl+alt+e ctrl+alt+j",
       "command": "workbench.action.joinAllGroups"
     }
 ]
