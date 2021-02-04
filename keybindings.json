@@ -100,43 +100,25 @@
       "command": "workbench.action.joinAllGroups"
     },
     {
-      "key": "ctrl+right",
-      "command": "paredit.forwardSexp",
-      "when": "isMac && calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
-    },
-    {
       "key": "alt+right",
-      "command": "-paredit.forwardSexp",
-      "when": "isMac && calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
-    },
-    {
-      "key": "ctrl+left",
-      "command": "paredit.backwardSexp",
-      "when": "isMac && calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
-    },
-    {
-      "key": "alt+left",
-      "command": "-paredit.backwardSexp",
-      "when": "isMac && calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
+      "mac": "ctrl+right",
+      "command": "paredit.forwardSexp",
+      "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
     },
     {
       "key": "ctrl+right",
-      "command": "-paredit.forwardSexp",
-      "when": "!isMac && calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
-    },
-    {
-      "key": "alt+right",
-      "command": "paredit.forwardSexp",
-      "when": "!isMac && calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
-    },
-    {
-      "key": "ctrl+left",
-      "command": "-paredit.backwardSexp",
-      "when": "!isMac && calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
+      "mac": "alt+right",
+      "command": "cursorWordRight"
     },
     {
       "key": "alt+left",
+      "mac": "ctrl+left",
       "command": "paredit.backwardSexp",
-      "when": "!isMac && calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
+      "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
+    },
+    {
+      "key": "ctrl+left",
+      "mac": "alt+left",
+      "command": "cursorWordLeft"
     }
 ]

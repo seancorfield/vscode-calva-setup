@@ -1,8 +1,8 @@
 ;; ~/.config/clover/config.cljs
 
 (defn- wrap-in-tap [code]
-  (str "(let [value " code
-       "      rr      (try (resolve 'requiring-resolve) (catch Throwable _))]"
+  (str "(let [value (try " code " (catch Throwable t t))"
+       "      rr    (try (resolve 'requiring-resolve) (catch Throwable _))]"
        "  (if-let [rs (try (rr 'cognitect.rebl/submit) (catch Throwable _))]"
        "    (rs '" code " value)"
        "    (tap> value))"
