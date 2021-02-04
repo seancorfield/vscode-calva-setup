@@ -100,25 +100,21 @@
       "command": "workbench.action.joinAllGroups"
     },
     {
-      "key": "alt+right",
-      "mac": "ctrl+right",
+      "key": "ctrl+right",
       "command": "paredit.forwardSexp",
       "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
     },
     {
-      "key": "ctrl+right",
-      "mac": "alt+right",
+      "key": "alt+right",
       "command": "cursorWordRight"
     },
     {
-      "key": "alt+left",
-      "mac": "ctrl+left",
+      "key": "ctrl+left",
       "command": "paredit.backwardSexp",
       "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
     },
     {
-      "key": "ctrl+left",
-      "mac": "alt+left",
+      "key": "alt+left",
       "command": "cursorWordLeft"
     }
 ]
