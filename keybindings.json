@@ -127,6 +127,10 @@
       "command": "workbench.action.joinTwoGroups"
     },
     {
+      "key": "ctrl+j",
+      "command": "editor.action.joinLines"
+    },
+    {
       "key": "ctrl+alt+a ctrl+alt+b",
       "command": "atlascode.views.bb.pullrequestsTreeView.focus"
     },
