@@ -92,6 +92,11 @@
         "args": "Clover: Tap doc var"
     },
     {
+      "key": "ctrl+; shift+a",
+      "command": "workbench.action.tasks.runTask",
+      "args": "Clover: Tap add libs"
+  },
+  {
         "key": "ctrl+; .",
         "command": "clover.go-to-var-definition"
     },
@@ -116,5 +121,17 @@
     {
       "key": "alt+left",
       "command": "cursorWordLeft"
+    },
+    {
+      "key": "ctrl+alt+e ctrl+alt+j",
+      "command": "workbench.action.joinTwoGroups"
+    },
+    {
+      "key": "ctrl+alt+a ctrl+alt+b",
+      "command": "atlascode.views.bb.pullrequestsTreeView.focus"
+    },
+    {
+      "key": "ctrl+alt+a ctrl+alt+j",
+      "command": "atlascode.views.jira.customJql.focus"
     }
 ]

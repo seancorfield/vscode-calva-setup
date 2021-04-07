@@ -95,7 +95,7 @@
       "cfwddx"
     ],
     "yaml.schemas": {
-      "file:///Users/sean/.vscode/extensions/atlassian.atlascode-2.8.5/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+      "file:///Users/sean/.vscode/extensions/atlassian.atlascode-2.8.6/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
     },
     "atlascode.jira.jqlList": [
       {
@@ -121,11 +121,13 @@
     },
     "editor.detectIndentation": false,
     "extensions.ignoreRecommendations": false,
-    "diffEditor.ignoreTrimWhitespace": true,
+    "diffEditor.ignoreTrimWhitespace": false,
     "workbench.startupEditor": "newUntitledFile",
     "task.saveBeforeRun": "never",
     "calva.hideREPLUi": true,
     "calva.hideReplUi": true,
     "calva.paredit.defaultKeyMap": "strict",
-    "workbench.editor.wrapTabs": true
+    "workbench.editor.wrapTabs": true,
+    "workbench.editor.highlightModifiedTabs": true,
+    "emmet.showExpandedAbbreviation": "never"
 }

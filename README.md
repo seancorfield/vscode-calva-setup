@@ -2,7 +2,9 @@
 
 The files here represent my current [VS Code](https://code.visualstudio.com/) configuration for use with [Clover](https://marketplace.visualstudio.com/items?itemName=mauricioszabo.clover) **version 0.2.1 or later**.
 
-The commands here will `submit` all evaluations to [Cognitect's REBL](https://github.com/cognitect-labs/REBL-distro) if it is on your classpath, otherwise it `tap>`'s all evaluations. If you have a [Reveal REPL](https://github.com/vlaaad/reveal) running that will render everything that is `tap>`'d into its UI. If you have a [Portal UI](https://github.com/djblue/portal) running that will also render everything that is `tap>`'d into its UI.
+The commands here will `tap>` all evaluations. If you have a [Reveal REPL](https://github.com/vlaaad/reveal) running that will render everything that is `tap>`'d into its UI. If you have a [Portal UI](https://github.com/djblue/portal) running that will also render everything that is `tap>`'d into its UI.
+
+If you want to use this with Cognitect's REBL, you'll need to comment/uncomment the relevant `wrap-in-tap` function in `config.cljs`.
 
 * `config.cljs` contains all my enhancements (and belongs in `~/.config/clover/`),
 * `keybindings.json` is my cross-platform key mappings for Clover and those REBL/`tap>` commands,
@@ -66,3 +68,7 @@ The additional commands _require_ Clojure 1.10 (because they assume `requiring-r
 * `ctrl-; y` -- Clover's built-in connect to Socket REPL.
 * `ctrl-; shift+/` (i.e., `?`) -- for the var at the cursor, display the ClojureDocs web page for it in REBL (assumes the symbol is part of Clojure itself) or `tap>` the `java.net.URL` object (which can be browsed in Reveal or clicked in Portal).
 * `ctrl-; .` -- Clover's built-in go to var definition.
+
+If you have the `add-lib3` branch of `org.clojure/tools.deps.alpha` on your classpath:
+
+* `ctrl-; shift+a` -- send current form to `clojure.tools.deps.alpha.repl/add-libs`; intended to be used when the current block is a dependencies hash map (i.e., inside `deps.edn`).
