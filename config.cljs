@@ -92,7 +92,7 @@
                         (assoc :range (:range here))))]
         (editor/run-callback
          :notify
-         {:type (if (:error res) :warn :info)
+         {:type (if (:error res) :warning :info)
           :title (if (:error res)
                    "Reload failed for..."
                    "Reload succeeded!")
@@ -111,6 +111,65 @@
          (str ", " error " errored"))
        "."))
 
+(defn tap-run-current-test []
+  (p/let [block (editor/get-top-block)
+          test-name (when (seq (:text block))
+                      (clojure.string/replace (:text block)
+                                              #"\(def[a-z]* ([^\s]*)[^]*"
+                                              "$1"))
+          here  (editor/get-selection)]
+    (when (seq test-name)
+      (p/let [res (editor/eval-and-render
+                   (-> block
+                       (update :text
+                               (fn [_]
+                                 (str "
+                          (with-out-str
+                            (binding [clojure.test/*test-out* *out*]
+                              (clojure.test/test-vars [#'" test-name "])))")))
+                       (update :text wrap-in-tap)
+                       (assoc :range (:range here))))]
+        (editor/run-callback
+         :notify
+         (if (:error res)
+           {:type :info
+            :title "Failed to run tests for"
+            :message test-name}
+           (try
+             (let [s (str (:result res))]
+               (if (seq s)
+                 {:type :warning
+                  :title (str test-name " FAILED!")
+                  :message (str (:result res))}
+                 {:type :info
+                  :title "Test passed"
+                  :message test-name}))
+             (catch js/Error e
+               {:type :warning
+                :title "EXCEPTION!"
+                :message (ex-message e)}))))))))
+
+(defn tap-run-tests []
+  (p/let [block (editor/get-namespace)
+          here  (editor/get-selection)]
+    (when (seq (:text block))
+      (p/let [res (editor/eval-and-render
+                   (-> block
+                       (update :text (fn [s] (str "
+                          (try
+                            (let [nt (symbol \"" s "\")]
+                              (clojure.test/run-tests nt))
+                            (catch Throwable _))")))
+                       (update :text wrap-in-tap)
+                       (assoc :range (:range here))))]
+        (editor/run-callback
+         :notify
+         {:type (if (:error res) :warning :info)
+          :title (if (:error res)
+                   "Failed to run tests for..."
+                   "Tests completed!")
+          :message (if (:error res) (:text block) (format-test-result (:result res)))})))))
+
 (defn tap-run-side-tests []
   (p/let [block (editor/get-namespace)
           here  (editor/get-selection)]
@@ -128,7 +187,7 @@
                         (assoc :range (:range here))))]
         (editor/run-callback
          :notify
-         {:type (if (:error res) :warn :info)
+         {:type (if (:error res) :warning :info)
           :title (if (:error res)
                    "Failed to run tests for..."
                    "Tests completed!")

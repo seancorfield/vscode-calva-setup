@@ -66,7 +66,8 @@
     },
     {
         "key": "ctrl+; t",
-        "command": "clover.run-test-for-var"
+        "command": "workbench.action.tasks.runTask",
+        "args": "Clover: Tap run current test"
     },
     {
         "key": "ctrl+; v",
@@ -75,7 +76,8 @@
     },
     {
         "key": "ctrl+; x",
-        "command": "clover.run-tests-in-ns"
+        "command": "workbench.action.tasks.runTask",
+        "args": "Clover: Tap run tests"
     },
     {
         "key": "ctrl+; shift+x",
