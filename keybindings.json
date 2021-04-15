@@ -103,10 +103,6 @@
         "command": "clover.go-to-var-definition"
     },
     {
-      "key": "ctrl+alt+e ctrl+alt+j",
-      "command": "workbench.action.joinAllGroups"
-    },
-    {
       "key": "ctrl+right",
       "command": "paredit.forwardSexp",
       "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"

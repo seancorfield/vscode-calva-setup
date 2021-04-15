@@ -137,13 +137,13 @@
             :message test-name}
            (try
              (let [s (str (:result res))]
-               (if (seq s)
+               (if (re-find #"FAIL in" s)
                  {:type :warning
-                  :title (str test-name " FAILED!")
-                  :message (str (:result res))}
+                  :title test-name
+                  :message s}
                  {:type :info
-                  :title "Test passed"
-                  :message test-name}))
+                  :title (str test-name " passed")
+                  :message (when (seq s) s)}))
              (catch js/Error e
                {:type :warning
                 :title "EXCEPTION!"

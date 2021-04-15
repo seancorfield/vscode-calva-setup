@@ -1,6 +1,6 @@
 # VS Code/Clover Setup
 
-The files here represent my current [VS Code](https://code.visualstudio.com/) configuration for use with [Clover](https://marketplace.visualstudio.com/items?itemName=mauricioszabo.clover) **version 0.2.1 or later**.
+The files here represent my current [VS Code](https://code.visualstudio.com/) configuration for use with [Clover](https://marketplace.visualstudio.com/items?itemName=mauricioszabo.clover) **version 0.2.4 or later**.
 
 The commands here will `tap>` all evaluations. If you have a [Reveal REPL](https://github.com/vlaaad/reveal) running that will render everything that is `tap>`'d into its UI. If you have a [Portal UI](https://github.com/djblue/portal) running that will also render everything that is `tap>`'d into its UI.
 
@@ -47,28 +47,45 @@ I run VS Code in Remote-WSL2 mode so my `config.cljs` file for Clover is in `~/.
 
 The additional commands _require_ Clojure 1.10 (because they assume `requiring-resolve` and `tap>`) and will fail on earlier versions. REBL, Reveal, and Portal both support Clojure 1.10's `datafy` and `nav`. If you need to work on an earlier project, you'll need to use Chlorine's default versions of the commands.
 
-* `ctrl-; b` -- evaluate current form into REBL/`tap>`.
-* `ctrl-; shift+b` -- evaluate current top-level form into REBL/`tap>`.
+* `ctrl-; b` -- evaluate current form into `tap>`.
+* `ctrl-; shift+b` -- evaluate current top-level form into `tap>`.
 * `ctrl-; c` -- Clover's built-in break evaluation.
 * `ctrl-; d` -- Clover's built-in show docs for var. See also `j` and `?` below.
 * `ctrl-; shift+d` -- when a binding in `let` is highlighted (both the symbol and the expression to which it is bound), this creates a `def` so the symbol becomes available at the top level: useful for debugging parts of a function inside `let`.
 * `ctrl-; e` -- Clover's built-in disconnect (from the REPL).
 * `ctrl-; f` -- Clover's built-in load file.
-* `ctrl-; j` -- treat the var at the cursor (or the current selection) as a Java class or instance, lookup the Java API docs for it, and display that web page in REBL (assumes the class is part of the Java Standard Library) or `tap>` the `java.net.URL` object (which can be browsed in Reveal or clicked in Portal).
+* `ctrl-; j` -- treat the var at the cursor (or the current selection) as a Java class or instance, lookup the Java API docs for it, and display that web page (assumes the class is part of the Java Standard Library or that Google can find it!) by sending a `java.net.URL` object to `tap>` (which can be browsed in Reveal or clicked in Portal).
 * `ctrl-; k` -- Clover's built-in clear console.
-* `ctrl-; n` -- inspect the current namespace in REBL (Reveal and Portal do not currently do anything special with a namespace).
-* `ctrl-; r` -- remove the current namespace's definitions: useful for cleaning up REPL state.
-* `ctrl-; shift+r` -- reload the current namespace and all of its dependencies (uses `(require ,,, :reload-all)`: useful for cleaning up REPL state.
-* `ctrl-; s` -- evaluate the selected code into REBL/`tap>` -- it can only be a single form (it will be used as the expression in a `let` binding).
+* `ctrl-; n` -- send the current namespace (object) to `tap>` (my dot-clojure `dev.clj` customizes Reveal to provide a namespace browser view).
+* `ctrl-; r` -- remove the current namespace's definitions: occasionally useful for cleaning up REPL state.
+* `ctrl-; shift+r` -- reload the current namespace and all of its dependencies (uses `(require ,,, :reload-all)`: occasionally useful for cleaning up REPL state.
+* `ctrl-; s` -- evaluate the selected code into `tap>` -- it can only be a single form (it will be used as the expression in a `let` binding).
 * `ctrl-; shift+s` -- Clover's built-in show source for var.
-* `ctrl-; t` -- Clover's built-in run test for var.
-* `ctrl-; v` -- inspect the current symbol in REBL (as a var; Reveal and Portal do not currently do anything special with vars, unlike REBL).
-* `ctrl-; x` -- Clover's built-in run tests in (current) namespace.
-* `ctrl-; shift+x` -- If the current namespace is `foo.bar`, attempt to run tests in either `foo.bar-test` or `foo.bar-expectations`, display the test results in a popup (as per Clover's built-in test runner), display that summary inline as a hash map, and submit it to REBL/`tap>`.
+* `ctrl-; t` -- run the current test (cursor can be anywhere in a `deftest` form, or `defspec`, `defexpect`, etc); displays the test success/failure as a popup notification (see the Clover console for full details).
+* `ctrl-; v` -- send the current symbol as a var to `tap>` (my dot-clojure `dev.clj` customizes Reveal to provide a Var browser view).
+* `ctrl-; x` -- run all the tests in the current namespace and `tap>` the result summary as well as showing the summary in a popup notification.
+* `ctrl-; shift+x` -- run all the tests in the "associated" namespace and `tap>` the result summary as well as showing the summary in a popup notification; if the current namespace is `foo.bar`, this will look for `foo.bar-test` or `foo.bar-expectations`.
 * `ctrl-; y` -- Clover's built-in connect to Socket REPL.
-* `ctrl-; shift+/` (i.e., `?`) -- for the var at the cursor, display the ClojureDocs web page for it in REBL (assumes the symbol is part of Clojure itself) or `tap>` the `java.net.URL` object (which can be browsed in Reveal or clicked in Portal).
+* `ctrl-; shift+/` (i.e., `?`) -- for the var at the cursor, send the  ClojureDocs URL as a `java.net.URL` to `tap>` (which can be browsed in Reveal or clicked in Portal).
 * `ctrl-; .` -- Clover's built-in go to var definition.
 
 If you have the `add-lib3` branch of `org.clojure/tools.deps.alpha` on your classpath:
 
 * `ctrl-; shift+a` -- send current form to `clojure.tools.deps.alpha.repl/add-libs`; intended to be used when the current block is a dependencies hash map (i.e., inside `deps.edn`).
+
+Other key bindings that you may or may not find useful:
+
+* `ctrl+alt+e ctrl+alt+j` -- join window groups in VS Code (I often use this after starting the REPL or splitting a window).
+
+These are intended to provide a consistent experience across macOS _and_ Windows:
+
+* `ctrl+right` -- (Calva's) paredit forward s-exp.
+* `alt+right` -- cursor word right.
+* `ctrl+left` -- (Calva's) paredit backward s-exp.
+* `alt+left` -- cursor word left.
+* `ctrl+j` -- join lines (this is the default on macOS but not Windows).
+
+If you use Atlassian/Jira/BitBucket:
+
+* `ctrl+alt+a ctrl+alt+b` -- switch to BitBucket PRs.
+* `ctrl+alt+a ctrl+alt+j` -- switch to Jira issues.
