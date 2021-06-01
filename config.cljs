@@ -65,6 +65,18 @@
           (assoc :range (:range here))
           (editor/eval-and-render)))))
 
+(defn- wrap-in-clean-ns
+  "Given a string, find the namespace, and clean it up:
+  remove its aliases, its refers, and any interns."
+  [s]
+  (str "(when-let [ns (find-ns '" s ")]"
+       " (run! #(ns-unalias ns %) (keys (ns-aliases ns)))"
+       " (run! #(ns-unmap ns %)   (keys (ns-interns ns)))"
+       " (->> (ns-refers ns)"
+       "      (remove (fn [[_ v]] (str/starts-with? (str v) \"#'clojure.core/\")))"
+       "      (map key)"
+       "      (run! #(ns-unmap ns %))))"))
+
 (defn tap-remove-ns []
   (p/let [block (editor/get-namespace)
           here  (editor/get-selection)]
@@ -73,7 +85,7 @@
        :notify
        {:type :info :title "Removing..." :message (:text block)})
       (-> block
-          (update :text #(str "(remove-ns '" % ")"))
+          (update :text wrap-in-clean-ns)
           (update :text wrap-in-tap)
           (assoc :range (:range here))
           (editor/eval-and-render)))))
