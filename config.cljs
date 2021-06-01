@@ -70,12 +70,12 @@
   remove its aliases, its refers, and any interns."
   [s]
   (str "(when-let [ns (find-ns '" s ")]"
-       " (run! #(ns-unalias ns %) (keys (ns-aliases ns)))"
-       " (run! #(ns-unmap ns %)   (keys (ns-interns ns)))"
+       " (run! #(try (ns-unalias ns %) (catch Throwable _)) (keys (ns-aliases ns)))"
+       " (run! #(try (ns-unmap ns %)   (catch Throwable _)) (keys (ns-interns ns)))"
        " (->> (ns-refers ns)"
-       "      (remove (fn [[_ v]] (str/starts-with? (str v) \"#'clojure.core/\")))"
+       "      (remove (fn [[_ v]] (.startsWith (str v) \"#'clojure.core/\")))"
        "      (map key)"
-       "      (run! #(ns-unmap ns %))))"))
+       "      (run! #(try (ns-unmap ns %) (catch Throwable _)))))"))
 
 (defn tap-remove-ns []
   (p/let [block (editor/get-namespace)
