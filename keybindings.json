@@ -135,5 +135,21 @@
     {
       "key": "ctrl+alt+a ctrl+alt+j",
       "command": "atlascode.views.jira.customJql.focus"
+    },
+    {
+      "key": "ctrl+t ctrl+f",
+      "command": "workbench.action.terminal.focus"
+    },
+    {
+      "key": "ctrl+t ctrl+t",
+      "command": "workbench.action.quickOpenTerm"
+    },
+    {
+      "key": "ctrl+u ctrl+u",
+      "command": "editor.action.transformToUppercase"
+    },
+    {
+      "key": "ctrl+l ctrl+l",
+      "command": "editor.action.transformToLowercase"
     }
 ]
