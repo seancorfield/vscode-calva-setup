@@ -41,6 +41,11 @@
         "command": "clover.clear-console"
     },
     {
+        "key": "ctrl+; shift+k",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Clover: Portal Clear"
+    },
+    {
         "key": "ctrl+; n",
         "command": "workbench.action.tasks.runTask",
         "args": "Clover: Tap ns"

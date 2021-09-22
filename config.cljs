@@ -51,7 +51,7 @@
   (p/let [block (editor/get-var)]
     (when (seq (:text block))
       (-> block
-          (update :text #(str "(or (find-ns '" % ") (resolve '" % "))"))
+          (update :text #(str "(meta (or (find-ns '" % ") (resolve '" % ")))"))
           (update :text wrap-in-tap)
           (editor/eval-and-render)))))
 
@@ -60,7 +60,10 @@
           here  (editor/get-selection)]
     (when (seq (:text block))
       (-> block
-          (update :text #(str "(find-ns '" % ")"))
+          (update :text #(str "(-> '" %
+                              " (find-ns)"
+                              " (clojure.datafy/datafy)"
+                              " :publics)"))
           (update :text wrap-in-tap)
           (assoc :range (:range here))
           (editor/eval-and-render)))))
@@ -212,7 +215,7 @@
           (update :text
                   #(str
                     "(java.net.URL."
-                    " (str \"http://clojuredocs.org/\""
+                    " (str \"https://clojuredocs.org/\""
                     " (-> (str (symbol #'" % "))"
                     ;; clean up ? ! &
                     "  (clojure.string/replace \"?\" \"%3f\")"
@@ -232,11 +235,13 @@
                       "(let [c-o-o " %
                       " ^Class c (if (instance? Class c-o-o) c-o-o (class c-o-o))] "
                       " (java.net.URL. "
-                      "  (clojure.string/replace"
+                      "  (->"
                       "   ((requiring-resolve 'clojure.java.javadoc/javadoc-url)"
                       "    (.getName c))"
-                      ;; strip inner class
-                      "   #\"\\$[a-zA-Z0-9_]+\" \"\""
+                      "   (str/replace" ; strip inner class
+                      "    #\"\\$[a-zA-Z0-9_]+\" \"\")"
+                      "   (str/replace" ; force https
+                      "    #\"^http:\" \"https:\")"
                       ")))"))
             (update :text wrap-in-tap)
             (editor/eval-and-render)))))
@@ -251,3 +256,7 @@
           (update :text add-libs)
           (update :text wrap-in-tap)
           (editor/eval-and-render)))))
+
+(defn portal-clear []
+  (p/let [here (editor/get-selection)]
+    (editor/eval-and-render (assoc here :text "(portal.api/clear)"))))
