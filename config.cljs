@@ -1,17 +1,5 @@
 ;; ~/.config/clover/config.cljs
 
-;; if you want to support Cognitect's REBL, use this version:
-
-#_(defn- wrap-in-tap [code]
-    (str "(let [value (try " code " (catch Throwable t t))"
-         "      rr    (try (resolve 'requiring-resolve) (catch Throwable _))]"
-         "  (if-let [rs (try (rr 'cognitect.rebl/submit) (catch Throwable _))]"
-         "    (rs '" code " value)"
-         "    (tap> value))"
-         "  value)"))
-
-;; if you only care about submitting values via tap> (e.g., Reveal, Portal):
-
 (defn- wrap-in-tap [code]
   (str "(let [value (try " code " (catch Throwable t t))]"
        "  (tap> value)"
@@ -51,7 +39,15 @@
   (p/let [block (editor/get-var)]
     (when (seq (:text block))
       (-> block
-          (update :text #(str "(meta (or (find-ns '" % ") (resolve '" % ")))"))
+          (update :text #(str "(let [m (meta (or (find-ns '"
+                              %
+                              ") (resolve '"
+                              % ")))]"
+                              " (if (contains? m :arglists)"
+                              "  (update m :arglists str)"
+                              "  m"
+                              " )"
+                              ")"))
           (update :text wrap-in-tap)
           (editor/eval-and-render)))))
 
@@ -238,9 +234,9 @@
                       "  (->"
                       "   ((requiring-resolve 'clojure.java.javadoc/javadoc-url)"
                       "    (.getName c))"
-                      "   (str/replace" ; strip inner class
+                      "   (clojure.string/replace" ; strip inner class
                       "    #\"\\$[a-zA-Z0-9_]+\" \"\")"
-                      "   (str/replace" ; force https
+                      "   (clojure.string/replace" ; force https
                       "    #\"^http:\" \"https:\")"
                       ")))"))
             (update :text wrap-in-tap)
@@ -256,6 +252,18 @@
           (update :text add-libs)
           (update :text wrap-in-tap)
           (editor/eval-and-render)))))
+
+(defn portal-start []
+  (p/let [here (editor/get-selection)]
+    (editor/eval-and-render
+     (assoc here :text
+            (str "(do"
+                 " (in-ns 'dev)"
+                 " (def portal"
+                 "  ((requiring-resolve 'portal.api/open)"
+                 "   {:launcher :vs-code :portal.launcher/window-title (System/getProperty \"user.dir\")}))"
+                 " (install-portal-extras)"
+                 " (add-tap (requiring-resolve 'portal.api/submit)))")))))
 
 (defn portal-clear []
   (p/let [here (editor/get-selection)]

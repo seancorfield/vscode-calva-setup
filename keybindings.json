@@ -43,7 +43,12 @@
     {
         "key": "ctrl+; shift+k",
         "command": "workbench.action.tasks.runTask",
-        "args": "Clover: Portal Clear"
+        "args": "Clover: Portal clear"
+    },
+    {
+        "key": "ctrl+; shift+p",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Clover: Portal start"
     },
     {
         "key": "ctrl+; n",
