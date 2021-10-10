@@ -5,7 +5,7 @@ The files here represent my current [VS Code](https://code.visualstudio.com/) co
 The commands here will `tap>` all evaluations. If you have a [Portal UI](https://github.com/djblue/portal), possibly inside VS Code, running that will also render everything that is `tap>`'d into its UI.
 
 * `config.cljs` contains all my enhancements (and belongs in `~/.config/clover/`),
-* `keybindings.json` is my cross-platform key mappings for Clover and those REBL/`tap>` commands,
+* `keybindings.json` is my cross-platform key mappings for Clover and those `tap>` commands,
 * `settings.json` is my user-level settings (consider this optional, but it does include a Clover setting).
 
 ## Installation
