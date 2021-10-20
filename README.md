@@ -41,7 +41,7 @@ The additional commands _require_ Clojure 1.10 (because they assume `requiring-r
 * `ctrl-; k` -- Clover's built-in clear console.
 * `ctrl-; shift+k` -- Clear Portal's history.
 * `ctrl-; n` -- send the current namespace (object) to `tap>` (my dot-clojure `dev.clj` customizes Portal to provide a list of public Vars).
-* `ctrl-; shift+p` -- Start a Portal view inside VS Code. This assumes it can run the `(install-portal-extras)` function defined in my dot-clojure `dev.clj`
+* `ctrl-; shift+p` -- Start a Portal view inside VS Code, with some extra `dev` actions added (see below).
 * `ctrl-; r` -- remove the current namespace's definitions: occasionally useful for cleaning up REPL state.
 * `ctrl-; shift+r` -- reload the current namespace and all of its dependencies (uses `(require ,,, :reload-all)`: occasionally useful for cleaning up REPL state.
 * `ctrl-; s` -- evaluate the selected code into `tap>` -- it can only be a single form (it will be used as the expression in a `let` binding).
@@ -74,3 +74,12 @@ If you use Atlassian/Jira/BitBucket:
 
 * `ctrl+alt+a ctrl+alt+b` -- switch to BitBucket PRs.
 * `ctrl+alt+a ctrl+alt+j` -- switch to Jira issues.
+
+### Portal Custom Commands
+
+The `ctrl+; shift-p` keybinding will add the following custom actions to Portal:
+
+* `dev/->html` -- attempts to `slurp` the value (a filename or URL) and display it inline as HTML with a white background (so web pages are readable even in dark themes),
+* `dev/->map` -- pours the value into a hash map (useful for dealing with Java `Properties` objects etc),
+* `dev/->set` -- pours the value into a set,
+* `dev/->vector` -- pours the value into a vector.

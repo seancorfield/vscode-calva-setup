@@ -258,11 +258,26 @@
     (editor/eval-and-render
      (assoc here :text
             (str "(do"
-                 " (in-ns 'dev)"
+                 " (ns dev)"
                  " (def portal"
                  "  ((requiring-resolve 'portal.api/open)"
                  "   {:launcher :vs-code :portal.launcher/window-title (System/getProperty \"user.dir\")}))"
-                 " (install-portal-extras)"
+                 " (try
+                    (let [r!   (requiring-resolve 'portal.runtime/register!)
+                          html (fn [url]
+                                (with-meta
+                                  [:div
+                                    {:style {:background :white}}
+                                    [:portal.viewer/html (slurp url)]]
+                                  {:portal.viewer/default :portal.viewer/hiccup}))]
+                      ;; install extra functions:
+                      (run! (fn [[k f]] (r! f {:name k}))
+                            {'dev/->file   (requiring-resolve 'clojure.java.io/file)
+                            'dev/->html   html
+                            'dev/->map    (partial into {})
+                            'dev/->set    (partial into #{})
+                            'dev/->vector (partial into [])}))
+                    (catch Throwable _))"
                  " (add-tap (requiring-resolve 'portal.api/submit)))")))))
 
 (defn portal-clear []
