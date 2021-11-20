@@ -37,7 +37,7 @@ The additional commands _require_ Clojure 1.10 (because they assume `requiring-r
 * `ctrl-; shift+d` -- when a binding in `let` is highlighted (both the symbol and the expression to which it is bound), this creates a `def` so the symbol becomes available at the top level: useful for debugging parts of a function inside `let`.
 * `ctrl-; e` -- Clover's built-in disconnect (from the REPL).
 * `ctrl-; f` -- Clover's built-in load file.
-* `ctrl-; j` -- treat the var at the cursor (or the current selection) as a Java class or instance, lookup the Java API docs for it, and display that URL (assumes the class is part of the Java Standard Library or that Google can find it!) by sending a `java.net.URL` object to `tap>` (which can be browsed Portal).
+* `ctrl-; j` -- treat the var at the cursor (or the current selection) as a Java class or instance, lookup the Java API docs for it, and produce that URL (assumes the class is part of the Java Standard Library or that Google can find it!); attempts to `slurp` the URL and send the returned HTML via `tap>` in a metadata wrapper that should render into Portal (taps just the URL if the `slurp` fails).
 * `ctrl-; k` -- Clover's built-in clear console.
 * `ctrl-; shift+k` -- Clear Portal's history.
 * `ctrl-; n` -- send the current namespace (object) to `tap>` (my dot-clojure `dev.clj` customizes Portal to provide a list of public Vars).
@@ -51,7 +51,7 @@ The additional commands _require_ Clojure 1.10 (because they assume `requiring-r
 * `ctrl-; x` -- run all the tests in the current namespace and `tap>` the result summary as well as showing the summary in a popup notification.
 * `ctrl-; shift+x` -- run all the tests in the "associated" namespace and `tap>` the result summary as well as showing the summary in a popup notification; if the current namespace is `foo.bar`, this will look for `foo.bar-test` or `foo.bar-expectations`.
 * `ctrl-; y` -- Clover's built-in connect to Socket REPL.
-* `ctrl-; shift+/` (i.e., `?`) -- for the var at the cursor, send the  ClojureDocs URL as a `java.net.URL` to `tap>` (which can be browsed Portal).
+* `ctrl-; shift+/` (i.e., `?`) -- for the var at the cursor, produce the  ClojureDocs URL as a `java.net.URL`; attempts to `slurp` the URL and send the returned HTML via `tap>` in a metadata wrapper that should render into Portal (taps just the URL if the `slurp` fails).
 * `ctrl-; .` -- Clover's built-in go to var definition.
 
 If you have the `add-lib3` branch of `org.clojure/tools.deps.alpha` on your classpath:
