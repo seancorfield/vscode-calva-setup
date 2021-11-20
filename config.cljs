@@ -204,6 +204,16 @@
                    "Tests completed!")
           :message (if (:error res) (:text block) (format-test-result (:result res)))})))))
 
+(defn- wrap-in-tap-html [code]
+  (str "(let [value " code
+       "      html  (try (slurp value) (catch Throwable _))]"
+       "  (tap> (if html"
+       "          (with-meta [:div {:style {:background :white}}"
+       "                      [:portal.viewer/html html]]"
+       "            {:portal.viewer/default :portal.viewer/hiccup})"
+       "        value))"
+       "  value)"))
+
 (defn tap-doc-var []
   (p/let [block (editor/get-var)]
     (when (seq (:text block))
@@ -218,7 +228,7 @@
                     "  (clojure.string/replace \"!\" \"%21\")"
                     "  (clojure.string/replace \"&\" \"%26\")"
                     ")))"))
-          (update :text wrap-in-tap)
+          (update :text wrap-in-tap-html)
           (editor/eval-and-render)))))
 
 (defn tap-javadoc []
@@ -239,7 +249,7 @@
                       "   (clojure.string/replace" ; force https
                       "    #\"^http:\" \"https:\")"
                       ")))"))
-            (update :text wrap-in-tap)
+            (update :text wrap-in-tap-html)
             (editor/eval-and-render)))))
 
 (defn- add-libs [deps]
