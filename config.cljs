@@ -5,6 +5,11 @@
        "  (tap> value)"
        "  value)"))
 
+(defn- wrap-in-tap-as-tree [code]
+  (str "(let [value (try " code " (catch Throwable t t))]"
+       "  (tap> (with-meta value {:portal.viewer/default :portal.viewer/tree}))"
+       "  value)"))
+
 (defn tap-top-block []
   (p/let [block (editor/get-top-block)]
     (when (seq (:text block))
@@ -17,6 +22,13 @@
     (when (seq (:text block))
       (-> block
           (update :text wrap-in-tap)
+          (editor/eval-and-render)))))
+
+(defn tap-block-as-tree []
+  (p/let [block (editor/get-block)]
+    (when (seq (:text block))
+      (-> block
+          (update :text wrap-in-tap-as-tree)
           (editor/eval-and-render)))))
 
 (defn tap-selection []

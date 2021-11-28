@@ -80,6 +80,11 @@
         "args": "Clover: Tap run current test"
     },
     {
+      "key": "ctrl+; shift+t",
+      "command": "workbench.action.tasks.runTask",
+      "args": "Clover: Tap block as tree"
+    },
+    {
         "key": "ctrl+; v",
         "command": "workbench.action.tasks.runTask",
         "args": "Clover: Tap var"
