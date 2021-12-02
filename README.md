@@ -26,6 +26,28 @@ On Windows, the VS Code user configuration directory is likely to be:
 
 I run VS Code in Remote-WSL2 mode so my `config.cljs` file for Clover is in `~/.config/clover/` on Linux.
 
+## Portal: Launch and Usage
+
+### Prerequisites
+
+When starting an instance of Portal, you must ensure that you have the following:
+
+Portal itself must be included as a dependency. This can be done in your user configuration file (deps.edn or ~/.lein/profiles.clj for example) or in your project's configuration. If you're using Leiningen, it'll look like this:
+
+`:dependencies [[djblue/portal "0.18.0"]]`
+
+You must be configured to start a socket repl. That configuration can live in the same places as the dependency, and if you're using Leiningen, it'll look something like this:
+
+`:jvm-opts ["-Dclojure.server.repl={:port 5555 :accept clojure.core.server/repl}"]}`
+
+### Launching and Using Portal
+
+Before you launch Portal, you must first start a repl and connect to it. Once that is up, you will use the following commands.
+
+1. Connect to the running repl via Clover with: `ctrl-; y`
+2. Start Portal with: `ctrl-; shift+p`
+3. That’s it! You can now access values stored in portal by dereferencing the portal object in the dev namespace like so: `@dev/portal`. This object is created automatically by the startup command.
+
 ## Keymap
 
 The additional commands _require_ Clojure 1.10 (because they assume `requiring-resolve` and `tap>`) and will fail on earlier versions. Portal supports Clojure 1.10's `datafy` and `nav`. If you need to work on an earlier project, you'll need to use Chlorine's default versions of the commands.
