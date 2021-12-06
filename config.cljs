@@ -138,8 +138,8 @@
   (p/let [block (editor/get-top-block)
           test-name (when (seq (:text block))
                       (clojure.string/replace (:text block)
-                                              #"\(def[a-z]* ([^\s]*)[^]*"
-                                              "$1"))
+                                              #"\(def[a-z]* (\^:[-a-z]* )*([^\s]*)[^.]*"
+                                              "$2"))
           here  (editor/get-selection)]
     (when (seq test-name)
       (p/let [res (editor/eval-and-render
