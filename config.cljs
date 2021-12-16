@@ -240,7 +240,7 @@
                     "  (clojure.string/replace \"!\" \"%21\")"
                     "  (clojure.string/replace \"&\" \"%26\")"
                     ")))"))
-          (update :text wrap-in-tap-html)
+          (update :text wrap-in-tap)
           (editor/eval-and-render)))))
 
 (defn tap-javadoc []
@@ -261,7 +261,7 @@
                       "   (clojure.string/replace" ; force https
                       "    #\"^http:\" \"https:\")"
                       ")))"))
-            (update :text wrap-in-tap-html)
+            (update :text wrap-in-tap)
             (editor/eval-and-render)))))
 
 (defn- add-libs [deps]
