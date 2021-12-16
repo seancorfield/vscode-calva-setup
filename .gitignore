@@ -1,3 +1,6 @@
 globalStorage
 sync
 workspaceStorage
+.clj-kondo/.cache
+.lsp/.cache
+.portal/
