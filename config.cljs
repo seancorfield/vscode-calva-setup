@@ -229,40 +229,44 @@
 (defn tap-doc-var []
   (p/let [block (editor/get-var)]
     (when (seq (:text block))
-      (-> block
-          (update :text
-                  #(str
-                    "(java.net.URL."
-                    " (str \"https://clojuredocs.org/\""
-                    " (-> (str (symbol #'" % "))"
-                    ;; clean up ? ! &
-                    "  (clojure.string/replace \"?\" \"%3f\")"
-                    "  (clojure.string/replace \"!\" \"%21\")"
-                    "  (clojure.string/replace \"&\" \"%26\")"
-                    ")))"))
-          (update :text wrap-in-tap)
-          (editor/eval-and-render)))))
+      (p/let [res
+              (-> block
+                  (update :text
+                          #(str
+                            " (str \"https://clojuredocs.org/\""
+                            " (-> (str (symbol #'" % "))"
+                            ;; clean up ? ! &
+                            "  (clojure.string/replace \"?\" \"%3f\")"
+                            "  (clojure.string/replace \"!\" \"%21\")"
+                            "  (clojure.string/replace \"&\" \"%26\")"
+                            "))"))
+                  (update :text wrap-in-tap)
+                  (editor/eval-and-render))]
+        (when-not (:error res) (editor/run-command "simpleBrowser.show" (:result res)))
+        res))))
 
 (defn tap-javadoc []
   (p/let [block (editor/get-selection)
           block (if (< 1 (count (:text block))) block (editor/get-var))]
       (when (seq (:text block))
-        (-> block
-            (update :text
-                    #(str
-                      "(let [c-o-o " %
-                      " ^Class c (if (instance? Class c-o-o) c-o-o (class c-o-o))] "
-                      " (java.net.URL. "
-                      "  (->"
-                      "   ((requiring-resolve 'clojure.java.javadoc/javadoc-url)"
-                      "    (.getName c))"
-                      "   (clojure.string/replace" ; strip inner class
-                      "    #\"\\$[a-zA-Z0-9_]+\" \"\")"
-                      "   (clojure.string/replace" ; force https
-                      "    #\"^http:\" \"https:\")"
-                      ")))"))
-            (update :text wrap-in-tap)
-            (editor/eval-and-render)))))
+        (p/let [res
+                (-> block
+                    (update :text
+                            #(str
+                              "(let [c-o-o " %
+                              " ^Class c (if (instance? Class c-o-o) c-o-o (class c-o-o))] "
+                              "  (->"
+                              "   ((requiring-resolve 'clojure.java.javadoc/javadoc-url)"
+                              "    (.getName c))"
+                              "   (clojure.string/replace" ; strip inner class
+                              "    #\"\\$[a-zA-Z0-9_]+\" \"\")"
+                              "   (clojure.string/replace" ; force https
+                              "    #\"^http:\" \"https:\")"
+                              "))"))
+                    (update :text wrap-in-tap)
+                    (editor/eval-and-render))]
+          (when-not (:error res) (editor/run-command "simpleBrowser.show" (:result res)))
+          res))))
 
 (defn- add-libs [deps]
   (str "((requiring-resolve 'clojure.tools.deps.alpha.repl/add-libs) '" deps ")"))

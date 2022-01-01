@@ -1,6 +1,6 @@
 # VS Code/Clover Setup
 
-The files here represent my current [VS Code](https://code.visualstudio.com/) configuration for use with [Clover](https://marketplace.visualstudio.com/items?itemName=mauricioszabo.clover) **version 0.2.4 or later**.
+The files here represent my current [VS Code](https://code.visualstudio.com/) configuration for use with [Clover](https://marketplace.visualstudio.com/items?itemName=mauricioszabo.clover) **version 0.2.8 or later -- some tasks depend on the newly-added `editor/run-command` feature**.
 
 The commands here will `tap>` all evaluations. If you have a [Portal UI](https://github.com/djblue/portal), possibly inside VS Code, running that will also render everything that is `tap>`'d into its UI.
 
@@ -32,19 +32,23 @@ I run VS Code in Remote-WSL2 mode so my `config.cljs` file for Clover is in `~/.
 
 When starting an instance of Portal, you must ensure that you have the following:
 
-Portal itself must be included as a dependency. This can be done in your user configuration file (deps.edn or ~/.lein/profiles.clj for example) or in your project's configuration. If you're using Leiningen, it'll look like this:
+Portal itself must be included as a dependency. This can be done in your user configuration file (`deps.edn` or `~/.lein/profiles.clj` for example) or in your project's configuration. If you're using Leiningen, it'll look like this:
 
-`:dependencies [[djblue/portal "0.18.0"]]`
+`:dependencies [[djblue/portal "RELEASE"]]`
 
-You must be configured to start a socket repl. That configuration can live in the same places as the dependency, and if you're using Leiningen, it'll look something like this:
+For `deps.edn`, it will be `djblue/portal {:mvn/version "RELEASE"}` in `:extra-deps` under an alias. If you're using my user `deps.edn` file from my [`dot-clojure`](https://github.com/seancorfield/dot-clojure) repo, you can just add the `:portal` alias to your CLI command to get the latest Portal included.
 
-`:jvm-opts ["-Dclojure.server.repl={:port 5555 :accept clojure.core.server/repl}"]}`
+You must be configured to start a Socket REPL. That configuration can live in the same places as the dependency, and if you're using Leiningen, it'll look something like this:
+
+`:jvm-opts ["-Dclojure.server.repl={:port 5555 :accept clojure.core.server/repl}"]`
+
+If you're using my user `deps.edn` file from my `dot-clojure` repo, you can just add the `:socket` alias to your CLI command to start a Socket REPL on port 5555. Or you can use the `:dev/repl` alias to load `dev.clj` which automatically starts a Socket REPL on a free port (and tells you which port!.
 
 ### Launching and Using Portal
 
-Before you launch Portal, you must first start a repl and connect to it. Once that is up, you will use the following commands.
+Before you launch Portal, you must first start a REPL and connect to it. Once that is up, you will use the following commands.
 
-1. Connect to the running repl via Clover with: `ctrl-; y`
+1. Connect to the running REPL via Clover with: `ctrl-; y`
 2. Start Portal with: `ctrl-; shift+p`
 3. That’s it! You can now access values stored in portal by dereferencing the portal object in the dev namespace like so: `@dev/portal`. This object is created automatically by the startup command.
 
@@ -59,7 +63,7 @@ The additional commands _require_ Clojure 1.10 (because they assume `requiring-r
 * `ctrl-; shift+d` -- when a binding in `let` is highlighted (both the symbol and the expression to which it is bound), this creates a `def` so the symbol becomes available at the top level: useful for debugging parts of a function inside `let`.
 * `ctrl-; e` -- Clover's built-in disconnect (from the REPL).
 * `ctrl-; f` -- Clover's built-in load file.
-* `ctrl-; j` -- treat the var at the cursor (or the current selection) as a Java class or instance, lookup the Java API docs for it, and produce that URL (assumes the class is part of the Java Standard Library or that Google can find it!); attempts to `slurp` the URL and send the returned HTML via `tap>` in a metadata wrapper that should render into Portal (taps just the URL if the `slurp` fails).
+* `ctrl-; j` -- treat the var at the cursor (or the current selection) as a Java class or instance, lookup the Java API docs for it, and produce that URL (assumes the class is part of the Java Standard Library or that Google can find it!); also tries to open VS Code's Simple Browser to that URL; if you are using Portal, the URL string is `tap>`'d into that and you can `cmd-click` (macOS) on it to open an external browser.
 * `ctrl-; k` -- Clover's built-in clear console.
 * `ctrl-; shift+k` -- Clear Portal's history.
 * `ctrl-; n` -- send the current namespace (object) to `tap>` (my dot-clojure `dev.clj` customizes Portal to provide a list of public Vars).
@@ -73,7 +77,7 @@ The additional commands _require_ Clojure 1.10 (because they assume `requiring-r
 * `ctrl-; x` -- run all the tests in the current namespace and `tap>` the result summary as well as showing the summary in a popup notification.
 * `ctrl-; shift+x` -- run all the tests in the "associated" namespace and `tap>` the result summary as well as showing the summary in a popup notification; if the current namespace is `foo.bar`, this will look for `foo.bar-test` or `foo.bar-expectations`.
 * `ctrl-; y` -- Clover's built-in connect to Socket REPL.
-* `ctrl-; shift+/` (i.e., `?`) -- for the var at the cursor, produce the  ClojureDocs URL as a `java.net.URL`; attempts to `slurp` the URL and send the returned HTML via `tap>` in a metadata wrapper that should render into Portal (taps just the URL if the `slurp` fails).
+* `ctrl-; shift+/` (i.e., `?`) -- for the var at the cursor, produce the ClojureDocs URL; also tries to open VS Code's Simple Browser to that URL; if you are using Portal, the URL string is `tap>`'d into that and you can `cmd-click` (macOS) on it to open an external browser.
 * `ctrl-; .` -- Clover's built-in go to var definition.
 
 If you have the `add-lib3` branch of `org.clojure/tools.deps.alpha` on your classpath:
