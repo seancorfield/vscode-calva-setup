@@ -96,7 +96,7 @@
       "cfwddx"
     ],
     "yaml.schemas": {
-      "file:///Users/sean/.vscode/extensions/atlassian.atlascode-2.8.6/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+      "file:///Users/sean/.vscode/extensions/atlassian.atlascode-2.10.1/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
     },
     "atlascode.jira.jqlList": [
       {
