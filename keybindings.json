@@ -61,11 +61,6 @@
         "args": "Clover: Tap remove ns"
     },
     {
-        "key": "ctrl+; shift+r",
-        "command": "workbench.action.tasks.runTask",
-        "args": "Clover: Tap reload all ns"
-    },
-    {
         "key": "ctrl+; s",
         "command": "workbench.action.tasks.runTask",
         "args": "Clover: Tap selection"
@@ -166,5 +161,9 @@
     {
       "key": "ctrl+l ctrl+l",
       "command": "editor.action.transformToLowercase"
+    },
+    {
+      "key": "cmd+k cmd+t",
+      "command": "calva.toggleBetweenImplAndTest"
     }
 ]

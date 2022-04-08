@@ -101,26 +101,6 @@
           (assoc :range (:range here))
           (editor/eval-and-render)))))
 
-(defn tap-reload-all-ns []
-  (p/let [block (editor/get-namespace)
-          here  (editor/get-selection)]
-    (when (seq (:text block))
-      (editor/run-callback
-       :notify
-       {:type :info :title "Reloading all..." :message (:text block)})
-      (p/let [res (editor/eval-and-render
-                    (-> block
-                        (update :text #(str "(require '" % " :reload-all)"))
-                        (update :text wrap-in-tap)
-                        (assoc :range (:range here))))]
-        (editor/run-callback
-         :notify
-         {:type (if (:error res) :warning :info)
-          :title (if (:error res)
-                   "Reload failed for..."
-                   "Reload succeeded!")
-          :message (:text block)})))))
-
 (defn- format-test-result [{:keys [test pass fail error]}]
   (str "Ran " test " test"
        (when-not (= 1 test) "s")
