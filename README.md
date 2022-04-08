@@ -69,7 +69,6 @@ The additional commands _require_ Clojure 1.10 (because they assume `requiring-r
 * `ctrl-; n` -- send the current namespace (object) to `tap>` (my dot-clojure `dev.clj` customizes Portal to provide a list of public Vars).
 * `ctrl-; shift+p` -- Start a Portal view inside VS Code, with some extra `dev` actions added (see below).
 * `ctrl-; r` -- remove the current namespace's definitions: occasionally useful for cleaning up REPL state.
-* `ctrl-; shift+r` -- reload the current namespace and all of its dependencies (uses `(require ,,, :reload-all)`: occasionally useful for cleaning up REPL state.
 * `ctrl-; s` -- evaluate the selected code into `tap>` -- it can only be a single form (it will be used as the expression in a `let` binding).
 * `ctrl-; shift+s` -- Clover's built-in show source for var.
 * `ctrl-; t` -- run the current test (cursor can be anywhere in a `deftest` form, or `defspec`, `defexpect`, etc); displays the test success/failure as a popup notification (see the Clover console for full details).
