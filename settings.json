@@ -1,7 +1,4 @@
 {
-    "task.problemMatchers.neverPrompt": {
-        "Clover": true
-    },
     "editor.fontSize": 18,
     "editor.tabSize": 2,
     "editor.cursorStyle": "block",
@@ -96,7 +93,7 @@
       "cfwddx"
     ],
     "yaml.schemas": {
-      "file:///Users/sean/.vscode/extensions/atlassian.atlascode-2.10.1/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+      "file:///Users/sean/.vscode/extensions/atlassian.atlascode-2.10.12/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
     },
     "atlascode.jira.jqlList": [
       {
@@ -136,14 +133,10 @@
       "**/target/classes/**": true
     },
     "calva.autoOpenJackInTerminal": false,
-    "calva.autoOpenREPLWindow": false,
     "calva.enableJSCompletions": false,
     "calva.fmt.newIndentEngine": false,
-    "calva.hideReplUi": true,
     "calva.highlight.cycleBracketColors": false,
     "calva.highlight.enableBracketColors": false,
-    "calva.highlight.highlightActiveIndent": false,
-    "calva.highlight.rainbowIndentGuides": false,
     "calva.openBrowserWhenFigwheelStarted": false,
     "calva.paredit.defaultKeyMap": "strict",
     "calva.paredit.killAlsoCutsToClipboard": true,
@@ -153,8 +146,6 @@
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.bracketPairColorization.enabled": true,
     "editor.detectIndentation": false,
-    "editor.guides.bracketPairs": true,
-    "editor.guides.indentation": true,
     "editor.hover.delay": 1000,
     "editor.largeFileOptimizations": false,
     "editor.suggestSelection": "first",
@@ -189,5 +180,79 @@
       "HTML (EEx)",
       "HTML (Eex)",
       "plist"
+    ],
+    "git.ignoreLegacyWarning": true,
+    "calva.highlight.highlightActiveIndent": false,
+    "editor.guides.bracketPairs": true,
+    "editor.guides.bracketPairsHorizontal": true,
+    "calva.myCljAliases": [
+      ":portal",
+      ":add-libs",
+      ":reflect",
+      ":jedi-time",
+      ":reflect"
+    ],
+    "calva.autoOpenREPLWindow": false,
+    "calva.customREPLCommandSnippets": [
+      {
+        "name": "Add Libs Enclosing",
+        "key": "a",
+        "snippet": "(tap> ((requiring-resolve 'clojure.tools.deps.alpha.repl/add-libs) '$enclosing-form))"
+      },
+      {
+        "name": "Tap Define Binding",
+        "key": "d",
+        "snippet": "(tap> (def $selection))"
+      },
+      {
+        "name": "Tap Last Exception",
+        "key": "e",
+        "snippet": "(tap> (Throwable->map *e))"
+      },
+      {
+        "name": "Tap Namespace Publics",
+        "key": "n",
+        "snippet": "(tap> (-> (find-ns '$ns) (clojure.datafy/datafy) :publics))"
+      },
+      {
+        "name": "Tap Namespace Cleanup",
+        "key": "z",
+        "snippet": "(tap> (when-let [ns (find-ns '$ns)] (tap> \"Removing $ns...\") (run! #(try (ns-unalias ns %) (catch Throwable _)) (keys (ns-aliases ns))) (run! #(try (ns-unmap ns %) (catch Throwable _)) (keys (ns-interns ns))) (->> (ns-refers ns) (remove (fn [[_ v]] (.startsWith (str v) \"#'clojure.core/\"))) (map key) (run! #(try (ns-unmap ns %) (catch Throwable _))))))"
+      },
+      {
+        "name": "Run Tests",
+        "key": "t",
+        "snippet": "(tap> (let [nt (symbol \"$ns\")] (tap> \"Testing $ns...\") (require nt) (clojure.test/run-tests nt))))"
+      },
+      {
+        "name": "Run Tests For Source",
+        "key": "x",
+        "snippet": "(tap> (some #(let [nt (symbol (str \"$ns-\" %))] (when (try (require nt) true (catch Throwable _)) (tap> (str \"Testing \" nt \"...\")) (clojure.test/run-tests nt))) [\"test\" \"expectations\"]))"
+      },
+      {
+        "name": "Portal Clear",
+        "key": "k",
+        "snippet": "(portal.api/clear)"
+      },
+      {
+        "name": "Portal Start",
+        "key": "p",
+        "snippet": "(do (ns dev) (def portal ((requiring-resolve 'portal.api/open) {:launcher :vs-code :portal.launcher/window-title (System/getProperty \"user.dir\")})) (add-tap (requiring-resolve 'portal.api/submit)))"
+      },
+      {
+        "name": "Portal Expand First",
+        "key": "1",
+        "snippet": "(portal.api/eval-str \"(let [state portal.ui.state/state] (-> (portal.ui.commands/select-none state) (.then #(portal.ui.commands/select-child state)) (.then #(portal.ui.commands/select-child state)) (.then #(portal.ui.commands/toggle-expand state)) (.then #(portal.ui.commands/select-none state))))\")"
+      },
+      {
+        "name": "Portal Expand Second",
+        "key": "2",
+        "snippet": "(portal.api/eval-str \"(let [state portal.ui.state/state] (-> (portal.ui.commands/select-none state) (.then #(portal.ui.commands/select-child state)) (.then #(portal.ui.commands/select-child state)) (.then #(portal.ui.commands/select-child state)) (.then #(portal.ui.commands/toggle-expand state)) (.then #(portal.ui.commands/select-none state))))\")"
+      },
+      {
+        "name": "Portal Expand Third",
+        "key": "3",
+        "snippet": "(portal.api/eval-str \"(let [state portal.ui.state/state] (-> (portal.ui.commands/select-none state) (.then #(portal.ui.commands/select-child state)) (.then #(portal.ui.commands/select-child state)) (.then #(portal.ui.commands/select-child state)) (.then #(portal.ui.commands/select-child state)) (.then #(portal.ui.commands/toggle-expand state)) (.then #(portal.ui.commands/select-none state))))\")"
+      },
     ]
 }

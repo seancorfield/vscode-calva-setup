@@ -1,118 +1,6 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
     {
-        "key": "ctrl+; b",
-        "command": "workbench.action.tasks.runTask",
-        "args": "Clover: Tap block"
-    },
-    {
-        "key": "ctrl+; shift+b",
-        "command": "workbench.action.tasks.runTask",
-        "args": "Clover: Tap top block"
-    },
-    {
-        "key": "ctrl+; c",
-        "command": "clover.break-evaluation"
-    },
-    {
-        "key": "ctrl+; d",
-        "command": "clover.doc-for-var"
-    },
-    {
-        "key": "ctrl+; shift+d",
-        "command": "workbench.action.tasks.runTask",
-        "args": "Clover: Tap def var"
-    },
-    {
-        "key": "ctrl+; e",
-        "command": "clover.disconnect"
-    },
-    {
-        "key": "ctrl+; f",
-        "command": "clover.load-file"
-    },
-    {
-        "key": "ctrl+; j",
-        "command": "workbench.action.tasks.runTask",
-        "args": "Clover: Tap javadoc"
-    },
-    {
-        "key": "ctrl+; k",
-        "command": "clover.clear-console"
-    },
-    {
-        "key": "ctrl+; shift+k",
-        "command": "workbench.action.tasks.runTask",
-        "args": "Clover: Portal clear"
-    },
-    {
-        "key": "ctrl+; shift+p",
-        "command": "workbench.action.tasks.runTask",
-        "args": "Clover: Portal start"
-    },
-    {
-        "key": "ctrl+; n",
-        "command": "workbench.action.tasks.runTask",
-        "args": "Clover: Tap ns"
-    },
-    {
-        "key": "ctrl+; r",
-        "command": "workbench.action.tasks.runTask",
-        "args": "Clover: Tap remove ns"
-    },
-    {
-        "key": "ctrl+; s",
-        "command": "workbench.action.tasks.runTask",
-        "args": "Clover: Tap selection"
-    },
-    {
-        "key": "ctrl+; shift+s",
-        "command": "clover.source-for-var"
-    },
-    {
-        "key": "ctrl+; t",
-        "command": "workbench.action.tasks.runTask",
-        "args": "Clover: Tap run current test"
-    },
-    {
-      "key": "ctrl+; shift+t",
-      "command": "workbench.action.tasks.runTask",
-      "args": "Clover: Tap block as tree"
-    },
-    {
-        "key": "ctrl+; v",
-        "command": "workbench.action.tasks.runTask",
-        "args": "Clover: Tap var"
-    },
-    {
-        "key": "ctrl+; x",
-        "command": "workbench.action.tasks.runTask",
-        "args": "Clover: Tap run tests"
-    },
-    {
-        "key": "ctrl+; shift+x",
-        "command": "workbench.action.tasks.runTask",
-        "args": "Clover: Tap run side tests"
-    },
-    {
-        "key": "ctrl+; y",
-        "command": "clover.connectSocketRepl"
-    },
-    {
-        "key": "ctrl+; shift+/",
-        "command": "workbench.action.tasks.runTask",
-        "args": "Clover: Tap doc var"
-    },
-    {
-      "key": "ctrl+; shift+a",
-      "command": "workbench.action.tasks.runTask",
-      "args": "Clover: Tap add libs"
-  },
-  {
-        "key": "ctrl+; .",
-        "command": "clover.go-to-var-definition"
-    },
-    {
       "key": "ctrl+right",
       "command": "paredit.forwardSexp",
       "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
@@ -165,5 +53,9 @@
     {
       "key": "cmd+k cmd+t",
       "command": "calva.toggleBetweenImplAndTest"
+    },
+    {
+      "key": "ctrl+alt+e ctrl+alt+right",
+      "command": "workbench.action.moveEditorToRightGroup"
     }
 ]
