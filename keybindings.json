@@ -51,7 +51,7 @@
       "command": "editor.action.transformToLowercase"
     },
     {
-      "key": "cmd+k cmd+t",
+      "key": "ctrl+alt+t ctrl+alt+t",
       "command": "calva.toggleBetweenImplAndTest"
     },
     {
