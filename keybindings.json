@@ -51,11 +51,11 @@
       "command": "editor.action.transformToLowercase"
     },
     {
-      "key": "ctrl+alt+t ctrl+alt+t",
-      "command": "calva.toggleBetweenImplAndTest"
-    },
-    {
       "key": "ctrl+alt+e ctrl+alt+right",
       "command": "workbench.action.moveEditorToRightGroup"
+    },
+    {
+      "key": "ctrl+alt+k ctrl+alt+t",
+      "command": "calva.toggleBetweenImplAndTest"
     }
 ]
