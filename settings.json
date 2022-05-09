@@ -220,6 +220,11 @@
         "snippet": "(tap> (when-let [ns (find-ns '$ns)] (tap> \"Removing $ns...\") (run! #(try (ns-unalias ns %) (catch Throwable _)) (keys (ns-aliases ns))) (run! #(try (ns-unmap ns %) (catch Throwable _)) (keys (ns-interns ns))) (->> (ns-refers ns) (remove (fn [[_ v]] (.startsWith (str v) \"#'clojure.core/\"))) (map key) (run! #(try (ns-unmap ns %) (catch Throwable _))))))"
       },
       {
+        "name": "Run Current Test",
+        "key": "c",
+        "snippet": "(tap> (with-out-str (binding [clojure.test/*test-out* *out*] (clojure.test/test-vars [#'$top-level-defined-symbol]))))"
+      },
+      {
         "name": "Run Tests",
         "key": "t",
         "snippet": "(tap> (let [nt (symbol \"$ns\")] (tap> \"Testing $ns...\") (require nt) (clojure.test/run-tests nt))))"
