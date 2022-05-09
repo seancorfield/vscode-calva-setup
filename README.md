@@ -58,6 +58,7 @@ this `settings.json` file includes the following:
 * `ctrl+alt+space a` -- add dependencies to the running REPL; sends the enclosing form to `clojure.tools.deps.alpha.repl/add-libs`; intended to be used when the cursor is inside a dependencies hash map (i.e., inside `deps.edn`, on a library name, rather than inside its coordinates).
 * `ctrl+alt+space d` -- when a binding in `let` is highlighted (both the symbol and the expression to which it is bound), this creates a `def` so the symbol becomes available at the top level: useful for debugging parts of a function inside `let`.
 * `ctrl+alt+space n` -- `tap>` a hash map of public Vars from the current namespace.
+* `ctrl+alt+space c` -- run the current test and `tap>` any output.
 * `ctrl+alt+space t` -- run all the tests in the current namespace and `tap>` the result summary.
 * `ctrl+alt+space x` -- run all the tests in the "associated" namespace and `tap>` the result summary; if the current namespace is `foo.bar`, this will look for `foo.bar-test` or `foo.bar-expectations`.
 * `ctrl+alt+space z` -- zap (remove) the current namespace's definitions: occasionally useful for cleaning up REPL state; this unaliases/unmaps all the symbols in the namespace _without destroying the namespace itself_, leaving it "empty" so you can load the file from disk again so it is fully-sync'd (`ctrl+alt+c enter`).
@@ -74,7 +75,7 @@ Other key bindings that you may or may not find useful:
 * `ctrl+t ctrl+t` -- open a terminal window in VS Code.
 * `ctrl+l ctrl+l` -- convert the selection/word at the cursor to lowercase.
 * `ctrl+u ctrl+u` -- convert the selection/word at the cursor to uppercase.
-* `ctrl+alt+t ctrl+alt+t` -- toggle between Clojure implementation and test files.
+* `ctrl+alt+k ctrl+alt+t` -- toggle between Clojure implementation and test files.
 
 These are intended to provide a consistent experience across macOS _and_ Windows:
 
