@@ -1,6 +1,6 @@
 # VS Code Setup
 
-The files here represent my current [VS Code](https://code.visualstudio.com/) configuration for use with [Calva](https://marketplace.visualstudio.com/items?itemName=betterthantomorrow.calva).
+The files here represent my current [VS Code](https://code.visualstudio.com/) configuration for use with [Calva](https://marketplace.visualstudio.com/items?itemName=betterthantomorrow.calva) and [Joyride](https://marketplace.visualstudio.com/items?itemName=betterthantomorrow.joyride).
 
 The `settings.json` file makes heavy use of `customREPLCommandSnippets` to provide a number of `tap>` evaluations and some [Portal UI](https://github.com/djblue/portal) commands.
 
@@ -10,6 +10,8 @@ The `settings.json` file makes heavy use of `customREPLCommandSnippets` to provi
 ## Installation
 
 You can either clone this repo into a temporary directory and then copy either or both of `.json` files into your VS Code user configuration directory (overwriting the default `keybindings.json` and `settings.json` files), or you can manually update your files with whatever bits of my files you like.
+
+In addition, there are some Joyride scripts (in `joyride/scripts`) that you can copy into either your user or workspace Joyride `scripts` folder as desired. See the **Joyride** section below for details.
 
 On a Mac, the VS Code user configuration directory is as shown below:
 
@@ -65,12 +67,26 @@ this `settings.json` file includes the following:
 
 Several of these command snippets _require_ Clojure 1.10 or later (because they assume `requiring-resolve` and `tap>`) and will fail on earlier versions. Portal supports Clojure 1.10's `datafy` and `nav`.
 
+## Joyride Scripts
+
+The following scripts perform tasks that my old Clover configuration used to provide. You'll need Joyride installed in VS Code and you'll need at least v2.0.277 of Calva since these scripts depend on the recently-added [Calva Extension API](https://calva.io/api/).
+
+* `clojuredocs.cljs` -- with a Clojure symbol selected, this will open VS Code's Simple Browser, directly inside VS Code, at the corresponding [ClojureDocs page](https://clojuredocs.org).
+* `javadoc.cljs` -- with a Java class name selected, or a Clojure expression selected, this will open VS Code's Simple Browser, directly inside VS Code, at the corresponding (Oracle) JavaDoc page for the class that the selection resolves to. If the underlying `javadoc-url` function doesn't recognize the class, it produces a Google "I feel lucky" URL that will be opened in an _external_ browser instead (since Simple Browser cannot open Google's site).
+
+> Note: both `clojuredocs.cljs` and `javadoc.cljs` assume you have a Clojure nREPL connected in Calva to perform symbol/class resolution!
+
+My `keybindings.json` file has key bindings for these that are intended to match (but override) what would be custom REPL command snippet key bindings, to make these Joyride scripts feel more like snippets:
+
+* `ctrl+alt+space j` -- runs `javadoc.cljs` as a User-level Joyride script.
+* `ctrl+alt+space /` -- runs `clojuredocs.cljs` as a User-level Joyride script (in my Clover setup, this used to be `ctrl+; shift+/`, i,e., `?`, but `shift+/` would be a bit unwieldy as a `ctrl+alt+space` chord).
+
 ## Keymap
 
 Other key bindings that you may or may not find useful:
 
 * `ctrl+alt+e ctrl+alt+j` -- join window groups in VS Code (I often use this after starting the REPL or splitting a window).
-* `ctrl+alt+e right` -- move the current window  groups in VS Code (I often use this after starting the REPL or splitting a window).
+* `ctrl+alt+e right` -- move the current window to the next group to the right in VS Code (I often use this after starting the REPL or splitting a window).
 * `ctrl+t ctrl+f` -- switch focus to the terminal window in VS Code.
 * `ctrl+t ctrl+t` -- open a terminal window in VS Code.
 * `ctrl+l ctrl+l` -- convert the selection/word at the cursor to lowercase.
@@ -89,9 +105,3 @@ If you use Atlassian/Jira/BitBucket:
 
 * `ctrl+alt+a ctrl+alt+b` -- switch to BitBucket PRs.
 * `ctrl+alt+a ctrl+alt+j` -- switch to Jira issues.
-
-## Clover
-
-The following keybinding used to be available in my Clover setup. I have not yet decided on the best equivalent for this in my new Calva setup:
-
-* `ctrl+; j` -- treat the var at the cursor (or the current selection) as a Java class or instance, lookup the Java API docs for it, and produce that URL (assumes the class is part of the Java Standard Library or that Google can find it!); also tries to open VS Code's Simple Browser to that URL; if you are using Portal, the URL string is `tap>`'d into that and you can `cmd-click` (macOS) on it to open an external browser.

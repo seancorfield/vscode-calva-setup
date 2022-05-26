@@ -57,5 +57,15 @@
     {
       "key": "ctrl+alt+k ctrl+alt+t",
       "command": "calva.toggleBetweenImplAndTest"
+    },
+    {
+      "key": "ctrl+alt+space j",
+      "command": "joyride.runUserScript",
+      "args": "javadoc.cljs"
+    },
+    {
+      "key": "ctrl+alt+space /",
+      "command": "joyride.runUserScript",
+      "args": "clojuredocs.cljs"
     }
 ]
