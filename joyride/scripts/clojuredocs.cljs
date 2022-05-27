@@ -13,6 +13,7 @@
 (defn- evaluate [code] ((:evaluateCode calvaApi) "clj" code))
 
 (defn- selected-text []
+  (vscode/commands.executeCommand "calva.selectCurrentForm")
   (let [editor ^js vscode/window.activeTextEditor
         selection (.-selection editor)]
     (.getText (.-document editor) selection)))
