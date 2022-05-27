@@ -46,6 +46,7 @@ Before you launch Portal, you must first start a REPL and connect to it. Once th
 The following additional custom REPL commands are available for Portal:
 
 * `ctrl+alt+space k` -- clear the Portal history
+* `ctrl+alt+space 0` -- cycle the latest value in the Portal history through each of the viewers in turn
 * `ctrl+alt+space 1` -- expand/collapse the first level of the most recent `tap>`'d value in Portal; `2` and `3` affect the second and third level respectively
 
 You can also access values stored in portal by dereferencing the `portal` object in the `dev` namespace like so: `@dev/portal`. This object is created automatically by the launch command snippet.

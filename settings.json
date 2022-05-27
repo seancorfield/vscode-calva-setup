@@ -245,6 +245,11 @@
         "snippet": "(do (ns dev) (def portal ((requiring-resolve 'portal.api/open) {:launcher :vs-code :portal.launcher/window-title (System/getProperty \"user.dir\")})) (add-tap (requiring-resolve 'portal.api/submit)))"
       },
       {
+        "name": "Portal Viewer",
+        "key": "0",
+        "snippet": "(portal.api/eval-str \"(let [state portal.ui.state/state] (-> (portal.ui.commands/select-none state) (.then #(portal.ui.commands/select-child state)) (.then #(portal.ui.commands/select-child state)) (.then #(portal.ui.commands/select-next-viewer state)) (.then #(portal.ui.commands/select-none state))))\")"
+      },
+      {
         "name": "Portal Expand First",
         "key": "1",
         "snippet": "(portal.api/eval-str \"(let [state portal.ui.state/state] (-> (portal.ui.commands/select-none state) (.then #(portal.ui.commands/select-child state)) (.then #(portal.ui.commands/select-child state)) (.then #(portal.ui.commands/toggle-expand state)) (.then #(portal.ui.commands/select-none state))))\")"
