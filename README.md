@@ -2,6 +2,8 @@
 
 The files here represent my current [VS Code](https://code.visualstudio.com/) configuration for use with [Calva](https://marketplace.visualstudio.com/items?itemName=betterthantomorrow.calva) and [Joyride](https://marketplace.visualstudio.com/items?itemName=betterthantomorrow.joyride).
 
+> Note: Some of the code here may well assume you are using the latest version of Calva and Joyride -- I tend to update my extensions regularly and also update my configuration to take advantage of new features.
+
 The `settings.json` file makes heavy use of `customREPLCommandSnippets` to provide a number of `tap>` evaluations and some [Portal UI](https://github.com/djblue/portal) commands.
 
 * `keybindings.json` is my cross-platform key mappings,

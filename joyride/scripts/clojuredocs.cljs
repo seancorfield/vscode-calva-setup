@@ -1,16 +1,8 @@
 (ns clojuredocs
-  (:require ["vscode" :as vscode]
+  (:require ["ext://betterthantomorrow.calva$v0.repl" :refer [evaluateCode]]
+            ["vscode" :as vscode]
             [clojure.edn :as edn]
             [promesa.core :as p]))
-
-(def ^:private calva (vscode/extensions.getExtension "betterthantomorrow.calva"))
-
-(def ^:private calvaApi (-> calva
-                            .-exports
-                            .-v0
-                            (js->clj :keywordize-keys true)))
-
-(defn- evaluate [code] ((:evaluateCode calvaApi) "clj" code))
 
 (defn- selected-text []
   (vscode/commands.executeCommand "calva.selectCurrentForm")
@@ -29,7 +21,7 @@
    "))"))
 
 (-> (p/let [code (clojuredocs-url (selected-text))
-            resp (evaluate code)
+            resp (evaluateCode "clj" code)
             url  (edn/read-string (.-result resp))]
       (vscode/commands.executeCommand "simpleBrowser.show" url))
     (p/catch (fn [e] (println (str "Evaluation error: " e)))))

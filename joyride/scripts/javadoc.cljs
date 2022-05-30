@@ -1,17 +1,9 @@
 (ns javadoc
-  (:require ["vscode" :as vscode]
+  (:require ["ext://betterthantomorrow.calva$v0.repl" :refer [evaluateCode]]
+            ["vscode" :as vscode]
             [clojure.edn :as edn]
             [clojure.string :as str]
             [promesa.core :as p]))
-
-(def ^:private calva (vscode/extensions.getExtension "betterthantomorrow.calva"))
-
-(def ^:private calvaApi (-> calva
-                            .-exports
-                            .-v0
-                            (js->clj :keywordize-keys true)))
-
-(defn- evaluate [code] ((:evaluateCode calvaApi) "clj" code))
 
 (defn- selected-text []
   (vscode/commands.executeCommand "calva.selectCurrentForm")
@@ -33,7 +25,7 @@
    "))"))
 
 (-> (p/let [code (javadoc-url (selected-text))
-            resp (evaluate code)
+            resp (evaluateCode "clj" code)
             url  (edn/read-string (.-result resp))]
       (if (str/starts-with? url "https://www.google.com")
         (vscode/commands.executeCommand "vscode.open" url)
