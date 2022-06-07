@@ -8,8 +8,6 @@
     "editor.fontLigatures": true,
     "git.confirmSync": false,
     "clock.dateFormat": "HH:MM mmm dd",
-    "files.trimTrailingWhitespace": true,
-    "files.trimFinalNewlines": true,
     "[clojure]": {
 
         "editor.wordSeparators": "\t ()\"':,;~@#$%^&{}[]`",
@@ -93,7 +91,7 @@
       "cfwddx"
     ],
     "yaml.schemas": {
-      "file:///Users/sean/.vscode/extensions/atlassian.atlascode-2.10.12/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+        "file:///home/sean/.vscode-server/extensions/atlassian.atlascode-2.10.12/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
     },
     "atlascode.jira.jqlList": [
       {
@@ -143,7 +141,6 @@
     "calva.showCalvaSaysOnStart": false,
     "calva.showDocstringInParameterHelp": true,
     "clojure.trace.server": "messages",
-    "diffEditor.ignoreTrimWhitespace": false,
     "editor.bracketPairColorization.enabled": true,
     "editor.detectIndentation": false,
     "editor.hover.delay": 1000,
@@ -267,5 +264,10 @@
     ],
     "settingsSync.ignoredSettings": [
       "yaml.schemas"
-    ]
+    ],
+    "git.enableSmartCommit": true,
+    "codestream.serverUrl": "https://api.codestream.com",
+    "atlascode.jira.enabled": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true
 }
