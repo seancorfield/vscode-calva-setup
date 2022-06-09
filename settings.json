@@ -91,7 +91,7 @@
       "cfwddx"
     ],
     "yaml.schemas": {
-        "file:///home/sean/.vscode-server/extensions/atlassian.atlascode-2.10.12/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+      "file:///home/sean/.vscode-server/extensions/atlassian.atlascode-2.10.12/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
     },
     "atlascode.jira.jqlList": [
       {
@@ -269,5 +269,6 @@
     "codestream.serverUrl": "https://api.codestream.com",
     "atlascode.jira.enabled": true,
     "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": true
+    "files.trimTrailingWhitespace": true,
+    "window.zoomLevel": -1
 }

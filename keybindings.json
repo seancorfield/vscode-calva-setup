@@ -49,5 +49,9 @@
       "key": "ctrl+alt+space /",
       "command": "joyride.runUserScript",
       "args": "clojuredocs.cljs"
+    },
+    {
+      "key": "ctrl+alt+e ctrl+alt+w",
+      "command": "workbench.action.closeOtherEditors"
     }
 ]
