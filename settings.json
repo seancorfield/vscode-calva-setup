@@ -7,7 +7,6 @@
     "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
     "editor.fontLigatures": true,
     "git.confirmSync": false,
-    "clock.dateFormat": "HH:MM mmm dd",
     "[clojure]": {
 
         "editor.wordSeparators": "\t ()\"':,;~@#$%^&{}[]`",
@@ -156,7 +155,6 @@
     "workbench.editor.untitled.hint": "hidden",
     "workbench.editor.wrapTabs": true,
     "workbench.startupEditor": "newUntitledFile",
-    "codestream.email": "sean@worldsingles.com",
     "cfml.autoCloseTags.enable": false,
     "auto-close-tag.activationOnLanguage": [
       "xml",
@@ -182,6 +180,13 @@
     "calva.highlight.highlightActiveIndent": false,
     "editor.guides.bracketPairs": true,
     "editor.guides.bracketPairsHorizontal": true,
+    "calva.prettyPrintingOptions": {
+      "printEngine": "pprint",
+      "enabled": true,
+      "width": 120,
+      "maxLength": 50,
+      "maxDepth": 10
+    },
     "calva.myCljAliases": [
       ":portal",
       ":add-libs",
@@ -224,7 +229,7 @@
       {
         "name": "Run Tests",
         "key": "t",
-        "snippet": "(tap> (let [nt (symbol \"$ns\")] (tap> \"Testing $ns...\") (require nt) (clojure.test/run-tests nt))))"
+        "snippet": "(tap> (do (tap> \"Testing $ns...\") (require '$ns) (clojure.test/run-tests '$ns)))"
       },
       {
         "name": "Run Tests For Source",
@@ -266,9 +271,12 @@
       "yaml.schemas"
     ],
     "git.enableSmartCommit": true,
-    "codestream.serverUrl": "https://api.codestream.com",
     "atlascode.jira.enabled": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
-    "window.zoomLevel": -1
+    "window.zoomLevel": -1,
+    "explorer.excludeGitIgnore": true,
+    "search.exclude": {
+      "**/.calva/output-window/output.calva-repl": true
+    }
 }
