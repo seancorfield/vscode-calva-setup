@@ -90,7 +90,7 @@
       "cfwddx"
     ],
     "yaml.schemas": {
-      "file:///home/sean/.vscode-server/extensions/atlassian.atlascode-2.10.12/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+      "file:///home/seanc/.vscode-server/extensions/atlassian.atlascode-2.10.12/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
     },
     "atlascode.jira.jqlList": [
       {
@@ -212,6 +212,11 @@
         "snippet": "(tap> (Throwable->map *e))"
       },
       {
+        "name": "Tap Define to Input",
+        "key": "i",
+        "snippet": "(let [v (read-string (read-line))] (tap> (def $selection v)))"
+      },
+      {
         "name": "Tap Namespace Publics",
         "key": "n",
         "snippet": "(tap> (-> (find-ns '$ns) (clojure.datafy/datafy) :publics))"
@@ -244,7 +249,12 @@
       {
         "name": "Portal Start",
         "key": "p",
-        "snippet": "(do (ns dev) (def portal ((requiring-resolve 'portal.api/open) {:launcher :vs-code :portal.launcher/window-title (System/getProperty \"user.dir\")})) (add-tap (requiring-resolve 'portal.api/submit)))"
+        "snippet": "(do (ns dev) (def *v (atom nil)) (defn submit [v] (reset! *v v) ((requiring-resolve 'portal.api/submit) v)) (def portal ((requiring-resolve 'portal.api/open) {:launcher :vs-code :portal.launcher/window-title (System/getProperty \"user.dir\")})) (add-tap submit))"
+      },
+      {
+        "name": "Tap Input Code",
+        "key": "q",
+        "snippet": "(let [v (read-string (read-line))] (tap> (eval v)))"
       },
       {
         "name": "Portal Viewer",
@@ -268,15 +278,22 @@
       },
     ],
     "settingsSync.ignoredSettings": [
-      "yaml.schemas"
+      "yaml.schemas",
+      "editor.fontSize"
     ],
     "git.enableSmartCommit": true,
     "atlascode.jira.enabled": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
-    "window.zoomLevel": -1,
     "explorer.excludeGitIgnore": true,
     "search.exclude": {
       "**/.calva/output-window/output.calva-repl": true
-    }
+    },
+    "diffEditor.ignoreTrimWhitespace": false,
+    "git.alwaysShowStagedChangesResourceGroup": true,
+    "editor.inlineSuggest.enabled": true,
+    "editor.rulers": [
+    80
+    ],
+    "window.zoomLevel": -1
 }
