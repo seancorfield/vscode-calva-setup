@@ -43,7 +43,7 @@ For `deps.edn`, it will be `djblue/portal {:mvn/version "RELEASE"}` in `:extra-d
 
 Before you launch Portal, you must first start a REPL and connect to it. Once that is up and connected in Calva, you can use the following custom REPL command:
 
-* `ctrl+alt+space p` -- launch Portal inside VS Code
+* `ctrl+alt+space p` -- launch Portal inside VS Code; this uses a custom `submit` listener for `tap>` that tracks the most recent value in `dev/*v` (an atom)
 
 The following additional custom REPL commands are available for Portal:
 
@@ -53,6 +53,19 @@ The following additional custom REPL commands are available for Portal:
 
 You can also access values stored in portal by dereferencing the `portal` object in the `dev` namespace like so: `@dev/portal`. This object is created automatically by the launch command snippet.
 
+Similarly, `@dev/*v` is always the most recent value `tap>`'d and the following
+custom REPL command lets you manipulate it:
+
+* `ctrl+alt+space q` -- pops open a REPL input prompt into which you can type arbitrary code which will be evaluated and `tap>`'d
+
+If that code includes `*v`, it will be automatically replaced with `@dev/*v`
+so you can use the following workflow:
+
+* `tap>` any value into Portal via any method
+* `ctrl+alt+space q` and type some expression involving `*v`
+* press enter to have that evaluated and `tap>`'d
+* rinse and repeat!
+
 See the custom REPL commands below for convenient `tap>` functionality.
 
 ## Custom REPL Command Snippets and `tap>`
@@ -61,9 +74,11 @@ In addition to the five custom REPL commands snippets mentioned above for Portal
 this `settings.json` file includes the following:
 
 * `ctrl+alt+space a` -- add dependencies to the running REPL; sends the enclosing form to `clojure.tools.deps.alpha.repl/add-libs`; intended to be used when the cursor is inside a dependencies hash map (i.e., inside `deps.edn`, on a library name, rather than inside its coordinates).
-* `ctrl+alt+space d` -- when a binding in `let` is highlighted (both the symbol and the expression to which it is bound), this creates a `def` so the symbol becomes available at the top level: useful for debugging parts of a function inside `let`.
-* `ctrl+alt+space n` -- `tap>` a hash map of public Vars from the current namespace.
 * `ctrl+alt+space c` -- run the current test and `tap>` any output.
+* `ctrl+alt+space d` -- when a binding in `let` is highlighted (both the symbol and the expression to which it is bound), this creates a `def` so the symbol becomes available at the top level: useful for debugging parts of a function inside `let`.
+* `ctrl+alt+space e` -- `tap>` the last exception thrown (`*e`)
+* `ctrl+alt+space i` -- when a symbol is highlighted, create a `def` from it bound to an input value provided by a REPL prompt in Calva: useful for debugging parts of a function (by defining argument values or other symbols).
+* `ctrl+alt+space n` -- `tap>` a hash map of public Vars from the current namespace.
 * `ctrl+alt+space t` -- run all the tests in the current namespace and `tap>` the result summary.
 * `ctrl+alt+space x` -- run all the tests in the "associated" namespace and `tap>` the result summary; if the current namespace is `foo.bar`, this will look for `foo.bar-test` or `foo.bar-expectations`.
 * `ctrl+alt+space z` -- zap (remove) the current namespace's definitions: occasionally useful for cleaning up REPL state; this unaliases/unmaps all the symbols in the namespace _without destroying the namespace itself_, leaving it "empty" so you can load the file from disk again so it is fully-sync'd (`ctrl+alt+c enter`).
