@@ -254,7 +254,7 @@
       {
         "name": "Tap Input Code",
         "key": "q",
-        "snippet": "(let [v (read-string (read-line))] (tap> (eval v)))"
+        "snippet": "(let [v (read-string (clojure.string/replace (read-line) \"*v\" \"@dev/*v\"))] (tap> (eval v)))"
       },
       {
         "name": "Portal Viewer",
