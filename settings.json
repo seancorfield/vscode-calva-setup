@@ -191,8 +191,7 @@
       ":portal",
       ":add-libs",
       ":reflect",
-      ":jedi-time",
-      ":reflect"
+      ":jedi-time"
     ],
     "calva.autoOpenREPLWindow": false,
     "calva.customREPLCommandSnippets": [
