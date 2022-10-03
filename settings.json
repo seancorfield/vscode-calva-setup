@@ -276,6 +276,16 @@
         "key": "3",
         "snippet": "(portal.api/eval-str \"(let [state portal.ui.state/state] (-> (portal.ui.commands/select-none state) (.then #(portal.ui.commands/select-child state)) (.then #(portal.ui.commands/select-child state)) (.then #(portal.ui.commands/select-child state)) (.then #(portal.ui.commands/select-child state)) (.then #(portal.ui.commands/toggle-expand state)) (.then #(portal.ui.commands/select-none state))))\")"
       },
+      {
+        "name": "Portal Expand Fourth",
+        "key": "4",
+        "snippet": "(portal.api/eval-str \"(let [state portal.ui.state/state] (-> (portal.ui.commands/select-none state) (.then #(portal.ui.commands/select-child state)) (.then #(portal.ui.commands/select-child state)) (.then #(portal.ui.commands/select-child state)) (.then #(portal.ui.commands/select-child state)) (.then #(portal.ui.commands/select-child state)) (.then #(portal.ui.commands/toggle-expand state)) (.then #(portal.ui.commands/select-none state))))\")"
+      },
+      {
+        "name": "Portal Expand Fifth",
+        "key": "5",
+        "snippet": "(portal.api/eval-str \"(let [state portal.ui.state/state] (-> (portal.ui.commands/select-none state) (.then #(portal.ui.commands/select-child state)) (.then #(portal.ui.commands/select-child state)) (.then #(portal.ui.commands/select-child state)) (.then #(portal.ui.commands/select-child state)) (.then #(portal.ui.commands/select-child state)) (.then #(portal.ui.commands/select-child state)) (.then #(portal.ui.commands/toggle-expand state)) (.then #(portal.ui.commands/select-none state))))\")"
+      },
     ],
     "settingsSync.ignoredSettings": [
       "yaml.schemas",

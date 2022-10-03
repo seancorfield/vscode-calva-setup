@@ -49,7 +49,7 @@ The following additional custom REPL commands are available for Portal:
 
 * `ctrl+alt+space k` -- clear the Portal history
 * `ctrl+alt+space 0` -- cycle the latest value in the Portal history through each of the viewers in turn
-* `ctrl+alt+space 1` -- expand/collapse the first level of the most recent `tap>`'d value in Portal; `2` and `3` affect the second and third level respectively
+* `ctrl+alt+space 1` -- expand/collapse the first level of the most recent `tap>`'d value in Portal; `2`, `3`, `4`, and `5` affect the second thru fifth level respectively
 
 You can also access values stored in portal by dereferencing the `portal` object in the `dev` namespace like so: `@dev/portal`. This object is created automatically by the launch command snippet.
 
@@ -70,7 +70,7 @@ See the custom REPL commands below for convenient `tap>` functionality.
 
 ## Custom REPL Command Snippets and `tap>`
 
-In addition to the five custom REPL commands snippets mentioned above for Portal,
+In addition to the custom REPL commands snippets mentioned above for Portal,
 this `settings.json` file includes the following:
 
 * `ctrl+alt+space a` -- add dependencies to the running REPL; sends the enclosing form to `clojure.tools.deps.alpha.repl/add-libs`; intended to be used when the cursor is inside a dependencies hash map (i.e., inside `deps.edn`, on a library name, rather than inside its coordinates).
