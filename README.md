@@ -4,14 +4,17 @@ The files here represent my current [VS Code](https://code.visualstudio.com/) co
 
 > Note: Some of the code here may well assume you are using the latest version of Calva and Joyride -- I tend to update my extensions regularly and also update my configuration to take advantage of new features.
 
-The `settings.json` file makes heavy use of `customREPLCommandSnippets` to provide a number of `tap>` evaluations and some [Portal UI](https://github.com/djblue/portal) commands.
-
 * `keybindings.json` is my cross-platform key mappings,
-* `settings.json` is my user-level settings (consider this optional, but the `customREPLCommandSnippets` are the interesting part).
+* `settings.json` is my user-level settings (consider this optional -- the `calva/config.edn` file with the `customREPLCommandSnippets` is the interesting part).
 
 ## Installation
 
 You can either clone this repo into a temporary directory and then copy either or both of `.json` files into your VS Code user configuration directory (overwriting the default `keybindings.json` and `settings.json` files), or you can manually update your files with whatever bits of my files you like.
+
+Copy (or merge) the `calva/config.edn` file's `customREPLCommandSnippets` into your
+`~/.config/calva/config.edn` file for VS Code to find them (requires Calva 2.0.307 or later!).
+These `customREPLCommandSnippets` provide a number of `tap>` evaluations and some [Portal UI](https://github.com/djblue/portal) commands.
+
 
 In addition, there are some Joyride scripts (in `joyride/scripts`) that you can copy into either your user or workspace Joyride `scripts` folder as desired. See the **Joyride** section below for details.
 

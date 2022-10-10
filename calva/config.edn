@@ -1,0 +1,154 @@
+{:customREPLCommandSnippets
+ [{:name "Add Libs Enclosing"
+   :key "a"
+   :snippet (tap>
+             ((requiring-resolve 'clojure.tools.deps.alpha.repl/add-libs)
+              '$enclosing-form))}
+  {:name "Tap Define Binding"
+   :key "d"
+   :snippet (tap> (def $selection))}
+  {:name "Tap Last Exception"
+   :key "e"
+   :snippet (tap> (Throwable->map *e))}
+  {:name "Tap Define to Input"
+   :key "i"
+   :snippet (let [v (read-string (read-line))]
+              (tap> (def $selection v)))}
+  {:name "Tap Namespace Publics"
+   :key "n"
+   :snippet (tap>
+             (-> (find-ns '$ns)
+                 (clojure.datafy/datafy)
+                 :publics))}
+  {:name "Tap Namespace Cleanup"
+   :key "z"
+   :snippet (tap>
+             (when-let [ns (find-ns '$ns)]
+               (tap> "Removing $ns... ")
+               (run! #(try (ns-unalias ns %)
+                           (catch Throwable _))
+                     (keys (ns-aliases ns)))
+               (run! #(try (ns-unmap ns %)
+                           (catch Throwable _))
+                     (keys (ns-interns ns)))
+               (->> (ns-refers ns)
+                    (remove (fn [[_ v]]
+                              (.startsWith (str v) "#'clojure.core/")))
+                    (map key)
+                    (run! #(try (ns-unmap ns %)
+                                (catch Throwable _))))))}
+  {:name "Run Current Test"
+   :key "c"
+   :snippet (tap>
+             (with-out-str
+               (binding [clojure.test/*test-out* *out*]
+                 (clojure.test/test-vars [#'$top-level-defined-symbol]))))}
+  {:name "Run Tests"
+   :key "t"
+   :snippet (tap>
+             (do
+               (tap> "Testing $ns... ")
+               (require '$ns)
+               (clojure.test/run-tests '$ns)))}
+  {:name "Run Tests For Source"
+   :key "x"
+   :snippet (tap>
+             (some #(let [nt (symbol (str "$ns-" %))]
+                      (when (try (require nt) true
+                                 (catch Throwable _))
+                        (tap> (str "Testing " nt "... "))
+                        (clojure.test/run-tests nt)))
+                   ["test" "expectations"]))}
+  {:name "Portal Clear"
+   :key "k"
+   :snippet (portal.api/clear)}
+  {:name "Portal Start"
+   :key "p"
+   :snippet (do
+              (ns dev)
+              (defonce *v (atom nil))
+              (defonce submit
+                (fn [v]
+                  (reset! *v v)
+                  ((requiring-resolve 'portal.api/submit) v)))
+              (def portal
+                ((requiring-resolve 'portal.api/open)
+                 {:launcher :vs-code
+                  :portal.launcher/window-title (System/getProperty "user.dir")}))
+              (add-tap submit))}
+  {:name "Tap Input Code"
+   :key "q"
+   :snippet (let [v (read-string (clojure.string/replace (read-line)
+                                                         "*v"
+                                                         "@dev/*v"))]
+              (tap> (eval v)))}
+  {:name "Portal Viewer"
+   :key "0"
+   :snippet (portal.api/eval-str
+             (str
+              '(let [state portal.ui.state/state]
+                 (-> (portal.ui.commands/select-none state)
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-next-viewer state))
+                     (.then #(portal.ui.commands/select-none state))))))}
+  {:name "Portal Expand First"
+   :key "1"
+   :snippet (portal.api/eval-str
+             (str
+              '(let [state portal.ui.state/state]
+                 (-> (portal.ui.commands/select-none state)
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/toggle-expand state))
+                     (.then #(portal.ui.commands/select-none state))))))}
+  {:name "Portal Expand Second"
+   :key "2"
+   :snippet (portal.api/eval-str
+             (str
+              '(let [state portal.ui.state/state]
+                 (-> (portal.ui.commands/select-none state)
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/toggle-expand state))
+                     (.then #(portal.ui.commands/select-none state))))))}
+  {:name "Portal Expand Third"
+   :key "3"
+   :snippet (portal.api/eval-str
+             (str
+              '(let [state portal.ui.state/state]
+                 (-> (portal.ui.commands/select-none state)
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/toggle-expand state))
+                     (.then #(portal.ui.commands/select-none state))))))}
+  {:name "Portal Expand Fourth"
+   :key "4"
+   :snippet (portal.api/eval-str
+             (str
+              '(let [state portal.ui.state/state]
+                 (-> (portal.ui.commands/select-none state)
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/toggle-expand state))
+                     (.then #(portal.ui.commands/select-none state))))))}
+  {:name "Portal Expand Fifth"
+   :key "5"
+   :snippet (portal.api/eval-str
+             (str
+              '(let [state portal.ui.state/state]
+                 (-> (portal.ui.commands/select-none state)
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/toggle-expand state))
+                     (.then #(portal.ui.commands/select-none state))))))}]}
