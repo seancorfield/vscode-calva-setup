@@ -68,26 +68,31 @@
               (ns dev)
               (defonce *v (atom nil))
               (defonce tap-pending (atom false))
-              (defonce submit
-                (fn [v]
-                  (let [m (try (meta v) (catch Exception _))]
-                    (if (:portal.nrepl/eval m)
+              (defn submit* [v]
+                (let [m (try (meta v) (catch Exception _))]
+                  (if (:portal.nrepl/eval m)
+                    (if @tap-pending
                       (let [{:keys [stdio report level]} v]
-                        (when report
-                          ((requiring-resolve 'portal.api/submit) report))
                         (when stdio
                           ((requiring-resolve 'portal.api/submit) stdio))
+                        (when report
+                          ((requiring-resolve 'portal.api/submit) report))
                         (when (= level :error)
                           ((requiring-resolve 'portal.api/submit) v))
                         (when @tap-pending
                           (reset! tap-pending false)
                           ((requiring-resolve 'portal.api/submit) @dev/*v)))
-                      (do
-                        (when @tap-pending
-                          (reset! tap-pending false)
-                          ((requiring-resolve 'portal.api/submit) @dev/*v))
-                        (reset! dev/*v v)
+                      (when-not (some-> v :code (str/includes? "portal.api/"))
+                        ((requiring-resolve 'portal.api/submit) v)))
+                    (do
+                      (when @tap-pending
+                        (reset! tap-pending false)
+                        ((requiring-resolve 'portal.api/submit) @dev/*v))
+                      (reset! dev/*v v)
+                      (if (string? v)
+                        ((requiring-resolve 'portal.api/submit) v)
                         (reset! tap-pending true))))))
+              (defonce submit (fn [v] (submit* v)))
               (def portal
                 ((requiring-resolve 'portal.api/open)
                  {:launcher :vs-code
