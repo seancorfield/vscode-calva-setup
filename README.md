@@ -35,9 +35,24 @@ On Windows, the VS Code user configuration directory is likely to be:
 
 **Requires Portal 0.33.0 or later**
 
-Assumes you are using the `portal.nrepl/wrap-portal` middleware when starting
-your nREPL server! This will `tap>` all evaluations that go through the REPL.
-Without that in place, the custom `submit` my setup uses will not work!
+Will work both with and without the `portal.nrepl/wrap-portal` middleware.
+
+Without the Portal middleware, `tap>`'d values are submitted to Portal directly.
+
+With the Portal middleware, all evaluations are `tap>`'d to Portal, with the
+following caveats:
+* Evaluations that involve `portal.api/` functions are not `tap>`'d -- this is to prevent those evaluations from disturbing the top-of-window value in Portal.
+* Evaluations that directly involve `tap>`'ing values suppress some of the default data provided by the middleware and arrange the output so the last `tap>`'d value stays at the top-of-window position:
+  * Any output from the evaluation is `tap>`'d first into Portal,
+  * followed by any test results,
+  * followed by any exception message,
+  * followed by the last actual `tap>`'d value itself.
+This makes it easier to work with data that is `tap>`'d directly, while still
+preserving the useful context from the execution as a whole.
+
+For non-`tap>` evaluations, the value part of the data can be expanded with
+`ctrl+alt+space 2`, and the overall data can be expanded with `ctrl+alt+space 1`
+to show the details behind the summary Portal displays by default.
 
 ### Prerequisites
 
