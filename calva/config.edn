@@ -67,10 +67,27 @@
    :snippet (do
               (ns dev)
               (defonce *v (atom nil))
+              (defonce tap-pending (atom false))
               (defonce submit
                 (fn [v]
-                  (reset! *v v)
-                  ((requiring-resolve 'portal.api/submit) v)))
+                  (let [m (try (meta v) (catch Exception _))]
+                    (if (:portal.nrepl/eval m)
+                      (let [{:keys [stdio report level]} v]
+                        (when report
+                          ((requiring-resolve 'portal.api/submit) report))
+                        (when stdio
+                          ((requiring-resolve 'portal.api/submit) stdio))
+                        (when (= level :error)
+                          ((requiring-resolve 'portal.api/submit) v))
+                        (when @tap-pending
+                          (reset! tap-pending false)
+                          ((requiring-resolve 'portal.api/submit) @dev/*v)))
+                      (do
+                        (when @tap-pending
+                          (reset! tap-pending false)
+                          ((requiring-resolve 'portal.api/submit) @dev/*v))
+                        (reset! dev/*v v)
+                        (reset! tap-pending true))))))
               (def portal
                 ((requiring-resolve 'portal.api/open)
                  {:launcher :vs-code

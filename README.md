@@ -15,6 +15,7 @@ Copy (or merge) the `calva/config.edn` file's `customREPLCommandSnippets` into y
 `~/.config/calva/config.edn` file for VS Code to find them (requires Calva 2.0.307 or later!).
 These `customREPLCommandSnippets` provide a number of `tap>` evaluations and some [Portal UI](https://github.com/djblue/portal) commands.
 
+**Requires Portal 0.33.0 or later**
 
 In addition, there are some Joyride scripts (in `joyride/scripts`) that you can copy into either your user or workspace Joyride `scripts` folder as desired. See the **Joyride** section below for details.
 
@@ -31,6 +32,12 @@ On Windows, the VS Code user configuration directory is likely to be:
 ```
 
 ## Portal: Launch and Usage
+
+**Requires Portal 0.33.0 or later**
+
+Assumes you are using the `portal.nrepl/wrap-portal` middleware when starting
+your nREPL server! This will `tap>` all evaluations that go through the REPL.
+Without that in place, the custom `submit` my setup uses will not work!
 
 ### Prerequisites
 
