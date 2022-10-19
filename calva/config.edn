@@ -65,7 +65,8 @@
   {:name "Portal Start"
    :key "p"
    :snippet (do
-              (ns dev)
+              (ns dev
+                (:require [clojure.string :as str]))
               (defonce *v (atom nil))
               (defonce tap-pending (atom false))
               (defn submit* [v]
