@@ -94,21 +94,20 @@
                 [v]
                 (let [m (try (meta v) (catch Exception _))]
                   (if (:portal.nrepl/eval m)
-                    (do
-                      (reset! tap-direct false)
-                      (if @tap-pending
-                        (let [{:keys [stdio report level]} v]
-                          (when stdio
-                            ((requiring-resolve 'portal.api/submit) stdio))
-                          (when report
-                            ((requiring-resolve 'portal.api/submit) report))
-                          (when (= level :error)
-                            ((requiring-resolve 'portal.api/submit) v))
-                          (when @tap-pending
-                            (reset! tap-pending false)
-                            ((requiring-resolve 'portal.api/submit) @dev/*v)))
-                        (when-not (some-> v :code (str/includes? "portal.api/"))
-                          ((requiring-resolve 'portal.api/submit) v))))
+                    (if @tap-pending
+                      (let [{:keys [stdio report level]} v]
+                        (when stdio
+                          ((requiring-resolve 'portal.api/submit) stdio))
+                        (when report
+                          ((requiring-resolve 'portal.api/submit) report))
+                        (when (= level :error)
+                          ((requiring-resolve 'portal.api/submit) v))
+                        (when @tap-pending
+                          (reset! tap-pending false)
+                          ((requiring-resolve 'portal.api/submit) @dev/*v)))
+                      (when-not (some-> v :code (str/includes? "portal.api/"))
+                        (reset! tap-direct false)
+                        ((requiring-resolve 'portal.api/submit) v)))
                     (do
                       (when @tap-pending
                         (reset! tap-pending false)
