@@ -102,10 +102,10 @@
                           ((requiring-resolve 'portal.api/submit) report))
                         (when (= level :error)
                           ((requiring-resolve 'portal.api/submit) v))
-                        (when @tap-pending
-                          (reset! tap-pending false)
-                          ((requiring-resolve 'portal.api/submit) @dev/*v)))
-                      (when-not (some-> v :code (str/includes? "portal.api/"))
+                        (reset! tap-pending false)
+                        ((requiring-resolve 'portal.api/submit) @dev/*v))
+                      (when-not (or (some-> v :code (str/includes? "portal.api/"))
+                                    (some-> v :code (str/starts-with? "(tap>")))
                         (reset! tap-direct false)
                         ((requiring-resolve 'portal.api/submit) v)))
                     (do
