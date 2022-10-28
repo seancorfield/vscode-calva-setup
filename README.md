@@ -129,19 +129,14 @@ My `keybindings.json` file has key bindings for these that are intended to match
 Other key bindings that you may or may not find useful:
 
 * `ctrl+alt+e ctrl+alt+j` -- join window groups in VS Code (I often use this after starting the REPL or splitting a window).
-* `ctrl+alt+e right` -- move the current window to the next group to the right in VS Code (I often use this after starting the REPL or splitting a window).
+* `ctrl+alt+e ctrl+alt+right` -- move the current window to the next group to the right in VS Code (I often use this after starting the REPL or splitting a window).
 * `ctrl+t ctrl+f` -- switch focus to the terminal window in VS Code.
 * `ctrl+t ctrl+t` -- open a terminal window in VS Code.
-* `ctrl+l ctrl+l` -- convert the selection/word at the cursor to lowercase.
-* `ctrl+u ctrl+u` -- convert the selection/word at the cursor to uppercase.
+* `ctrl+alt+l ctrl+alt+l` -- convert the selection/word at the cursor to lowercase.
+* `ctrl+alt+u ctrl+alt+u` -- convert the selection/word at the cursor to uppercase.
 * `ctrl+alt+k ctrl+alt+t` -- toggle between Clojure implementation and test files.
 
-These are intended to provide a consistent experience across macOS _and_ Windows:
-
-* `ctrl+right` -- (Calva's) paredit forward s-exp.
-* `alt+right` -- cursor word right.
-* `ctrl+left` -- (Calva's) paredit backward s-exp.
-* `alt+left` -- cursor word left.
+* `alt+home` -- `paredit.openList` for Calva to avoid `ctrl+home` (which should be `cursorTop`!).
 * `ctrl+j` -- join lines (this is the default on macOS but not Windows).
 
 If you use Atlassian/Jira/BitBucket:
