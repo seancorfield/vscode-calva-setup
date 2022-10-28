@@ -25,11 +25,11 @@
       "command": "workbench.action.quickOpenTerm"
     },
     {
-      "key": "ctrl+u ctrl+u",
+      "key": "ctrl+alt+u ctrl+alt+u",
       "command": "editor.action.transformToUppercase"
     },
     {
-      "key": "ctrl+l ctrl+l",
+      "key": "ctrl+alt+l ctrl+alt+l",
       "command": "editor.action.transformToLowercase"
     },
     {
@@ -53,5 +53,19 @@
     {
       "key": "ctrl+alt+e ctrl+alt+w",
       "command": "workbench.action.closeOtherEditors"
+    },
+    {
+      "key": "ctrl+alt+z",
+      "command": "notifications.clearAll"
+    },
+    {
+      "key": "alt+home",
+      "command": "paredit.openList",
+      "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
+    },
+    {
+      "key": "ctrl+home",
+      "command": "-paredit.openList",
+      "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
     }
 ]
