@@ -199,4 +199,66 @@
                      (.then #(portal.ui.commands/select-child state))
                      (.then #(portal.ui.commands/select-child state))
                      (.then #(portal.ui.commands/toggle-expand state))
+                     (.then #(portal.ui.commands/select-none state))))))}
+  {:name "Portal Expand Fifth"
+   :key "6"
+   :snippet (portal.api/eval-str
+             (str
+              '(let [state portal.ui.state/state]
+                 (-> (portal.ui.commands/select-none state)
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/toggle-expand state))
+                     (.then #(portal.ui.commands/select-none state))))))}
+  {:name "Portal Expand Fifth"
+   :key "7"
+   :snippet (portal.api/eval-str
+             (str
+              '(let [state portal.ui.state/state]
+                 (-> (portal.ui.commands/select-none state)
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/toggle-expand state))
+                     (.then #(portal.ui.commands/select-none state))))))}
+  {:name "Portal Expand Fifth"
+   :key "8"
+   :snippet (portal.api/eval-str
+             (str
+              '(let [state portal.ui.state/state]
+                 (-> (portal.ui.commands/select-none state)
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/toggle-expand state))
+                     (.then #(portal.ui.commands/select-none state))))))}
+  {:name "Portal Expand Fifth"
+   :key "9"
+   :snippet (portal.api/eval-str
+             (str
+              '(let [state portal.ui.state/state]
+                 (-> (portal.ui.commands/select-none state)
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/select-child state))
+                     (.then #(portal.ui.commands/toggle-expand state))
                      (.then #(portal.ui.commands/select-none state))))))}]}
