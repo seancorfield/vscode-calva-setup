@@ -94,20 +94,27 @@
                 [v]
                 (let [m (try (meta v) (catch Exception _))]
                   (if (:portal.nrepl/eval m)
-                    (if @tap-pending
-                      (let [{:keys [stdio report level]} v]
-                        (when stdio
-                          ((requiring-resolve 'portal.api/submit) stdio))
-                        (when report
-                          ((requiring-resolve 'portal.api/submit) report))
-                        (when (= level :error)
-                          ((requiring-resolve 'portal.api/submit) v))
+                    (let [{:keys [stdio report level]} v]
+                      ;; if there's stderr output, always print it
+                      ;; if we have an explicit tap pending print it
+                      (when (and stdio
+                                 (or @tap-pending
+                                     (some #(= :err (:tag %)) stdio)))
+                        ((requiring-resolve 'portal.api/submit) stdio))
+                      ;; always print test reports
+                      (when report
+                        ((requiring-resolve 'portal.api/submit) report))
+                      ;; always print errors
+                      (if (= level :error)
+                        ((requiring-resolve 'portal.api/submit) v)
+                        ;; print anything except internal commands
+                        (when-not (or (some-> v :code (str/includes? "portal.api/"))
+                                      (some-> v :code (str/starts-with? "(tap>")))
+                          (reset! tap-direct false)
+                          ((requiring-resolve 'portal.api/submit) v)))
+                      (when @tap-pending
                         (reset! tap-pending false)
-                        ((requiring-resolve 'portal.api/submit) @dev/*v))
-                      (when-not (or (some-> v :code (str/includes? "portal.api/"))
-                                    (some-> v :code (str/starts-with? "(tap>")))
-                        (reset! tap-direct false)
-                        ((requiring-resolve 'portal.api/submit) v)))
+                        ((requiring-resolve 'portal.api/submit) @dev/*v)))
                     (do
                       (when @tap-pending
                         (reset! tap-pending false)
