@@ -12,8 +12,8 @@
    :snippet (tap> (Throwable->map *e))}
   {:name "Tap Define to Input"
    :key "i"
-   :snippet (let [v (read-string (read-line))]
-              (tap> (def $selection v)))}
+   :snippet (tap> (let [v (read-string (read-line))]
+                    (def $selection v)))}
   {:name "Tap Namespace Publics"
    :key "n"
    :snippet (tap>
@@ -126,10 +126,10 @@
               (add-tap submit))}
   {:name "Tap Input Code"
    :key "q"
-   :snippet (let [v (read-string (clojure.string/replace (read-line)
-                                                         "*v"
-                                                         "@dev/*v"))]
-              (tap> (eval v)))}
+   :snippet (tap> (let [v (read-string (clojure.string/replace (read-line)
+                                                               "*v"
+                                                               "@dev/*v"))]
+                    (eval v)))}
   {:name "Portal Viewer"
    :key "0"
    :snippet (portal.api/eval-str
