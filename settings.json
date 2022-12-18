@@ -90,7 +90,7 @@
       "cfwddx"
     ],
     "yaml.schemas": {
-      "file:///home/seanc/.vscode-server/extensions/atlassian.atlascode-2.10.12/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+      "file:///home/sean/.vscode-server/extensions/atlassian.atlascode-2.10.12/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
     },
     "atlascode.jira.jqlList": [
       {
@@ -131,7 +131,6 @@
     },
     "calva.autoOpenJackInTerminal": false,
     "calva.enableJSCompletions": false,
-    "calva.fmt.newIndentEngine": false,
     "calva.highlight.cycleBracketColors": false,
     "calva.highlight.enableBracketColors": false,
     "calva.openBrowserWhenFigwheelStarted": false,
@@ -187,13 +186,23 @@
       "maxLength": 50,
       "maxDepth": 10
     },
-    "calva.myCljAliases": [
-      ":portal",
-      ":add-libs",
-      ":reflect",
-      ":jedi-time"
-    ],
     "calva.autoOpenREPLWindow": false,
+    "calva.replConnectSequences": [
+      {
+        "name": "QA nREPL Server",
+        "projectType": "deps.edn",
+        "cljsType": "none",
+        "nReplPortFile": ["development", "resources", "qa.nrepl"],
+        "menuSelections": {}
+      },
+      {
+        "name": "Production nREPL Server",
+        "projectType": "deps.edn",
+        "cljsType": "none",
+        "nReplPortFile": ["development", "resources", "prod.nrepl"],
+        "menuSelections": {}
+      }
+    ],
     "settingsSync.ignoredSettings": [
       "yaml.schemas",
       "editor.fontSize"
@@ -202,6 +211,7 @@
     "atlascode.jira.enabled": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
+    "window.zoomLevel": -1,
     "explorer.excludeGitIgnore": true,
     "search.exclude": {
       "**/.calva/output-window/output.calva-repl": true
@@ -212,5 +222,14 @@
     "editor.rulers": [
     80
     ],
-    "window.zoomLevel": -1
+    "cSpell.userWords": [
+      "classloader",
+      "classpath",
+      "Cognitect",
+      "pluggable",
+      "Polylith",
+      "subproject",
+      "swappable",
+      "uberjars"
+    ]
 }
