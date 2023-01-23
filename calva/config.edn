@@ -66,7 +66,8 @@
    :key "p"
    :snippet (do
               (ns dev
-                (:require [clojure.string :as str]))
+                (:require [clojure.java.shell :as sh]
+                          [clojure.string :as str]))
               ;; this custom submit code can work with the portal
               ;; middleware or without it. in order to keep any
               ;; tap>'d values as the most recent, top-of-window
@@ -129,6 +130,8 @@
                 portal
                 ((requiring-resolve 'portal.api/open)
                  {:launcher :vs-code
+                  ;; WSL2: Ubuntu -- so VS Code can load the UI:
+                  :host (-> (sh/sh "hostname" "-I") :out (str/trim))
                   :portal.launcher/window-title (System/getProperty "user.dir")}))
               (add-tap submit))}
   {:name "Tap Input Code"
