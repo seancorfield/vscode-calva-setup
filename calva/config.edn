@@ -43,6 +43,14 @@
              (with-out-str
                (binding [clojure.test/*test-out* *out*]
                  (clojure.test/test-vars [#'$top-level-defined-symbol]))))}
+  {:name "Run Rich Comment Tests"
+   :key "r"
+   :snippet (tap>
+             (do
+               (tap> "Testing Rich Comments in $ns...")
+               (require '$ns)
+               ((requiring-resolve 'com.mjdowney.rich-comment-tests/run-ns-tests!)
+                '$ns)))}
   {:name "Run Tests"
    :key "t"
    :snippet (tap>
