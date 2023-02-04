@@ -70,6 +70,9 @@
   {:name "Portal Clear"
    :key "k"
    :snippet (portal.api/clear)}
+  {:name "Portal Toggle Logging"
+   :key "l"
+   :snippet (tap> ((requiring-resolve 'dev/toggle-logging!)))}
   {:name "Portal Start"
    :key "p"
    :snippet (do
@@ -218,7 +221,7 @@
                      (.then #(portal.ui.commands/select-child state))
                      (.then #(portal.ui.commands/toggle-expand state))
                      (.then #(portal.ui.commands/select-none state))))))}
-  {:name "Portal Expand Fifth"
+  {:name "Portal Expand Sixth"
    :key "6"
    :snippet (portal.api/eval-str
              (str
@@ -233,7 +236,7 @@
                      (.then #(portal.ui.commands/select-child state))
                      (.then #(portal.ui.commands/toggle-expand state))
                      (.then #(portal.ui.commands/select-none state))))))}
-  {:name "Portal Expand Fifth"
+  {:name "Portal Expand Seventh"
    :key "7"
    :snippet (portal.api/eval-str
              (str
@@ -249,7 +252,7 @@
                      (.then #(portal.ui.commands/select-child state))
                      (.then #(portal.ui.commands/toggle-expand state))
                      (.then #(portal.ui.commands/select-none state))))))}
-  {:name "Portal Expand Fifth"
+  {:name "Portal Expand Eighth"
    :key "8"
    :snippet (portal.api/eval-str
              (str
@@ -266,7 +269,7 @@
                      (.then #(portal.ui.commands/select-child state))
                      (.then #(portal.ui.commands/toggle-expand state))
                      (.then #(portal.ui.commands/select-none state))))))}
-  {:name "Portal Expand Fifth"
+  {:name "Portal Expand Ninth"
    :key "9"
    :snippet (portal.api/eval-str
              (str
