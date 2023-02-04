@@ -24,12 +24,10 @@
   (vscode/commands.executeCommand "calva.disconnect")
   (vscode/commands.executeCommand "calva.connect"))
 
-(defn- repl-setup [nrepl-port portal-port label remote-server]
+(defn repl-setup [nrepl-port portal-port label remote-server]
   (start-tunnel nrepl-port portal-port label remote-server)
   (p/do
     (p/delay 2000)
     (start-browser portal-port)
     (p/delay 1000)
     (connect-repl)))
-
-(repl-setup 6666 7777 "QA" "qauser@10.10.10.10")

@@ -90,7 +90,7 @@
       "cfwddx"
     ],
     "yaml.schemas": {
-      "file:///home/sean/.vscode-server/extensions/atlassian.atlascode-2.10.12/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+      "file:///home/sean/.vscode-server/extensions/atlassian.atlascode-3.0.1/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
     },
     "atlascode.jira.jqlList": [
       {
@@ -231,5 +231,9 @@
       "subproject",
       "swappable",
       "uberjars"
-    ]
+    ],
+    "editor.accessibilitySupport": "off",
+    "workbench.colorTheme": "Default Dark+ Experimental",
+    "git.openRepositoryInParentFolders": "always",
+    "calva.fmt.newIndentEngine": false
 }
