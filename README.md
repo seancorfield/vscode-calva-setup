@@ -116,13 +116,16 @@ The following scripts perform tasks that my old Clover configuration used to pro
 
 * `clojuredocs.cljs` -- with a Clojure symbol selected, this will open VS Code's Simple Browser, directly inside VS Code, at the corresponding [ClojureDocs page](https://clojuredocs.org).
 * `javadoc.cljs` -- with a Java class name selected, or a Clojure expression selected, this will open VS Code's Simple Browser, directly inside VS Code, at the corresponding (Oracle) JavaDoc page for the class that the selection resolves to. If the underlying `javadoc-url` function doesn't recognize the class, it produces a Google "I feel lucky" URL that will be opened in an _external_ browser instead (since Simple Browser cannot open Google's site).
+* `ns.cljs` -- without moving the cursor, evaluate the current file's `ns` form.
 
-> Note: both `clojuredocs.cljs` and `javadoc.cljs` assume you have a Clojure nREPL connected in Calva to perform symbol/class resolution!
+> Note: these scripts assume you have a Clojure nREPL connected in Calva to perform symbol/class resolution!
 
 My `keybindings.json` file has key bindings for these that are intended to match (but override) what would be custom REPL command snippet key bindings, to make these Joyride scripts feel more like snippets:
 
 * `ctrl+alt+space j` -- runs `javadoc.cljs` as a User-level Joyride script.
 * `ctrl+alt+space /` -- runs `clojuredocs.cljs` as a User-level Joyride script (in my Clover setup, this used to be `ctrl+; shift+/`, i,e., `?`, but `shift+/` would be a bit unwieldy as a `ctrl+alt+space` chord).
+
+In addition, `ctrl+alt+n ctrl+alt+s` will run `ns.cljs`.
 
 ## Keymap
 
