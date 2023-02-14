@@ -9,7 +9,6 @@
               (.positionAt 0))
         ns-form (-> (calva/ranges.currentForm vscode/window.activeTextEditor p)
                     second)]
-  (println ns-form)
   (-> (calva/repl.evaluateCode (calva/repl.currentSessionKey) ns-form)
       (.then #(calva/repl.evaluateCode
                "clj"
