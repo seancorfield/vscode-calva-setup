@@ -61,6 +61,11 @@
       "args": "prod_repl.cljs"
     },
     {
+      "key": "ctrl+alt+n ctrl+alt+s",
+      "command": "joyride.runUserScript",
+      "args": "ns.cljs"
+    },
+    {
       "key": "ctrl+alt+e ctrl+alt+w",
       "command": "workbench.action.closeOtherEditors"
     },
