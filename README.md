@@ -15,7 +15,7 @@ Copy (or merge) the `calva/config.edn` file's `customREPLCommandSnippets` into y
 `~/.config/calva/config.edn` file for VS Code to find them (requires Calva 2.0.307 or later!).
 These `customREPLCommandSnippets` provide a number of `tap>` evaluations and some [Portal UI](https://github.com/djblue/portal) commands.
 
-**Requires Portal 0.33.0 or later**
+**Requires Portal 0.37.1 or later**
 
 In addition, there are some Joyride scripts (in `joyride/scripts`) that you can copy into either your user or workspace Joyride `scripts` folder as desired. See the **Joyride** section below for details.
 
@@ -33,26 +33,14 @@ On Windows, the VS Code user configuration directory is likely to be:
 
 ## Portal: Launch and Usage
 
-**Requires Portal 0.33.0 or later**
+**Requires Portal 0.37.1 or later**
 
 Will work both with and without the `portal.nrepl/wrap-portal` middleware.
 
-Without the Portal middleware, `tap>`'d values are submitted to Portal directly.
-
-With the Portal middleware, all evaluations are `tap>`'d to Portal, with the
-following caveats:
-* Evaluations that involve `portal.api/` functions are not `tap>`'d -- this is to prevent those evaluations from disturbing the top-of-window value in Portal.
-* Evaluations that directly involve `tap>`'ing values suppress some of the default data provided by the middleware and arrange the output so the last `tap>`'d value stays at the top-of-window position:
-  * Any output from the evaluation is `tap>`'d first into Portal,
-  * followed by any test results,
-  * followed by any exception message,
-  * followed by the last actual `tap>`'d value itself.
-This makes it easier to work with data that is `tap>`'d directly, while still
-preserving the useful context from the execution as a whole.
-
-For non-`tap>` evaluations, the value part of the data can be expanded with
-`ctrl+alt+space 2`, and the overall data can be expanded with `ctrl+alt+space 1`
-to show the details behind the summary Portal displays by default.
+The REPL snippet that launches Portal inside VS Code will launch **two**
+Portal windows:
+* one called `** logging **` which tracks all Portal middleware evaluations and, if you use my `:dev/repl` alias from my [`dot-clojure`](https://github.com/seancorfield/dot-clojure) repo, all `clojure.tools.logging` output
+* one named for the directory it is opened in which tracks all plain `tap>` calls
 
 ### Prerequisites
 
@@ -68,9 +56,9 @@ For `deps.edn`, it will be `djblue/portal {:mvn/version "RELEASE"}` in `:extra-d
 
 Before you launch Portal, you must first start a REPL and connect to it. Once that is up and connected in Calva, you can use the following custom REPL command:
 
-* `ctrl+alt+space p` -- launch Portal inside VS Code; this uses a custom `submit` listener for `tap>` that tracks the most recent value in `dev/*v` (an atom)
+* `ctrl+alt+space p` -- launch Portal inside VS Code; this uses a custom `submit` listener for `tap>` that tracks middleware output + logging and regular `tap>` calls in separate atoms, one behind each of the two windows opened
 
-The following additional custom REPL commands are available for Portal:
+The following additional custom REPL commands are available for Portal, and they all operate on the regular result window (not the middleware output/logging window):
 
 * `ctrl+alt+space k` -- clear the Portal history
 * `ctrl+alt+space 0` -- cycle the latest value in the Portal history through each of the viewers in turn
@@ -78,12 +66,12 @@ The following additional custom REPL commands are available for Portal:
 
 You can also access values stored in portal by dereferencing the `portal` object in the `dev` namespace like so: `@dev/portal`. This object is created automatically by the launch command snippet.
 
-Similarly, `@dev/*v` is always the most recent value `tap>`'d and the following
+Similarly, `(first @dev/my-taps)` is always the most recent value `tap>`'d and the following
 custom REPL command lets you manipulate it:
 
 * `ctrl+alt+space q` -- pops open a REPL input prompt into which you can type arbitrary code which will be evaluated and `tap>`'d
 
-If that code includes `*v`, it will be automatically replaced with `@dev/*v`
+If that code includes `*v`, it will be automatically replaced with `(first @dev/my-taps)`
 so you can use the following workflow:
 
 * `tap>` any value into Portal via any method
@@ -103,6 +91,7 @@ this `settings.json` file includes the following:
 * `ctrl+alt+space d` -- when a binding in `let` is highlighted (both the symbol and the expression to which it is bound), this creates a `def` so the symbol becomes available at the top level: useful for debugging parts of a function inside `let`.
 * `ctrl+alt+space e` -- `tap>` the last exception thrown (`*e`)
 * `ctrl+alt+space i` -- when a symbol is highlighted, create a `def` from it bound to an input value provided by a REPL prompt in Calva: useful for debugging parts of a function (by defining argument values or other symbols).
+* `ctrl+alt+space l` -- "lift" the result out of the most recent `** logging**` window entry into the regular `tap>` window for easier manipulation.
 * `ctrl+alt+space n` -- `tap>` a hash map of public Vars from the current namespace.
 * `ctrl+alt+space t` -- run all the tests in the current namespace and `tap>` the result summary.
 * `ctrl+alt+space x` -- run all the tests in the "associated" namespace and `tap>` the result summary; if the current namespace is `foo.bar`, this will look for `foo.bar-test` or `foo.bar-expectations`.

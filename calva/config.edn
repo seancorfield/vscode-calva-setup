@@ -69,91 +69,73 @@
                    ["test" "expectations"]))}
   {:name "Portal Clear"
    :key "k"
-   :snippet (portal.api/clear)}
-  {:name "Portal Toggle Logging"
+   :snippet ((requiring-resolve 'portal.api/clear) @(requiring-resolve 'dev/portal))}
+  {:name "Portal Lift Last Logged Value"
    :key "l"
-   :snippet (tap> ((requiring-resolve 'dev/toggle-logging!)))}
+   :snippet (tap> (:result (first @@(requiring-resolve 'dev/other-taps))))}
   {:name "Portal Start"
    :key "p"
    :snippet (do
               (ns dev
                 (:require [clojure.java.shell :as sh]
                           [clojure.string :as str]))
-              ;; this custom submit code can work with the portal
-              ;; middleware or without it. in order to keep any
-              ;; tap>'d values as the most recent, top-of-window
-              ;; value -- so that the various portal viewer/expand
-              ;; commands can always navigate to it, we need to
-              ;; delay tap>'d value submission until after we
-              ;; display any output, test reports, or errors.
-              ;; we assume direct tap> handling until the portal
-              ;; middleware is known to be in play, then switch to
-              ;; a delayed submission, so that the order can be
-              ;; preserved.
-              ;; in addition, we suppress any results of evaluating
-              ;; portal API calls, so that they don't interfere with
-              ;; the top-of-window value.
-              ;; in the absence of specific tap> calls, if the
-              ;; middleware is in play, we just submit it to portal.
-              (defonce ^{:doc "The last tap>'d value"}
-                *v (atom nil))
-              (defonce ^{:doc "Whether we've delayed tap>'ing a value."}
-                tap-pending (atom false))
-              (defonce ^{:doc "Whether to tap> (or delay)."}
-                tap-direct (atom true))
+              ;; we split Portal submissions into two streams:
+              ;; * middleware and logging output (other-taps)
+              ;; * everything else (my-taps)
+              ;; this lets us focus commands on the "interesting"
+              ;; values while still allowing for tracking of other
+              ;; stuff happening in the app (logging) or repl (plain
+              ;; logging)
+              (defonce ^{:doc "Regular tap>'d values"}
+                my-taps (atom (with-meta (list)
+                                {:portal.viewer/default
+                                 :portal.viewer/inspector})))
+              (defonce ^{:doc "Logging and middleware tap>'d values"}
+                other-taps (atom (with-meta (list)
+                                   {:portal.viewer/default
+                                    :portal.viewer/inspector})))
               (defn submit*
                 "The reloadable implementation of submit."
                 [v]
                 (let [m (try (meta v) (catch Exception _))]
-                  (if (:portal.nrepl/eval m)
-                    (let [{:keys [stdio report level]} v]
-                      ;; if there's stderr output, always print it
-                      ;; if we have an explicit tap pending print it
-                      (when (and stdio
-                                 (or @tap-pending
-                                     (some #(= :err (:tag %)) stdio)))
-                        ((requiring-resolve 'portal.api/submit) stdio))
-                      ;; always print test reports
-                      (when report
-                        ((requiring-resolve 'portal.api/submit) report))
-                      ;; always print errors
-                      (if (= level :error)
-                        ((requiring-resolve 'portal.api/submit) v)
-                        ;; print anything except internal commands
-                        (when-not (or (some-> v :code (str/includes? "portal.api/"))
-                                      (some-> v :code (str/starts-with? "(tap>")))
-                          (reset! tap-direct false)
-                          ((requiring-resolve 'portal.api/submit) v)))
-                      (when @tap-pending
-                        (reset! tap-pending false)
-                        ((requiring-resolve 'portal.api/submit) @dev/*v)))
-                    (do
-                      (when @tap-pending
-                        (reset! tap-pending false)
-                        ((requiring-resolve 'portal.api/submit) @dev/*v))
-                      (reset! dev/*v v)
-                      (if (or @tap-direct (string? v))
-                        ((requiring-resolve 'portal.api/submit) v)
-                        (reset! tap-pending true))))))
+                  (if (or (:portal.nrepl/eval m)
+                          (:dev.repl/logging m))
+                    (when-not (or (clojure.string/starts-with?
+                                   (str (:code v)) "(tap>")
+                                  (clojure.string/includes?
+                                   (str (:code v)) "portal.api/eval-str"))
+                      (swap! other-taps conj v))
+                    (swap! my-taps conj v))))
               (defonce ^{:doc "Fixed wrapper around submit*."}
                 submit (fn [v] (submit* v)))
-              (def ^{:doc "Atom for currently selected value."}
+              (def ^{:doc "Atom for current regular value."}
                 portal
                 ((requiring-resolve 'portal.api/open)
                  {:launcher :vs-code
                   ;; WSL2: Ubuntu -- so VS Code can load the UI:
                   :host (-> (sh/sh "hostname" "-I") :out (str/trim))
-                  :portal.launcher/window-title (System/getProperty "user.dir")}))
+                  :portal.launcher/window-title (System/getProperty "user.dir")
+                  :value my-taps}))
+              (def ^{:doc "Atom for other values."}
+                portal-other
+                ((requiring-resolve 'portal.api/open)
+                 {:launcher :vs-code
+                  ;; WSL2: Ubuntu -- so VS Code can load the UI:
+                  :host (-> (sh/sh "hostname" "-I") :out (str/trim))
+                  :portal.launcher/window-title "** logging **"
+                  :value other-taps}))
               (add-tap submit))}
   {:name "Tap Input Code"
    :key "q"
-   :snippet (tap> (let [v (read-string (clojure.string/replace (read-line)
-                                                               "*v"
-                                                               "@dev/*v"))]
+   :snippet (tap> (let [v (read-string
+                           (clojure.string/replace
+                            (read-line)
+                            "*v"
+                            "(first @@(requiring-resolve 'dev/my-taps))"))]
                     (eval v)))}
   {:name "Portal Viewer"
    :key "0"
-   :snippet (portal.api/eval-str
+   :snippet ((requiring-resolve 'portal.api/eval-str) @(requiring-resolve 'dev/portal)
              (str
               '(let [state portal.ui.state/state]
                  (-> (portal.ui.commands/select-none state)
@@ -163,7 +145,7 @@
                      (.then #(portal.ui.commands/select-none state))))))}
   {:name "Portal Expand First"
    :key "1"
-   :snippet (portal.api/eval-str
+   :snippet ((requiring-resolve 'portal.api/eval-str) @(requiring-resolve 'dev/portal)
              (str
               '(let [state portal.ui.state/state]
                  (-> (portal.ui.commands/select-none state)
@@ -173,7 +155,7 @@
                      (.then #(portal.ui.commands/select-none state))))))}
   {:name "Portal Expand Second"
    :key "2"
-   :snippet (portal.api/eval-str
+   :snippet ((requiring-resolve 'portal.api/eval-str) @(requiring-resolve 'dev/portal)
              (str
               '(let [state portal.ui.state/state]
                  (-> (portal.ui.commands/select-none state)
@@ -184,7 +166,7 @@
                      (.then #(portal.ui.commands/select-none state))))))}
   {:name "Portal Expand Third"
    :key "3"
-   :snippet (portal.api/eval-str
+   :snippet ((requiring-resolve 'portal.api/eval-str) @(requiring-resolve 'dev/portal)
              (str
               '(let [state portal.ui.state/state]
                  (-> (portal.ui.commands/select-none state)
@@ -196,7 +178,7 @@
                      (.then #(portal.ui.commands/select-none state))))))}
   {:name "Portal Expand Fourth"
    :key "4"
-   :snippet (portal.api/eval-str
+   :snippet ((requiring-resolve 'portal.api/eval-str) @(requiring-resolve 'dev/portal)
              (str
               '(let [state portal.ui.state/state]
                  (-> (portal.ui.commands/select-none state)
@@ -209,7 +191,7 @@
                      (.then #(portal.ui.commands/select-none state))))))}
   {:name "Portal Expand Fifth"
    :key "5"
-   :snippet (portal.api/eval-str
+   :snippet ((requiring-resolve 'portal.api/eval-str) @(requiring-resolve 'dev/portal)
              (str
               '(let [state portal.ui.state/state]
                  (-> (portal.ui.commands/select-none state)
@@ -223,7 +205,7 @@
                      (.then #(portal.ui.commands/select-none state))))))}
   {:name "Portal Expand Sixth"
    :key "6"
-   :snippet (portal.api/eval-str
+   :snippet ((requiring-resolve 'portal.api/eval-str) @(requiring-resolve 'dev/portal)
              (str
               '(let [state portal.ui.state/state]
                  (-> (portal.ui.commands/select-none state)
@@ -238,7 +220,7 @@
                      (.then #(portal.ui.commands/select-none state))))))}
   {:name "Portal Expand Seventh"
    :key "7"
-   :snippet (portal.api/eval-str
+   :snippet ((requiring-resolve 'portal.api/eval-str) @(requiring-resolve 'dev/portal)
              (str
               '(let [state portal.ui.state/state]
                  (-> (portal.ui.commands/select-none state)
@@ -254,7 +236,7 @@
                      (.then #(portal.ui.commands/select-none state))))))}
   {:name "Portal Expand Eighth"
    :key "8"
-   :snippet (portal.api/eval-str
+   :snippet ((requiring-resolve 'portal.api/eval-str) @(requiring-resolve 'dev/portal)
              (str
               '(let [state portal.ui.state/state]
                  (-> (portal.ui.commands/select-none state)
@@ -271,7 +253,7 @@
                      (.then #(portal.ui.commands/select-none state))))))}
   {:name "Portal Expand Ninth"
    :key "9"
-   :snippet (portal.api/eval-str
+   :snippet ((requiring-resolve 'portal.api/eval-str) @(requiring-resolve 'dev/portal)
              (str
               '(let [state portal.ui.state/state]
                  (-> (portal.ui.commands/select-none state)
