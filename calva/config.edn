@@ -69,7 +69,10 @@
                    ["test" "expectations"]))}
   {:name "Portal Clear"
    :key "k"
-   :snippet ((requiring-resolve 'portal.api/clear) @(requiring-resolve 'dev/portal))}
+   :snippet (do
+              ((requiring-resolve 'portal.api/clear)
+               @(requiring-resolve 'dev/portal))
+              :portal.api/ignore)}
   {:name "Portal Lift Last Logged Value"
    :key "l"
    :snippet (tap> (:result (first @@(requiring-resolve 'dev/other-taps))))}
@@ -135,133 +138,167 @@
                     (eval v)))}
   {:name "Portal Viewer"
    :key "0"
-   :snippet ((requiring-resolve 'portal.api/eval-str) @(requiring-resolve 'dev/portal)
-             (str
-              '(let [state portal.ui.state/state]
-                 (-> (portal.ui.commands/select-none state)
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-next-viewer state))
-                     (.then #(portal.ui.commands/select-none state))))))}
+   :snippet (do
+              ((requiring-resolve 'portal.api/eval-str)
+               @(requiring-resolve 'dev/portal)
+               (str
+                '(let [state portal.ui.state/state]
+                   (-> (portal.ui.commands/select-none state)
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-next-viewer state))
+                       (.then #(portal.ui.commands/select-none state))))))
+              :portal.api/ignore)}
   {:name "Portal Expand First"
    :key "1"
-   :snippet ((requiring-resolve 'portal.api/eval-str) @(requiring-resolve 'dev/portal)
-             (str
-              '(let [state portal.ui.state/state]
-                 (-> (portal.ui.commands/select-none state)
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/toggle-expand state))
-                     (.then #(portal.ui.commands/select-none state))))))}
+   :snippet (do
+              ((requiring-resolve 'portal.api/eval-str)
+               @(requiring-resolve 'dev/portal)
+               (str
+                '(let [state portal.ui.state/state]
+                   (-> (portal.ui.commands/select-none state)
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/toggle-expand state))
+                       (.then #(portal.ui.commands/select-none state))))))
+              :portal.api/ignore)}
   {:name "Portal Expand Second"
    :key "2"
-   :snippet ((requiring-resolve 'portal.api/eval-str) @(requiring-resolve 'dev/portal)
-             (str
-              '(let [state portal.ui.state/state]
-                 (-> (portal.ui.commands/select-none state)
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/toggle-expand state))
-                     (.then #(portal.ui.commands/select-none state))))))}
+   :snippet (do
+              ((requiring-resolve 'portal.api/eval-str)
+               @(requiring-resolve 'dev/portal)
+               (str
+                '(let [state portal.ui.state/state]
+                   (-> (portal.ui.commands/select-none state)
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/toggle-expand state))
+                       (.then #(portal.ui.commands/select-none state))))))
+              :portal.api/ignore)}
   {:name "Portal Expand Third"
    :key "3"
-   :snippet ((requiring-resolve 'portal.api/eval-str) @(requiring-resolve 'dev/portal)
-             (str
-              '(let [state portal.ui.state/state]
-                 (-> (portal.ui.commands/select-none state)
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/toggle-expand state))
-                     (.then #(portal.ui.commands/select-none state))))))}
+   :snippet (do
+              ((requiring-resolve 'portal.api/eval-str)
+               @(requiring-resolve 'dev/portal)
+               (str
+                '(let [state portal.ui.state/state]
+                   (-> (portal.ui.commands/select-none state)
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/toggle-expand state))
+                       (.then #(portal.ui.commands/select-none state))))))
+              :portal.api/ignore)}
   {:name "Portal Expand Fourth"
    :key "4"
-   :snippet ((requiring-resolve 'portal.api/eval-str) @(requiring-resolve 'dev/portal)
-             (str
-              '(let [state portal.ui.state/state]
-                 (-> (portal.ui.commands/select-none state)
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/toggle-expand state))
-                     (.then #(portal.ui.commands/select-none state))))))}
+   :snippet (do
+              ((requiring-resolve 'portal.api/eval-str)
+               @(requiring-resolve 'dev/portal)
+               (str
+                '(let [state portal.ui.state/state]
+                   (-> (portal.ui.commands/select-none state)
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/toggle-expand state))
+                       (.then #(portal.ui.commands/select-none state))))))
+              :portal.api/ignore)}
   {:name "Portal Expand Fifth"
    :key "5"
-   :snippet ((requiring-resolve 'portal.api/eval-str) @(requiring-resolve 'dev/portal)
-             (str
-              '(let [state portal.ui.state/state]
-                 (-> (portal.ui.commands/select-none state)
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/toggle-expand state))
-                     (.then #(portal.ui.commands/select-none state))))))}
+   :snippet (do
+              ((requiring-resolve 'portal.api/eval-str)
+               @(requiring-resolve 'dev/portal)
+               (str
+                '(let [state portal.ui.state/state]
+                   (-> (portal.ui.commands/select-none state)
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/toggle-expand state))
+                       (.then #(portal.ui.commands/select-none state))))))
+              :portal.api/ignore)}
   {:name "Portal Expand Sixth"
    :key "6"
-   :snippet ((requiring-resolve 'portal.api/eval-str) @(requiring-resolve 'dev/portal)
-             (str
-              '(let [state portal.ui.state/state]
-                 (-> (portal.ui.commands/select-none state)
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/toggle-expand state))
-                     (.then #(portal.ui.commands/select-none state))))))}
+   :snippet (do
+              ((requiring-resolve 'portal.api/eval-str)
+               @(requiring-resolve 'dev/portal)
+               (str
+                '(let [state portal.ui.state/state]
+                   (-> (portal.ui.commands/select-none state)
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/toggle-expand state))
+                       (.then #(portal.ui.commands/select-none state))))))
+              :portal.api/ignore)}
   {:name "Portal Expand Seventh"
    :key "7"
-   :snippet ((requiring-resolve 'portal.api/eval-str) @(requiring-resolve 'dev/portal)
-             (str
-              '(let [state portal.ui.state/state]
-                 (-> (portal.ui.commands/select-none state)
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/toggle-expand state))
-                     (.then #(portal.ui.commands/select-none state))))))}
+   :snippet (do
+              ((requiring-resolve 'portal.api/eval-str)
+               @(requiring-resolve 'dev/portal)
+               (str
+                '(let [state portal.ui.state/state]
+                   (-> (portal.ui.commands/select-none state)
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/toggle-expand state))
+                       (.then #(portal.ui.commands/select-none state))))))
+              :portal.api/ignore)}
   {:name "Portal Expand Eighth"
    :key "8"
-   :snippet ((requiring-resolve 'portal.api/eval-str) @(requiring-resolve 'dev/portal)
-             (str
-              '(let [state portal.ui.state/state]
-                 (-> (portal.ui.commands/select-none state)
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/toggle-expand state))
-                     (.then #(portal.ui.commands/select-none state))))))}
+   :snippet (do
+              ((requiring-resolve 'portal.api/eval-str)
+               @(requiring-resolve 'dev/portal)
+               (str
+                '(let [state portal.ui.state/state]
+                   (-> (portal.ui.commands/select-none state)
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/toggle-expand state))
+                       (.then #(portal.ui.commands/select-none state))))))
+              :portal.api/ignore)}
   {:name "Portal Expand Ninth"
    :key "9"
-   :snippet ((requiring-resolve 'portal.api/eval-str) @(requiring-resolve 'dev/portal)
-             (str
-              '(let [state portal.ui.state/state]
-                 (-> (portal.ui.commands/select-none state)
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/select-child state))
-                     (.then #(portal.ui.commands/toggle-expand state))
-                     (.then #(portal.ui.commands/select-none state))))))}]}
+   :snippet (do
+              ((requiring-resolve 'portal.api/eval-str)
+               @(requiring-resolve 'dev/portal)
+               (str
+                '(let [state portal.ui.state/state]
+                   (-> (portal.ui.commands/select-none state)
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/select-child state))
+                       (.then #(portal.ui.commands/toggle-expand state))
+                       (.then #(portal.ui.commands/select-none state))))))
+              :portal.api/ignore)}]}
