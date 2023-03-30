@@ -103,10 +103,7 @@
                 (let [m (try (meta v) (catch Exception _))]
                   (if (or (:portal.nrepl/eval m)
                           (:dev.repl/logging m))
-                    (when-not (or (clojure.string/starts-with?
-                                   (str (:code v)) "(tap>")
-                                  (clojure.string/includes?
-                                   (str (:code v)) "portal.api/eval-str"))
+                    (when-not (clojure.string/starts-with? (str (:code v)) "(tap>")
                       (swap! other-taps conj v))
                     (swap! my-taps conj v))))
               (defonce ^{:doc "Fixed wrapper around submit*."}
