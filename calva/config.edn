@@ -1,9 +1,9 @@
 {:customREPLCommandSnippets
- [{:name "Add Libs Enclosing"
+ [{:name "Add Libs (Sync w/aliases)"
    :key "a"
    :snippet (tap>
-             ((requiring-resolve 'clojure.tools.deps.alpha.repl/add-libs)
-              '$enclosing-form))}
+             ((requiring-resolve 'clojure.repl.deps/sync-deps)
+              :aliases (read-string (str "[" (read-line) "]"))))}
   {:name "Tap Define Binding"
    :key "d"
    :snippet (tap> (def $selection))}

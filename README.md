@@ -86,7 +86,7 @@ See the custom REPL commands below for convenient `tap>` functionality.
 In addition to the custom REPL commands snippets mentioned above for Portal,
 this `settings.json` file includes the following:
 
-* `ctrl+alt+space a` -- add dependencies to the running REPL; sends the enclosing form to `clojure.tools.deps.alpha.repl/add-libs`; intended to be used when the cursor is inside a dependencies hash map (i.e., inside `deps.edn`, on a library name, rather than inside its coordinates).
+* `ctrl+alt+space a` -- add dependencies to a running REPL by synchronizing with your `deps.edn` file; this pops open a REPL input prompt into which you can type one or more aliases, and then it uses `clojure.repl.deps/sync-deps` (Clojure 1.12.0 Alpha 2) to load any new dependencies that have been added to your `deps.edn`.
 * `ctrl+alt+space c` -- run the current test and `tap>` any output.
 * `ctrl+alt+space d` -- when a binding in `let` is highlighted (both the symbol and the expression to which it is bound), this creates a `def` so the symbol becomes available at the top level: useful for debugging parts of a function inside `let`.
 * `ctrl+alt+space e` -- `tap>` the last exception thrown (`*e`)
