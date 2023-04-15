@@ -112,16 +112,12 @@
                 portal
                 ((requiring-resolve 'portal.api/open)
                  {:launcher :vs-code
-                  ;; WSL2: Ubuntu -- so VS Code can load the UI:
-                  :host (-> (sh/sh "hostname" "-I") :out (str/trim))
                   :portal.launcher/window-title (System/getProperty "user.dir")
                   :value my-taps}))
               (def ^{:doc "Atom for other values."}
                 portal-other
                 ((requiring-resolve 'portal.api/open)
                  {:launcher :vs-code
-                  ;; WSL2: Ubuntu -- so VS Code can load the UI:
-                  :host (-> (sh/sh "hostname" "-I") :out (str/trim))
                   :portal.launcher/window-title "** logging **"
                   :value other-taps}))
               (add-tap submit))}

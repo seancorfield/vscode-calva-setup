@@ -52,6 +52,8 @@ Portal itself must be included as a dependency. This can be done in your user co
 
 For `deps.edn`, it will be `djblue/portal {:mvn/version "RELEASE"}` in `:extra-deps` under an alias. If you're using my user `deps.edn` file from my [`dot-clojure`](https://github.com/seancorfield/dot-clojure) repo, you can just add the `:portal` alias to your CLI command to get the latest Portal included.
 
+> Note: On Windows/WSL2, you may need `localhostForwarding=true` added to the `[wsl2]` section of your `.wslconfig` file for the VS Code / Portal server connection to work correctly.
+
 ### Launching and Using Portal
 
 Before you launch Portal, you must first start a REPL and connect to it. Once that is up and connected in Calva, you can use the following custom REPL command:
