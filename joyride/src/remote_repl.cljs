@@ -22,7 +22,7 @@
 
 (defn- connect-repl []
   (vscode/commands.executeCommand "calva.disconnect")
-  (vscode/commands.executeCommand "calva.connect"))
+  (vscode/commands.executeCommand "calva.connect" #js {:disableAutoSelect true}))
 
 (defn repl-setup [nrepl-port portal-port label remote-server]
   (start-tunnel nrepl-port portal-port label remote-server)
