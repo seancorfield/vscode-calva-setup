@@ -90,14 +90,14 @@
       "cfwddx"
     ],
     "yaml.schemas": {
-      "file:///home/sean/.vscode-server/extensions/atlassian.atlascode-3.0.1/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+      "file:///home/sean/.vscode-server/extensions/atlassian.atlascode-3.0.3/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
     },
     "atlascode.jira.jqlList": [
       {
         "id": "eb6b067c-8124-43d4-aa91-41052ca528d9",
         "enabled": true,
         "name": "My wsnetworks Issues",
-        "query": "assignee = currentUser() AND type != Epic AND status in (\"New\",\"More Information Needed\",\"Selected For Development\",\"In Progress\") ORDER BY status ASC, lastViewed DESC",
+        "query": "assignee = currentUser() AND type != Epic AND status in (\"To Do\",\"New\",\"More Information Needed\",\"Selected For Development\",\"In Progress\") ORDER BY status ASC, lastViewed DESC",
         "siteId": "cf226917-740d-419c-9013-ad19765f9a1d",
         "monitor": true
       }
@@ -187,22 +187,6 @@
       "maxDepth": 10
     },
     "calva.autoOpenREPLWindow": false,
-    "calva.replConnectSequences": [
-      {
-        "name": "QA nREPL Server",
-        "projectType": "deps.edn",
-        "cljsType": "none",
-        "nReplPortFile": ["development", "resources", "qa.nrepl"],
-        "menuSelections": {}
-      },
-      {
-        "name": "Production nREPL Server",
-        "projectType": "deps.edn",
-        "cljsType": "none",
-        "nReplPortFile": ["development", "resources", "prod.nrepl"],
-        "menuSelections": {}
-      }
-    ],
     "settingsSync.ignoredSettings": [
       "yaml.schemas",
       "editor.fontSize"
@@ -211,12 +195,11 @@
     "atlascode.jira.enabled": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
-    "window.zoomLevel": -1,
     "explorer.excludeGitIgnore": true,
     "search.exclude": {
-      "**/.calva/output-window/output.calva-repl": true
+      "**/.calva/output-window/output.calva-repl": true,
+      ".calva/output-window/output.calva-repl": true
     },
-    "diffEditor.ignoreTrimWhitespace": false,
     "git.alwaysShowStagedChangesResourceGroup": true,
     "editor.inlineSuggest.enabled": true,
     "editor.rulers": [
@@ -235,5 +218,25 @@
     "editor.accessibilitySupport": "off",
     "workbench.colorTheme": "Default Dark+ Experimental",
     "git.openRepositoryInParentFolders": "always",
-    "calva.fmt.newIndentEngine": false
+    "calva.fmt.newIndentEngine": false,
+    "clock.alignment": "Right",
+    "clock.format": "HH:MM:ss",
+    "window.zoomLevel": -1,
+    "jest.jestCommandLine": "npx yarn jest",
+    "files.insertFinalNewline": true,
+    "github.copilot-labs.advanced": {},
+    "github.copilot-labs.showTestGenerationLenses": true,
+    "diffEditor.codeLens": true,
+    "javascript.referencesCodeLens.enabled": true,
+    "javascript.referencesCodeLens.showOnAllFunctions": true,
+    "calva.referencesCodeLens.enabled": true,
+    "files.associations": {
+      "*.cljr": "clojure"
+    },
+    "diffEditor.ignoreTrimWhitespace": false,
+    "calva.myCljAliases": [
+      ":1.12",
+      ":portal",
+      ":dev/repl"
+    ]
 }
