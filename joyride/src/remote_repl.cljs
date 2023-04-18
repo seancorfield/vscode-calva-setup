@@ -1,7 +1,7 @@
 (ns remote-repl
   (:require ["ext://betterthantomorrow.calva$v0" :as calva]
-            ["path" :as path]
             ["fs" :as fs]
+            ["path" :as path]
             ["vscode" :as vscode]
             [clojure.edn :as edn]
             [promesa.core :as p]))
@@ -16,14 +16,6 @@
                              " -L " portal-port ":localhost:" portal-port
                              " -R " extension-port ":localhost:" extension-port
                              " " remote-server))))
-
-(defn- start-browser [portal-port]
-  (vscode/commands.executeCommand "simpleBrowser.show" (str "http://localhost:" portal-port))
-  (p/do
-    (p/delay 2000)
-    (vscode/commands.executeCommand "workbench.action.moveEditorToRightGroup")
-    (p/delay 1000)
-    (vscode/commands.executeCommand "workbench.action.focusFirstEditorGroup")))
 
 (defn- connect-repl [nrepl-port]
   (vscode/commands.executeCommand "calva.disconnect")
@@ -42,6 +34,7 @@
   (let [config (portal-config)]
     (start-tunnel nrepl-port portal-port (:port config) label remote-server)
     (p/do
-      (p/delay 5000)
+      (p/delay 2000)
       (connect-repl nrepl-port)
+      (p/delay 1000)
       (calva/repl.evaluateCode "clj" (pr-str (list 'spit ".portal/vs-code.edn" config))))))
