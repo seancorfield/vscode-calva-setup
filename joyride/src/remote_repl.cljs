@@ -1,8 +1,12 @@
 (ns remote-repl
-  (:require ["vscode" :as vscode]
+  (:require ["ext://betterthantomorrow.calva$v0" :as calva]
+            ["path" :as path]
+            ["fs" :as fs]
+            ["vscode" :as vscode]
+            [clojure.edn :as edn]
             [promesa.core :as p]))
 
-(defn- start-tunnel [nrepl-port portal-port label remote-server]
+(defn- start-tunnel [nrepl-port portal-port extension-port label remote-server]
   (let [terminal (vscode/window.createTerminal #js {:isTransient true
                                                     :name label
                                                     :message (str label " Remote REPL...")})]
@@ -10,6 +14,7 @@
     (.sendText terminal (str "ssh -N"
                              " -L " nrepl-port ":localhost:" nrepl-port
                              " -L " portal-port ":localhost:" portal-port
+                             " -R " extension-port ":localhost:" extension-port
                              " " remote-server))))
 
 (defn- start-browser [portal-port]
@@ -20,14 +25,23 @@
     (p/delay 1000)
     (vscode/commands.executeCommand "workbench.action.focusFirstEditorGroup")))
 
-(defn- connect-repl []
+(defn- connect-repl [nrepl-port]
   (vscode/commands.executeCommand "calva.disconnect")
-  (vscode/commands.executeCommand "calva.connect" #js {:disableAutoSelect true}))
+  (vscode/commands.executeCommand "calva.connect" #js {:port nrepl-port :disableAutoSelect true}))
+
+(defn- portal-config []
+  (->  vscode/workspace.workspaceFolders
+       first
+       .-uri
+       .-fsPath
+       (path/join ".portal/vs-code.edn")
+       (fs/readFileSync #js {:encoding "utf8"})
+       edn/read-string))
 
 (defn repl-setup [nrepl-port portal-port label remote-server]
-  (start-tunnel nrepl-port portal-port label remote-server)
-  (p/do
-    (p/delay 2000)
-    (start-browser portal-port)
-    (p/delay 1000)
-    (connect-repl)))
+  (let [config (portal-config)]
+    (start-tunnel nrepl-port portal-port (:port config) label remote-server)
+    (p/do
+      (p/delay 5000)
+      (connect-repl nrepl-port)
+      (calva/repl.evaluateCode "clj" (pr-str (list 'spit ".portal/vs-code.edn" config))))))
