@@ -19,7 +19,7 @@
 
 (defn- connect-repl [nrepl-port]
   (vscode/commands.executeCommand "calva.disconnect")
-  (vscode/commands.executeCommand "calva.connect" #js {:port nrepl-port :disableAutoSelect true}))
+  (vscode/commands.executeCommand "calva.connect" #js {:port nrepl-port :connectSequence "Generic"}))
 
 (defn- portal-config []
   (->  vscode/workspace.workspaceFolders
