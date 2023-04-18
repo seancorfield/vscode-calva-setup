@@ -11,7 +11,7 @@
                                                     :name label
                                                     :message (str label " Remote REPL...")})]
     (.show terminal)
-    (.sendText terminal (str "ssh -N"
+    (.sendText terminal (str "ssh -C -N"
                              " -L " nrepl-port ":localhost:" nrepl-port
                              " -L " portal-port ":localhost:" portal-port
                              " -R " extension-port ":localhost:" extension-port
