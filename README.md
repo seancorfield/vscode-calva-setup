@@ -95,6 +95,7 @@ this `settings.json` file includes the following:
 * `ctrl+alt+space i` -- when a symbol is highlighted, create a `def` from it bound to an input value provided by a REPL prompt in Calva: useful for debugging parts of a function (by defining argument values or other symbols).
 * `ctrl+alt+space l` -- "lift" the result out of the most recent `** logging**` window entry into the regular `tap>` window for easier manipulation.
 * `ctrl+alt+space n` -- `tap>` a hash map of public Vars from the current namespace.
+* `ctrl+alt+space r` -- runs `com.mjdowney.rich-comment-tests/run-ns-tests!` on the current namespace to treat any `comment` forms annotated as `:rct/test` as actual tests; see https://github.com/matthewdowney/rich-comment-tests/ for more details.
 * `ctrl+alt+space t` -- run all the tests in the current namespace and `tap>` the result summary.
 * `ctrl+alt+space x` -- run all the tests in the "associated" namespace and `tap>` the result summary; if the current namespace is `foo.bar`, this will look for `foo.bar-test` or `foo.bar-expectations`.
 * `ctrl+alt+space z` -- zap (remove) the current namespace's definitions: occasionally useful for cleaning up REPL state; this unaliases/unmaps all the symbols in the namespace _without destroying the namespace itself_, leaving it "empty" so you can load the file from disk again so it is fully-sync'd (`ctrl+alt+c enter`).
