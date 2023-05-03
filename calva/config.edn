@@ -9,7 +9,9 @@
    :snippet (tap> (def $selection))}
   {:name "Tap Last Exception"
    :key "e"
-   :snippet (tap> (Throwable->map *e))}
+   :snippet (tap> (let [m (Throwable->map *e)]
+                    (tap> ((requiring-resolve 'clojure.main/ex-triage) m))
+                    m))}
   {:name "Tap Define to Input"
    :key "i"
    :snippet (tap> (let [v (read-string (read-line))]
