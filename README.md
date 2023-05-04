@@ -89,15 +89,16 @@ In addition to the custom REPL commands snippets mentioned above for Portal,
 this `settings.json` file includes the following:
 
 * `ctrl+alt+space a` -- add dependencies to a running REPL by synchronizing with your `deps.edn` file; this pops open a REPL input prompt into which you can type one or more aliases, and then it uses `clojure.repl.deps/sync-deps` (Clojure 1.12.0 Alpha 2) to load any new dependencies that have been added to your `deps.edn`.
-* `ctrl+alt+space c` -- run the current test and `tap>` any output.
+* `ctrl+alt+space c` -- run the current test (use `ctrl+alt+space o` to see output/report) and display a summary of results.
 * `ctrl+alt+space d` -- when a binding in `let` is highlighted (both the symbol and the expression to which it is bound), this creates a `def` so the symbol becomes available at the top level: useful for debugging parts of a function inside `let`.
 * `ctrl+alt+space e` -- `tap>` the last exception thrown (`*e`)
 * `ctrl+alt+space i` -- when a symbol is highlighted, create a `def` from it bound to an input value provided by a REPL prompt in Calva: useful for debugging parts of a function (by defining argument values or other symbols).
-* `ctrl+alt+space l` -- "lift" the result out of the most recent `** logging**` window entry into the regular `tap>` window for easier manipulation.
+* `ctrl+alt+space l` -- "lift" the result out of the most recent `** logging **` window entry into the regular `tap>` window for easier manipulation.
 * `ctrl+alt+space n` -- `tap>` a hash map of public Vars from the current namespace.
+* `ctrl+alt+space o` -- where `l` lifts the _result_ from `** logging **`, this lifts the standard output (and any test reports): useful when you want to see output produced by an evaluation or test results (from `ctrl+alt+space c` or `t` or `x`)
 * `ctrl+alt+space r` -- runs `com.mjdowney.rich-comment-tests/run-ns-tests!` on the current namespace to treat any `comment` forms annotated as `:rct/test` as actual tests; see https://github.com/matthewdowney/rich-comment-tests/ for more details.
-* `ctrl+alt+space t` -- run all the tests in the current namespace and `tap>` the result summary.
-* `ctrl+alt+space x` -- run all the tests in the "associated" namespace and `tap>` the result summary; if the current namespace is `foo.bar`, this will look for `foo.bar-test` or `foo.bar-expectations`.
+* `ctrl+alt+space t` -- run all the tests in the current namespace (use `ctrl+alt+space o` to see output/report) and display a summary of results.
+* `ctrl+alt+space x` -- run all the tests in the "associated" namespace (use `ctrl+alt+space o` to see output/report) and display a summary of results; if the current namespace is `foo.bar`, this will look for `foo.bar-test` or `foo.bar-expectations`.
 * `ctrl+alt+space z` -- zap (remove) the current namespace's definitions: occasionally useful for cleaning up REPL state; this unaliases/unmaps all the symbols in the namespace _without destroying the namespace itself_, leaving it "empty" so you can load the file from disk again so it is fully-sync'd (`ctrl+alt+c enter`).
 
 Several of these command snippets _require_ Clojure 1.10 or later (because they assume `requiring-resolve` and `tap>`) and will fail on earlier versions. Portal supports Clojure 1.10's `datafy` and `nav`.

@@ -4,6 +4,10 @@
    :snippet (tap>
              ((requiring-resolve 'clojure.repl.deps/sync-deps)
               :aliases (read-string (str "[" (read-line) "]"))))}
+  {:name "Run Current Test"
+   :key "c"
+   :snippet (binding [clojure.test/*test-out* *out*]
+              (clojure.test/run-test $top-level-defined-symbol))}
   {:name "Tap Define Binding"
    :key "d"
    :snippet (tap> (def $selection))}
@@ -16,59 +20,6 @@
    :key "i"
    :snippet (tap> (let [v (read-string (read-line))]
                     (def $selection v)))}
-  {:name "Tap Namespace Publics"
-   :key "n"
-   :snippet (tap>
-             (-> (find-ns '$ns)
-                 (clojure.datafy/datafy)
-                 :publics))}
-  {:name "Tap Namespace Cleanup"
-   :key "z"
-   :snippet (tap>
-             (when-let [ns (find-ns '$ns)]
-               (tap> "Removing $ns... ")
-               (run! #(try (ns-unalias ns %)
-                           (catch Throwable _))
-                     (keys (ns-aliases ns)))
-               (run! #(try (ns-unmap ns %)
-                           (catch Throwable _))
-                     (keys (ns-interns ns)))
-               (->> (ns-refers ns)
-                    (remove (fn [[_ v]]
-                              (.startsWith (str v) "#'clojure.core/")))
-                    (map key)
-                    (run! #(try (ns-unmap ns %)
-                                (catch Throwable _))))))}
-  {:name "Run Current Test"
-   :key "c"
-   :snippet (tap>
-             (with-out-str
-               (binding [clojure.test/*test-out* *out*]
-                 (clojure.test/test-vars [#'$top-level-defined-symbol]))))}
-  {:name "Run Rich Comment Tests"
-   :key "r"
-   :snippet (tap>
-             (do
-               (tap> "Testing Rich Comments in $ns...")
-               (require '$ns)
-               ((requiring-resolve 'com.mjdowney.rich-comment-tests/run-ns-tests!)
-                '$ns)))}
-  {:name "Run Tests"
-   :key "t"
-   :snippet (tap>
-             (do
-               (tap> "Testing $ns... ")
-               (require '$ns)
-               (clojure.test/run-tests '$ns)))}
-  {:name "Run Tests For Source"
-   :key "x"
-   :snippet (tap>
-             (some #(let [nt (symbol (str "$ns-" %))]
-                      (when (try (require nt) true
-                                 (catch Throwable _))
-                        (tap> (str "Testing " nt "... "))
-                        (clojure.test/run-tests nt)))
-                   ["test" "expectations"]))}
   {:name "Portal Clear"
    :key "k"
    :snippet (do
@@ -78,6 +29,18 @@
   {:name "Portal Lift Last Logged Value"
    :key "l"
    :snippet (tap> (:result (first @@(requiring-resolve 'dev/other-taps))))}
+  {:name "Tap Namespace Publics"
+   :key "n"
+   :snippet (tap>
+             (-> (find-ns '$ns)
+                 (clojure.datafy/datafy)
+                 :publics))}
+  {:name "Portal Lift Last Output/Report"
+   :key "o"
+   :snippet (tap>
+             (do
+               (tap> (:stdio (first @@(requiring-resolve 'dev/other-taps))))
+               (:report (first @@(requiring-resolve 'dev/other-taps)))))}
   {:name "Portal Start"
    :key "p"
    :snippet (do
@@ -133,6 +96,44 @@
                             "*v"
                             "(first @@(requiring-resolve 'dev/my-taps))"))]
                     (eval v)))}
+  {:name "Run Rich Comment Tests"
+   :key "r"
+   :snippet (do
+              (tap> "Testing Rich Comments in $ns...")
+              (require '$ns)
+              ((requiring-resolve 'com.mjdowney.rich-comment-tests/run-ns-tests!)
+               '$ns))}
+  {:name "Run Tests"
+   :key "t"
+   :snippet (do
+              (tap> "Testing $ns... ")
+              (require '$ns)
+              (clojure.test/run-tests '$ns))}
+  {:name "Run Tests For Source"
+   :key "x"
+   :snippet (some #(let [nt (symbol (str "$ns-" %))]
+                     (when (try (require nt) true
+                                (catch Throwable _))
+                       (tap> (str "Testing " nt "... "))
+                       (clojure.test/run-tests nt)))
+                  ["test" "expectations"])}
+  {:name "Tap Namespace Cleanup"
+   :key "z"
+   :snippet (tap>
+             (when-let [ns (find-ns '$ns)]
+               (tap> "Removing $ns... ")
+               (run! #(try (ns-unalias ns %)
+                           (catch Throwable _))
+                     (keys (ns-aliases ns)))
+               (run! #(try (ns-unmap ns %)
+                           (catch Throwable _))
+                     (keys (ns-interns ns)))
+               (->> (ns-refers ns)
+                    (remove (fn [[_ v]]
+                              (.startsWith (str v) "#'clojure.core/")))
+                    (map key)
+                    (run! #(try (ns-unmap ns %)
+                                (catch Throwable _))))))}
   {:name "Portal Viewer"
    :key "0"
    :snippet (do
