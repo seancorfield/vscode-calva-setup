@@ -66,6 +66,11 @@
       "args": "ns.cljs"
     },
     {
+      "key": "ctrl+alt+d ctrl+alt+t",
+      "command": "joyride.runUserScript",
+      "args": "tap.cljs"
+    },
+    {
       "key": "ctrl+alt+e ctrl+alt+w",
       "command": "workbench.action.closeOtherEditors"
     },
@@ -94,5 +99,13 @@
     {
       "key": "ctrl+alt+c ctrl+alt+k",
       "command": "calva.clearReplHistory"
+    },
+    {
+      "key": "ctrl+alt+k up",
+      "command": "workbench.action.moveEditorToAboveGroup"
+    },
+    {
+      "key": "ctrl+alt+k down",
+      "command": "workbench.action.moveEditorToBelowGroup"
     }
 ]

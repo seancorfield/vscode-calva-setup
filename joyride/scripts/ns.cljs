@@ -1,7 +1,6 @@
-(ns javadoc
+(ns ns
   (:require ["ext://betterthantomorrow.calva$v0" :as calva]
             ["vscode" :as vscode]
-            [clojure.string :as str]
             [promesa.core :as p]))
 
 (p/let [p (-> vscode/window.activeTextEditor
