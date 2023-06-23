@@ -1,0 +1,3 @@
+{:cljfmt
+ {:indents
+  {expecting [[:block 1]]}}}

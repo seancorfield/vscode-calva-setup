@@ -1,6 +1,10 @@
 # VS Code Setup
 
-The files here represent my current [VS Code](https://code.visualstudio.com/) configuration for use with [Calva](https://marketplace.visualstudio.com/items?itemName=betterthantomorrow.calva) and [Joyride](https://marketplace.visualstudio.com/items?itemName=betterthantomorrow.joyride).
+The files here represent my current [VS Code](https://code.visualstudio.com/)
+configuration for use with
+[Calva](https://marketplace.visualstudio.com/items?itemName=betterthantomorrow.calva),
+[Joyride](https://marketplace.visualstudio.com/items?itemName=betterthantomorrow.joyride),
+and [clojure-lsp](https://clojure-lsp.io/).
 
 > Note: Some of the code here may well assume you are using the latest version of Calva and Joyride -- I tend to update my extensions regularly and also update my configuration to take advantage of new features.
 
@@ -15,7 +19,13 @@ Copy (or merge) the `calva/config.edn` file's `customREPLCommandSnippets` into y
 `~/.config/calva/config.edn` file for VS Code to find them (requires Calva 2.0.307 or later!).
 These `customREPLCommandSnippets` provide a number of `tap>` evaluations and some [Portal UI](https://github.com/djblue/portal) commands.
 
-**Requires Portal 0.37.1 or later**
+Copy (or merge) the `joyride/scripts/*` and `joyride/src/*` files into your
+`~/.config/joyride/` directories.
+
+Copy (or merge) the `clojure-lsp/config.edn` file into your
+`~/.config/clojure-lsp/config.edn` file.
+
+**Requires Portal 0.40.0 or later**
 
 In addition, there are some Joyride scripts (in `joyride/scripts`) that you can copy into either your user or workspace Joyride `scripts` folder as desired. See the **Joyride** section below for details.
 
@@ -33,7 +43,7 @@ On Windows, the VS Code user configuration directory is likely to be:
 
 ## Portal: Launch and Usage
 
-**Requires Portal 0.37.1 or later**
+**Requires Portal 0.40.0 or later**
 
 Will work both with and without the `portal.nrepl/wrap-portal` middleware.
 
@@ -110,6 +120,7 @@ The following scripts perform tasks that my old Clover configuration used to pro
 * `clojuredocs.cljs` -- with a Clojure symbol selected, this will open VS Code's Simple Browser, directly inside VS Code, at the corresponding [ClojureDocs page](https://clojuredocs.org).
 * `javadoc.cljs` -- with a Java class name selected, or a Clojure expression selected, this will open VS Code's Simple Browser, directly inside VS Code, at the corresponding (Oracle) JavaDoc page for the class that the selection resolves to. If the underlying `javadoc-url` function doesn't recognize the class, it produces a Google "I feel lucky" URL that will be opened in an _external_ browser instead (since Simple Browser cannot open Google's site).
 * `ns.cljs` -- without moving the cursor, evaluate the current file's `ns` form.
+* `tap.cljs` -- wrap the current form with `(doto` .. `tap>)` or, in a `->` pipeline, insert `(doto tap>)`.
 
 > Note: these scripts assume you have a Clojure nREPL connected in Calva to perform symbol/class resolution!
 
@@ -118,19 +129,26 @@ My `keybindings.json` file has key bindings for these that are intended to match
 * `ctrl+alt+space j` -- runs `javadoc.cljs` as a User-level Joyride script.
 * `ctrl+alt+space /` -- runs `clojuredocs.cljs` as a User-level Joyride script (in my Clover setup, this used to be `ctrl+; shift+/`, i,e., `?`, but `shift+/` would be a bit unwieldy as a `ctrl+alt+space` chord).
 
-In addition, `ctrl+alt+n ctrl+alt+s` will run `ns.cljs`.
+In addition, `ctrl+alt+n ctrl+alt+s` will run `ns.cljs`,
+and `ctrl+alt+d ctrl+alt+t` will run `tap.cljs`.
 
 ## Keymap
 
 Other key bindings that you may or may not find useful:
 
+* `ctrl+alt+c ctrl+alt+k` -- clear Calva REPL history.
+* `ctrl+alt+c z` -- run `clojure-lsp`'s `clean-ns` command on the current namespace.
 * `ctrl+alt+e ctrl+alt+j` -- join window groups in VS Code (I often use this after starting the REPL or splitting a window).
 * `ctrl+alt+e ctrl+alt+right` -- move the current window to the next group to the right in VS Code (I often use this after starting the REPL or splitting a window).
-* `ctrl+t ctrl+f` -- switch focus to the terminal window in VS Code.
-* `ctrl+t ctrl+t` -- open a terminal window in VS Code.
+* `ctrl+alt+e ctrl+alt+w` -- close other editors (useful for decluttering your workspace and focusing on the current file).
+* `ctrl+alt+k ctrl+alt+t` -- toggle between Clojure implementation and test files.
+* `ctrl+alt+k down` -- move editor to group below.
+* `ctrl+alt+k up` -- move editor to group above.
 * `ctrl+alt+l ctrl+alt+l` -- convert the selection/word at the cursor to lowercase.
 * `ctrl+alt+u ctrl+alt+u` -- convert the selection/word at the cursor to uppercase.
-* `ctrl+alt+k ctrl+alt+t` -- toggle between Clojure implementation and test files.
+* `ctrl+alt+z` -- clear all notifications.
+* `ctrl+t ctrl+f` -- switch focus to the terminal window in VS Code.
+* `ctrl+t ctrl+t` -- open a terminal window in VS Code.
 
 * `alt+home` -- `paredit.openList` for Calva to avoid `ctrl+home` (which should be `cursorTop`!).
 * `ctrl+j` -- join lines (this is the default on macOS but not Windows).
