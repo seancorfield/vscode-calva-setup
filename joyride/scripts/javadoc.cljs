@@ -25,7 +25,7 @@
    "))"))
 
 (-> (p/let [code (javadoc-url (selected-text))
-            resp (evaluateCode "clj" code)
+            resp (evaluateCode "clj" code {} #js {:ns "user"})
             url  (edn/read-string (.-result resp))]
       (if (str/starts-with? url "https://www.google.com")
         (vscode/commands.executeCommand "vscode.open" url)

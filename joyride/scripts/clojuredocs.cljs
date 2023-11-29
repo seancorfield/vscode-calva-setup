@@ -21,7 +21,7 @@
    "))"))
 
 (-> (p/let [code (clojuredocs-url (selected-text))
-            resp (evaluateCode "clj" code)
+            resp (evaluateCode "clj" code {} #js {:ns "user"})
             url  (edn/read-string (.-result resp))]
       (vscode/commands.executeCommand "simpleBrowser.show" url))
     (p/catch (fn [e] (println (str "Evaluation error: " e)))))

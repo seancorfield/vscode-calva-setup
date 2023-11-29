@@ -37,4 +37,6 @@
       (p/delay 2000)
       (connect-repl nrepl-port)
       (p/delay 1000)
-      (calva/repl.evaluateCode "clj" (pr-str (list 'spit ".portal/vs-code.edn" config))))))
+      (calva/repl.evaluateCode "clj"
+                               (pr-str (list 'spit ".portal/vs-code.edn" config))
+                               {} #js {:ns "user"}))))

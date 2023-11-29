@@ -9,12 +9,15 @@
         ns-form (-> (calva/ranges.currentForm vscode/window.activeTextEditor p)
                     second)]
   (-> (calva/repl.evaluateCode (calva/repl.currentSessionKey)
-                               "(clojure.core/tap> \"evaluating ns...\")")
+                               "(clojure.core/tap> \"evaluating ns...\")"
+                               {} #js {:ns "user"})
       (.then (fn [_]
-               (calva/repl.evaluateCode (calva/repl.currentSessionKey) ns-form)))
+               (calva/repl.evaluateCode (calva/repl.currentSessionKey) ns-form
+                                        {} #js {:ns "user"})))
       (.then (fn [ns-val]
                (calva/repl.evaluateCode
                 (calva/repl.currentSessionKey)
                 (str "(clojure.core/tap> \""
                      (.-ns ns-val)
-                     " evaluated\")"))))))
+                     " evaluated\")")
+                {} #js {:ns "user"})))))
