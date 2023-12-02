@@ -111,29 +111,33 @@
               (clojure.test/run-tests '$ns))}
   {:name "Run Tests For Source"
    :key "x"
-   :snippet (some #(let [nt (symbol (str "$ns-" %))]
-                     (when (try (require nt) true
-                                (catch Throwable _))
-                       (tap> (str "Testing " nt "... "))
-                       (clojure.test/run-tests nt)))
+   :snippet (some (fn [seg]
+                    (let [nt (symbol (str "$ns-" seg))]
+                      (when (try (require nt) true
+                                 (catch Throwable _))
+                        (tap> (str "Testing " nt "... "))
+                        (clojure.test/run-tests nt))))
                   ["test" "expectations"])}
   {:name "Tap Namespace Cleanup"
    :key "z"
    :snippet (tap>
              (when-let [ns (find-ns '$ns)]
                (tap> "Removing $ns... ")
-               (run! #(try (ns-unalias ns %)
-                           (catch Throwable _))
+               (run! (fn [a]
+                       (try (ns-unalias ns a)
+                            (catch Throwable _)))
                      (keys (ns-aliases ns)))
-               (run! #(try (ns-unmap ns %)
-                           (catch Throwable _))
+               (run! (fn [i]
+                       (try (ns-unmap ns i)
+                            (catch Throwable _)))
                      (keys (ns-interns ns)))
                (->> (ns-refers ns)
                     (remove (fn [[_ v]]
                               (.startsWith (str v) "#'clojure.core/")))
                     (map key)
-                    (run! #(try (ns-unmap ns %)
-                                (catch Throwable _))))))}
+                    (run! (fn [r]
+                            (try (ns-unmap ns r)
+                                 (catch Throwable _)))))))}
   {:name "Portal Viewer"
    :key "0"
    :snippet (do
@@ -142,10 +146,10 @@
                (str
                 '(let [state portal.ui.state/state]
                    (-> (portal.ui.commands/select-none state)
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-next-viewer state))
-                       (.then #(portal.ui.commands/select-none state))))))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-next-viewer state)))
+                       (.then (fn [] (portal.ui.commands/select-none state)))))))
               :portal.api/ignore)}
   {:name "Portal Expand First"
    :key "1"
@@ -155,10 +159,10 @@
                (str
                 '(let [state portal.ui.state/state]
                    (-> (portal.ui.commands/select-none state)
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/toggle-expand state))
-                       (.then #(portal.ui.commands/select-none state))))))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/toggle-expand state)))
+                       (.then (fn [] (portal.ui.commands/select-none state)))))))
               :portal.api/ignore)}
   {:name "Portal Expand Second"
    :key "2"
@@ -168,11 +172,11 @@
                (str
                 '(let [state portal.ui.state/state]
                    (-> (portal.ui.commands/select-none state)
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/toggle-expand state))
-                       (.then #(portal.ui.commands/select-none state))))))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/toggle-expand state)))
+                       (.then (fn [] (portal.ui.commands/select-none state)))))))
               :portal.api/ignore)}
   {:name "Portal Expand Third"
    :key "3"
@@ -182,12 +186,12 @@
                (str
                 '(let [state portal.ui.state/state]
                    (-> (portal.ui.commands/select-none state)
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/toggle-expand state))
-                       (.then #(portal.ui.commands/select-none state))))))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/toggle-expand state)))
+                       (.then (fn [] (portal.ui.commands/select-none state)))))))
               :portal.api/ignore)}
   {:name "Portal Expand Fourth"
    :key "4"
@@ -197,13 +201,13 @@
                (str
                 '(let [state portal.ui.state/state]
                    (-> (portal.ui.commands/select-none state)
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/toggle-expand state))
-                       (.then #(portal.ui.commands/select-none state))))))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/toggle-expand state)))
+                       (.then (fn [] (portal.ui.commands/select-none state)))))))
               :portal.api/ignore)}
   {:name "Portal Expand Fifth"
    :key "5"
@@ -213,14 +217,14 @@
                (str
                 '(let [state portal.ui.state/state]
                    (-> (portal.ui.commands/select-none state)
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/toggle-expand state))
-                       (.then #(portal.ui.commands/select-none state))))))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/toggle-expand state)))
+                       (.then (fn [] (portal.ui.commands/select-none state)))))))
               :portal.api/ignore)}
   {:name "Portal Expand Sixth"
    :key "6"
@@ -230,15 +234,15 @@
                (str
                 '(let [state portal.ui.state/state]
                    (-> (portal.ui.commands/select-none state)
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/toggle-expand state))
-                       (.then #(portal.ui.commands/select-none state))))))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/toggle-expand state)))
+                       (.then (fn [] (portal.ui.commands/select-none state)))))))
               :portal.api/ignore)}
   {:name "Portal Expand Seventh"
    :key "7"
@@ -248,16 +252,16 @@
                (str
                 '(let [state portal.ui.state/state]
                    (-> (portal.ui.commands/select-none state)
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/toggle-expand state))
-                       (.then #(portal.ui.commands/select-none state))))))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/toggle-expand state)))
+                       (.then (fn [] (portal.ui.commands/select-none state)))))))
               :portal.api/ignore)}
   {:name "Portal Expand Eighth"
    :key "8"
@@ -267,17 +271,17 @@
                (str
                 '(let [state portal.ui.state/state]
                    (-> (portal.ui.commands/select-none state)
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/toggle-expand state))
-                       (.then #(portal.ui.commands/select-none state))))))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/toggle-expand state)))
+                       (.then (fn [] (portal.ui.commands/select-none state)))))))
               :portal.api/ignore)}
   {:name "Portal Expand Ninth"
    :key "9"
@@ -287,16 +291,16 @@
                (str
                 '(let [state portal.ui.state/state]
                    (-> (portal.ui.commands/select-none state)
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/select-child state))
-                       (.then #(portal.ui.commands/toggle-expand state))
-                       (.then #(portal.ui.commands/select-none state))))))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/select-child state)))
+                       (.then (fn [] (portal.ui.commands/toggle-expand state)))
+                       (.then (fn [] (portal.ui.commands/select-none state)))))))
               :portal.api/ignore)}]}

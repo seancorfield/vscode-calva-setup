@@ -1,5 +1,5 @@
 (ns remote-repl
-  (:require ["ext://betterthantomorrow.calva$v0" :as calva]
+  (:require ["ext://betterthantomorrow.calva$v1" :as calva]
             ["fs" :as fs]
             ["path" :as path]
             ["vscode" :as vscode]
@@ -37,6 +37,4 @@
       (p/delay 2000)
       (connect-repl nrepl-port)
       (p/delay 1000)
-      (calva/repl.evaluateCode "clj"
-                               (pr-str (list 'spit ".portal/vs-code.edn" config))
-                               {} #js {:ns "user"}))))
+      (calva/repl.evaluateCode "clj" (pr-str (list 'spit ".portal/vs-code.edn" config))))))

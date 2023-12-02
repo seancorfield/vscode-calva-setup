@@ -1,5 +1,5 @@
 (ns tap
-  (:require ["ext://betterthantomorrow.calva$v0" :as calva]
+  (:require ["ext://betterthantomorrow.calva$v1" :as calva]
             ["vscode" :as vscode]
             [promesa.core :as p]))
 

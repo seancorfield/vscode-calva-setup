@@ -1,5 +1,6 @@
 (ns clojuredocs
-  (:require ["ext://betterthantomorrow.calva$v0.repl" :refer [evaluateCode]]
+  (:require ["ext://betterthantomorrow.calva$v1.repl" :refer [evaluateCode]]
+            ["ext://betterthantomorrow.calva$v1.document" :refer [getNamespace]]
             ["vscode" :as vscode]
             [clojure.edn :as edn]
             [promesa.core :as p]))
@@ -21,7 +22,7 @@
    "))"))
 
 (-> (p/let [code (clojuredocs-url (selected-text))
-            resp (evaluateCode "clj" code {} #js {:ns "user"})
+            resp (evaluateCode "clj" code (getNamespace))
             url  (edn/read-string (.-result resp))]
       (vscode/commands.executeCommand "simpleBrowser.show" url))
     (p/catch (fn [e] (println (str "Evaluation error: " e)))))

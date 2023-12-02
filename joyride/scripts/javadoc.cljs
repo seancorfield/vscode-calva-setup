@@ -1,5 +1,6 @@
 (ns javadoc
-  (:require ["ext://betterthantomorrow.calva$v0.repl" :refer [evaluateCode]]
+  (:require ["ext://betterthantomorrow.calva$v1.repl" :refer [evaluateCode]]
+            ["ext://betterthantomorrow.calva$v1.document" :refer [getNamespace]]
             ["vscode" :as vscode]
             [clojure.edn :as edn]
             [clojure.string :as str]
@@ -25,7 +26,7 @@
    "))"))
 
 (-> (p/let [code (javadoc-url (selected-text))
-            resp (evaluateCode "clj" code {} #js {:ns "user"})
+            resp (evaluateCode "clj" code (getNamespace))
             url  (edn/read-string (.-result resp))]
       (if (str/starts-with? url "https://www.google.com")
         (vscode/commands.executeCommand "vscode.open" url)

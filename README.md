@@ -6,7 +6,7 @@ configuration for use with
 [Joyride](https://marketplace.visualstudio.com/items?itemName=betterthantomorrow.joyride),
 and [clojure-lsp](https://clojure-lsp.io/).
 
-> Note: Some of the code here may well assume you are using the latest version of Calva and Joyride -- I tend to update my extensions regularly and also update my configuration to take advantage of new features.
+> Note: Some of the code here may well assume you are using the latest version of Calva and Joyride -- I tend to update my extensions regularly and also update my configuration to take advantage of new features. Specifically, the Joyride code here depends on the `v1` API in Calva, 2.0.401 or later!
 
 * `keybindings.json` is my cross-platform key mappings,
 * `settings.json` is my user-level settings (consider this optional -- the `calva/config.edn` file with the `customREPLCommandSnippets` is the interesting part).

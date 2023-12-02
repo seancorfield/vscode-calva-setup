@@ -1,23 +1,15 @@
 (ns ns
-  (:require ["ext://betterthantomorrow.calva$v0" :as calva]
-            ["vscode" :as vscode]
-            [promesa.core :as p]))
+  (:require ["ext://betterthantomorrow.calva$v1" :as calva]))
 
-(p/let [p (-> vscode/window.activeTextEditor
-              .-document
-              (.positionAt 0))
-        ns-form (-> (calva/ranges.currentForm vscode/window.activeTextEditor p)
-                    second)]
-  (-> (calva/repl.evaluateCode (calva/repl.currentSessionKey)
-                               "(clojure.core/tap> \"evaluating ns...\")"
-                               {} #js {:ns "user"})
-      (.then (fn [_]
-               (calva/repl.evaluateCode (calva/repl.currentSessionKey) ns-form
-                                        {} #js {:ns "user"})))
-      (.then (fn [ns-val]
-               (calva/repl.evaluateCode
-                (calva/repl.currentSessionKey)
-                (str "(clojure.core/tap> \""
-                     (.-ns ns-val)
-                     " evaluated\")")
-                {} #js {:ns "user"})))))
+(let [[ns-name ns-form] (calva/document.getNamespaceAndNsForm)]
+  (-> (calva/repl.evaluateCode "clj" (str "(clojure.core/tap> \"evaluating "
+                                          ns-name
+                                          "...\")"))
+      (.then
+       (fn [_]
+         (calva/repl.evaluateCode "clj" ns-form)))
+      (.then
+       (fn [ns-val]
+         (calva/repl.evaluateCode "clj" (str "(clojure.core/tap> \""
+                                             (.-ns ns-val)
+                                             " evaluated\")"))))))
