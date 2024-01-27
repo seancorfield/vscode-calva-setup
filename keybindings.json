@@ -101,11 +101,91 @@
       "command": "calva.clearReplHistory"
     },
     {
+      "key": "ctrl+shift+q q",
+      "command": "workbench.action.quickOpenNavigatePreviousInViewPicker",
+      "when": "inQuickOpen && inViewsPicker"
+    },
+    {
+      "key": "ctrl+shift+q",
+      "command": "-workbench.action.quickOpenNavigatePreviousInViewPicker",
+      "when": "inQuickOpen && inViewsPicker"
+    },
+    {
+      "key": "ctrl+shift+q e",
+      "command": "copilotSidebar.explain.focus"
+    },
+    {
+      "key": "ctrl+shift+q t",
+      "command": "copilotSidebar.generateTests.focus"
+    },
+    {
       "key": "ctrl+alt+k up",
       "command": "workbench.action.moveEditorToAboveGroup"
     },
     {
       "key": "ctrl+alt+k down",
       "command": "workbench.action.moveEditorToBelowGroup"
+    },
+    {
+      "key": "ctrl+alt+n ctrl+alt+f",
+      "command": "explorer.newFolder"
+    },
+    {
+      "key": "ctrl+alt+enter",
+      "command": "github.copilot.generate",
+      "when": "editorTextFocus && github.copilot.activated && !inInteractiveInput && !interactiveEditorFocused"
+    },
+    {
+      "key": "ctrl+enter",
+      "command": "-github.copilot.generate",
+      "when": "editorTextFocus && github.copilot.activated && !inInteractiveInput && !interactiveEditorFocused"
+    },
+    {
+      "key": "ctrl+shift+g ctrl+shift+s",
+      "command": "git.sync"
+    },
+    {
+      "key": "ctrl+alt+v ctrl+alt+t",
+      "command": "workbench.view.extension.test"
+    },
+    {
+      "key": "ctrl+alt+l ctrl+alt+f",
+      "command": "liveshare.follow",
+      "when": "liveshare:hasCollaborators && !liveshare:isFollowing"
+    },
+    {
+      "key": "ctrl+alt+f",
+      "command": "-liveshare.follow",
+      "when": "liveshare:hasCollaborators && !liveshare:isFollowing"
+    },
+    {
+      "key": "ctrl+alt+l ctrl+alt+/",
+      "command": "liveshare.followToTheSide",
+      "when": "liveshare:hasCollaborators"
+    },
+    {
+      "key": "ctrl+alt+/",
+      "command": "-liveshare.followToTheSide",
+      "when": "liveshare:hasCollaborators"
+    },
+    {
+      "key": "ctrl+alt+l ctrl+alt+j",
+      "command": "liveshare.join",
+      "when": "liveshare:state != 'Joined' && liveshare:state != 'Shared'"
+    },
+    {
+      "key": "ctrl+alt+j",
+      "command": "-liveshare.join",
+      "when": "liveshare:state != 'Joined' && liveshare:state != 'Shared'"
+    },
+    {
+      "key": "ctrl+alt+l ctrl+alt+f",
+      "command": "liveshare.unfollow",
+      "when": "liveshare:hasCollaborators && liveshare:isFollowing"
+    },
+    {
+      "key": "ctrl+alt+f",
+      "command": "-liveshare.unfollow",
+      "when": "liveshare:hasCollaborators && liveshare:isFollowing"
     }
 ]
