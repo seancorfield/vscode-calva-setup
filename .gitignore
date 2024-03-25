@@ -1,7 +1,8 @@
+.calva/repl.calva-repl
+.clj-kondo/.cache
+.lsp/.cache
+.portal/
 History
 globalStorage
 sync
 workspaceStorage
-.clj-kondo/.cache
-.lsp/.cache
-.portal/
