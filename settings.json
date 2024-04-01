@@ -4,7 +4,7 @@
     "editor.cursorStyle": "block",
     "editor.wordWrapColumn": 78,
     "explorer.confirmDragAndDrop": false,
-    "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
     "git.confirmSync": false,
     "[clojure]": {
@@ -21,7 +21,7 @@
         "editor.autoClosingOvertype": "always"
     },
     "yaml.schemas": {
-      "file:///home/sean/.vscode-server/extensions/atlassian.atlascode-3.0.9/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+      "file:///home/sean/.vscode-server/extensions/atlassian.atlascode-3.0.10/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
     },
     "atlascode.jira.jqlList": [
       {
@@ -56,7 +56,6 @@
       "**/.lsp/.cache/**": true,
       "**/target/classes/**": true
     },
-    "calva.autoOpenJackInTerminal": false,
     "calva.enableJSCompletions": false,
     "calva.highlight.cycleBracketColors": false,
     "calva.highlight.enableBracketColors": false,
@@ -79,7 +78,6 @@
     "task.saveBeforeRun": "never",
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.startupEditor": "newUntitledFile",
-    "git.ignoreLegacyWarning": true,
     "calva.highlight.highlightActiveIndent": false,
     "editor.guides.bracketPairs": true,
     "editor.guides.bracketPairsHorizontal": true,
@@ -146,7 +144,7 @@
     },
     "atlascode.jira.lastCreateSiteAndProject": {
       "siteId": "cf226917-740d-419c-9013-ad19765f9a1d",
-      "projectKey": "WS"
+      "projectKey": "EROS"
     },
     "github.copilot.enable": {
       "*": true,
@@ -180,7 +178,6 @@
     },
     "calva.autoConnectRepl": true,
     "remote.autoForwardPortsSource": "hybrid",
-    "editor.stickyScroll.enabled": true,
     "terminal.integrated.stickyScroll.enabled": true,
     "workbench.tree.enableStickyScroll": true,
     "liveshare.launcherClient": "visualStudioCode",
@@ -189,5 +186,19 @@
     "git.enableCommitSigning": true,
     "git.alwaysSignOff": true,
     "editor.hover.above": false,
-    "editor.hover.enabled": false
+    "editor.hover.enabled": false,
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "accessibility.voice.keywordActivation": "chatInContext",
+    "editor.stickyScroll.enabled": true,
+    "calva.paredit.multicursor": true,
+    "roc-lang.language-server.exe": "roc_language_server",
+    "calva.redirectServerOutputToRepl": false,
+    "calva.outputDestinations": {
+      "evalResults": "terminal",
+      "evalOutput": "terminal",
+      "otherOutput": "terminal"
+    },
+    "calva.autoOpenREPLWindow": false,
+    "calva.autoOpenJackInTerminal": false,
+    "calva.useLegacyReplWindowPath": false,
 }

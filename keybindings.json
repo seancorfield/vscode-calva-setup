@@ -187,5 +187,25 @@
       "key": "ctrl+alt+f",
       "command": "-liveshare.unfollow",
       "when": "liveshare:hasCollaborators && liveshare:isFollowing"
+    },
+    {
+      "key": "ctrl+alt+c up",
+      "command": "editor.action.insertCursorAbove",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "ctrl+alt+up",
+      "command": "-editor.action.insertCursorAbove",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "ctrl+alt+c down",
+      "command": "editor.action.insertCursorBelow",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "ctrl+alt+down",
+      "command": "-editor.action.insertCursorBelow",
+      "when": "editorTextFocus"
     }
 ]
