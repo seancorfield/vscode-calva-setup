@@ -89,6 +89,11 @@
       "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
     },
     {
+      "command": "paredit.insertSemiColon",
+      "key": ";",
+      "when": "calva:keybindingsEnabled && editorLangId == clojure && editorTextFocus && paredit:keyMap == strict && !editorReadOnly && !editorHasMultipleSelections && !calva:cursorInComment"
+    },
+    {
       "key": "ctrl+alt+c z",
       "command": "clojureLsp.refactor.cleanNs"
     },

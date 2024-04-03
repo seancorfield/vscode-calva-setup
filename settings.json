@@ -188,7 +188,6 @@
     "editor.hover.above": false,
     "editor.hover.enabled": false,
     "terminal.integrated.enableMultiLinePasteWarning": false,
-    "accessibility.voice.keywordActivation": "chatInContext",
     "editor.stickyScroll.enabled": true,
     "calva.paredit.multicursor": true,
     "roc-lang.language-server.exe": "roc_language_server",
@@ -201,4 +200,6 @@
     "calva.autoOpenREPLWindow": false,
     "calva.autoOpenJackInTerminal": false,
     "calva.useLegacyReplWindowPath": false,
+    "liveshare.accessibility.voiceEnabled": true,
+    "accessibility.voice.keywordActivation": "chatInContext",
 }
