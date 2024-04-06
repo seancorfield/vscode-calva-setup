@@ -212,5 +212,9 @@
       "key": "ctrl+alt+down",
       "command": "-editor.action.insertCursorBelow",
       "when": "editorTextFocus"
+    },
+    {
+      "key": "ctrl+alt+a ctrl+alt+s",
+      "command": "workbench.action.files.saveFiles"
     }
 ]
