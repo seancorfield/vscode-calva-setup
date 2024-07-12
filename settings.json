@@ -18,7 +18,8 @@
         "editor.matchBrackets": "near",
         "files.trimTrailingWhitespace": true,
         "files.trimFinalNewlines": true,
-        "editor.autoClosingOvertype": "always"
+        "editor.autoClosingOvertype": "always",
+        "diffEditor.ignoreTrimWhitespace": true
     },
     "yaml.schemas": {
       "file:///home/sean/.vscode-server/extensions/atlassian.atlascode-3.0.10/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
@@ -144,7 +145,7 @@
     },
     "atlascode.jira.lastCreateSiteAndProject": {
       "siteId": "cf226917-740d-419c-9013-ad19765f9a1d",
-      "projectKey": "EROS"
+      "projectKey": "WS"
     },
     "github.copilot.enable": {
       "*": true,
@@ -160,7 +161,6 @@
     "calva.jackInEnv": {},
     "calva.clojureLspVersion": "nightly",
     "calva.customREPLHoverSnippets": [],
-    "calva.highlight.matchedBracketStyle": null,
     "calva.useTestExplorer": true,
     "workbench.editor.empty.hint": "hidden",
     "window.density.editorTabHeight": "compact",
@@ -197,9 +197,15 @@
       "evalOutput": "terminal",
       "otherOutput": "terminal"
     },
-    "calva.autoOpenREPLWindow": false,
-    "calva.autoOpenJackInTerminal": false,
     "calva.useLegacyReplWindowPath": false,
     "liveshare.accessibility.voiceEnabled": true,
     "accessibility.voice.keywordActivation": "chatInContext",
+    "rewrap.wrappingColumn": 78,
+    "rewrap.doubleSentenceSpacing": true,
+    "gitlens.launchpad.indicator.enabled": false,
+    "github.copilot.editor.enableAutoCompletions": true,
+    "calva.autoOpenREPLWindow": false,
+    "calva.autoOpenInspector": false,
+    "calva.fiddleFilePaths": null,
+    "diffEditor.ignoreTrimWhitespace": false,
 }
