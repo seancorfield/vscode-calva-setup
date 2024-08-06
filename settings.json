@@ -1,48 +1,126 @@
 {
-    "editor.fontSize": 18,
-    "editor.tabSize": 2,
-    "editor.cursorStyle": "block",
-    "editor.wordWrapColumn": 78,
-    "explorer.confirmDragAndDrop": false,
-    "editor.fontFamily": "Fira Code",
-    "editor.fontLigatures": true,
-    "git.confirmSync": false,
-    "[clojure]": {
-
-        "editor.wordSeparators": "\t ()\"':,;~@#$%^&{}[]`",
-        "editor.autoClosingBrackets": "always",
-        "editor.autoClosingQuotes": "always",
-        "editor.formatOnType": true,
-        "editor.autoIndent": "advanced",
-        "editor.formatOnPaste": true,
-        "editor.matchBrackets": "near",
-        "files.trimTrailingWhitespace": true,
-        "files.trimFinalNewlines": true,
-        "editor.autoClosingOvertype": "always",
-        "diffEditor.ignoreTrimWhitespace": true
+    "calva.autoConnectRepl": true,
+    "calva.autoOpenInspector": false,
+    "calva.autoOpenREPLWindow": false,
+    "calva.autoStartRepl": true,
+    "calva.clojureLspVersion": "nightly",
+    "calva.customREPLHoverSnippets": [],
+    "calva.enableJSCompletions": false,
+    "calva.fiddleFilePaths": null,
+    "calva.fmt.configPath": "CLOJURE-LSP",
+    "calva.highlight.cycleBracketColors": false,
+    "calva.highlight.enableBracketColors": false,
+    "calva.highlight.highlightActiveIndent": false,
+    "calva.jackInEnv": {},
+    "calva.openBrowserWhenFigwheelStarted": false,
+    "calva.paredit.defaultKeyMap": "strict",
+    "calva.paredit.killAlsoCutsToClipboard": true,
+    "calva.paredit.multicursor": true,
+    "calva.redirectServerOutputToRepl": false,
+    "calva.referencesCodeLens.enabled": true,
+    "calva.showCalvaSaysOnStart": false,
+    "calva.showDocstringInParameterHelp": true,
+    "calva.useLegacyReplWindowPath": false,
+    "calva.useLiveShare": true,
+    "calva.useTestExplorer": true,
+    "calva.outputDestinations": {
+      "evalResults": "terminal",
+      "evalOutput": "terminal",
+      "otherOutput": "terminal"
     },
-    "yaml.schemas": {
-      "file:///home/sean/.vscode-server/extensions/atlassian.atlascode-3.0.10/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    "calva.autoEvaluateCode": {
+      "onConnect": {
+        "clj": "(when-let [requires (resolve 'clojure.main/repl-requires)] (clojure.core/apply clojure.core/require @requires))",
+        "cljs": "(try (require '[cljs.repl :refer [apropos dir doc find-doc print-doc pst source]]) (catch :default e (js/console.warn \"Failed to require cljs.repl utilities:\" (.-message e))))"
+      },
+      "onFileLoaded": {
+        "clj": null,
+        "cljs": null
+      }
     },
-    "atlascode.jira.jqlList": [
+    "calva.myCljAliases": [
+      ":1.12",
+      ":portal",
+      ":dev/repl"
+    ],
+    "calva.replConnectSequences": [
       {
-        "id": "eb6b067c-8124-43d4-aa91-41052ca528d9",
-        "enabled": true,
-        "name": "My wsnetworks Issues",
-        "query": "((assignee = currentUser() AND status != Backlog) OR (reporter = currentUser() AND createdDate > startOfDay())) AND type != Epic AND status in (Backlog,\"To Do\",\"New\",\"More Information Needed\",\"Selected For Development\",\"In Progress\") ORDER BY status ASC, lastViewed DESC",
-        "siteId": "cf226917-740d-419c-9013-ad19765f9a1d",
-        "monitor": true
+        "name": "Assumed deps.edn Jack-In",
+        "projectType": "deps.edn",
+        "autoSelectForJackIn": true,
+        "menuSelections": {
+          "cljAliases": ["1.12", "dev/repl", "portal", "test"]
+        }
+      },
+      {
+        "name": "Assumed deps.edn Connect",
+        "projectType": "deps.edn",
+        "autoSelectForConnect": true
       }
     ],
-    "atlascode.jira.statusbar.showProduct": false,
-    "atlascode.jira.statusbar.showUser": false,
-    "atlascode.jira.statusbar.enabled": true,
-    "atlascode.jira.statusbar.showLogin": false,
-    "atlascode.jira.explorer.nestSubtasks": false,
-    "atlascode.bitbucket.enabled": true,
-    "atlascode.bitbucket.statusbar.enabled": false,
-    "atlascode.bitbucket.pipelines.explorerEnabled": false,
-    "atlascode.bitbucket.issues.explorerEnabled": false,
+    "[clojure]": {
+      "diffEditor.ignoreTrimWhitespace": true,
+      "editor.autoClosingBrackets": "always",
+      "editor.autoClosingOvertype": "always",
+      "editor.autoClosingQuotes": "always",
+      "editor.autoIndent": "advanced",
+      "editor.formatOnPaste": true,
+      "editor.formatOnType": true,
+      "editor.matchBrackets": "near",
+      "editor.wordSeparators": "\t ()\"':,;~@#$%^&{}[]`",
+      "files.trimFinalNewlines": true,
+      "files.trimTrailingWhitespace": true,
+    },
+    "accessibility.voice.keywordActivation": "chatInContext",
+    "clock.alignment": "Right",
+    "clock.format": "HH:MM:ss",
+    "clojure.trace.server": "messages",
+    "cSpell.userWords": [
+      "classloader",
+      "classpath",
+      "Cognitect",
+      "pluggable",
+      "Polylith",
+      "subproject",
+      "swappable",
+      "uberjars"
+    ],
+    "diffEditor.codeLens": true,
+    "diffEditor.diffAlgorithm": "advanced",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.accessibilitySupport": "off",
+    "editor.bracketPairColorization.enabled": true,
+    "editor.cursorStyle": "block",
+    "editor.detectIndentation": false,
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 18,
+    "editor.guides.bracketPairs": true,
+    "editor.guides.bracketPairsHorizontal": true,
+    "editor.hover.above": false,
+    "editor.hover.delay": 1000,
+    "editor.hover.enabled": false,
+    "editor.inlineSuggest.enabled": true,
+    "editor.largeFileOptimizations": false,
+    "editor.multiDocumentOccurrencesHighlight": true,
+    "editor.stickyScroll.enabled": true,
+    "editor.suggestSelection": "first",
+    "editor.tabSize": 2,
+    "editor.wordWrapColumn": 78,
+    "editor.rulers": [
+      80
+      ],
+    "emmet.showExpandedAbbreviation": "never",
+    "explorer.confirmDragAndDrop": false,
+    "explorer.excludeGitIgnore": true,
+    "extensions.ignoreRecommendations": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "files.associations": {
+      "*.cljr": "clojure",
+      "*.clj_kondo": "clojure"
+    },
     "files.exclude": {
       "**/.classpath": true,
       "**/.clj-kondo/.cache": true,
@@ -57,155 +135,83 @@
       "**/.lsp/.cache/**": true,
       "**/target/classes/**": true
     },
-    "calva.enableJSCompletions": false,
-    "calva.highlight.cycleBracketColors": false,
-    "calva.highlight.enableBracketColors": false,
-    "calva.openBrowserWhenFigwheelStarted": false,
-    "calva.paredit.defaultKeyMap": "strict",
-    "calva.paredit.killAlsoCutsToClipboard": true,
-    "calva.showCalvaSaysOnStart": false,
-    "calva.showDocstringInParameterHelp": true,
-    "clojure.trace.server": "messages",
-    "editor.bracketPairColorization.enabled": true,
-    "editor.detectIndentation": false,
-    "editor.hover.delay": 1000,
-    "editor.largeFileOptimizations": false,
-    "editor.suggestSelection": "first",
-    "emmet.showExpandedAbbreviation": "never",
-    "extensions.ignoreRecommendations": true,
-    "git.pullTags": false,
-    "redhat.telemetry.enabled": true,
-    "security.workspace.trust.untrustedFiles": "open",
-    "task.saveBeforeRun": "never",
-    "workbench.editor.highlightModifiedTabs": true,
-    "workbench.startupEditor": "newUntitledFile",
-    "calva.highlight.highlightActiveIndent": false,
-    "editor.guides.bracketPairs": true,
-    "editor.guides.bracketPairsHorizontal": true,
-    "settingsSync.ignoredSettings": [
-      "yaml.schemas",
-      "editor.fontSize"
-    ],
-    "git.enableSmartCommit": true,
-    "atlascode.jira.enabled": true,
-    "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": true,
-    "explorer.excludeGitIgnore": true,
-    "search.exclude": {
-      "**/.calva/output-window/output.calva-repl": true,
-      ".calva/output-window/output.calva-repl": true
-    },
     "git.alwaysShowStagedChangesResourceGroup": true,
-    "editor.inlineSuggest.enabled": true,
-    "editor.rulers": [
-    80
-    ],
-    "cSpell.userWords": [
-      "classloader",
-      "classpath",
-      "Cognitect",
-      "pluggable",
-      "Polylith",
-      "subproject",
-      "swappable",
-      "uberjars"
-    ],
-    "editor.accessibilitySupport": "off",
+    "git.alwaysSignOff": true,
+    "git.confirmSync": false,
+    "git.enableCommitSigning": true,
+    "git.enableSmartCommit": true,
     "git.openRepositoryInParentFolders": "always",
-    "clock.alignment": "Right",
-    "clock.format": "HH:MM:ss",
-    "jest.jestCommandLine": "npx yarn jest",
-    "files.insertFinalNewline": true,
+    "git.pullTags": false,
+    "github.copilot-labs.showBrushesLenses": true,
     "github.copilot-labs.showTestGenerationLenses": true,
-    "diffEditor.codeLens": true,
-    "diffEditor.diffAlgorithm": "advanced",
-    "javascript.referencesCodeLens.enabled": true,
-    "javascript.referencesCodeLens.showOnAllFunctions": true,
-    "calva.referencesCodeLens.enabled": true,
-    "files.associations": {
-      "*.cljr": "clojure",
-      "*.clj_kondo": "clojure"
-    },
-    "calva.myCljAliases": [
-      ":1.12",
-      ":portal",
-      ":dev/repl"
-    ],
-    "calva.autoEvaluateCode": {
-
-
-      "onConnect": {
-        "clj": "(when-let [requires (resolve 'clojure.main/repl-requires)] (clojure.core/apply clojure.core/require @requires))",
-        "cljs": "(try (require '[cljs.repl :refer [apropos dir doc find-doc print-doc pst source]]) (catch :default e (js/console.warn \"Failed to require cljs.repl utilities:\" (.-message e))))"
-      },
-      "onFileLoaded": {
-        "clj": null,
-        "cljs": null
-      }
-    },
-    "atlascode.jira.lastCreateSiteAndProject": {
-      "siteId": "cf226917-740d-419c-9013-ad19765f9a1d",
-      "projectKey": "WS"
-    },
+    "github.copilot.editor.enableAutoCompletions": true,
     "github.copilot.enable": {
       "*": true,
       "plaintext": false,
       "markdown": true,
       "scminput": false
     },
-    "github.copilot-labs.showBrushesLenses": true,
-    "workbench.preferredDarkColorTheme": "Default Dark+",
-    "workbench.colorTheme": "Default Dark+",
-    "scm.inputFontFamily": "editor",
-    "calva.fmt.configPath": "CLOJURE-LSP",
-    "calva.jackInEnv": {},
-    "calva.clojureLspVersion": "nightly",
-    "calva.customREPLHoverSnippets": [],
-    "calva.useTestExplorer": true,
-    "workbench.editor.empty.hint": "hidden",
-    "window.density.editorTabHeight": "compact",
-    "workbench.editor.pinnedTabsOnSeparateRow": true,
-    "inlineChat.showDiff": false,
-    "workbench.activityBar.location": "top",
-    "editor.multiDocumentOccurrencesHighlight": true,
-    "window.zoomLevel": -1,
-    "terminal.integrated.shellIntegration.history": 1000,
-    "calva.prettyPrintingOptions": {
-      "printEngine": "calva",
-      "enabled": true,
-      "width": 120,
-      "maxLength": 50
-    },
-    "calva.autoConnectRepl": true,
-    "remote.autoForwardPortsSource": "hybrid",
-    "terminal.integrated.stickyScroll.enabled": true,
-    "workbench.tree.enableStickyScroll": true,
-    "liveshare.launcherClient": "visualStudioCode",
-    "liveshare.guestApprovalRequired": true,
-    "calva.useLiveShare": true,
-    "git.enableCommitSigning": true,
-    "git.alwaysSignOff": true,
-    "editor.hover.above": false,
-    "editor.hover.enabled": false,
-    "terminal.integrated.enableMultiLinePasteWarning": false,
-    "editor.stickyScroll.enabled": true,
-    "calva.paredit.multicursor": true,
-    "roc-lang.language-server.exe": "roc_language_server",
-    "calva.redirectServerOutputToRepl": false,
-    "calva.outputDestinations": {
-      "evalResults": "terminal",
-      "evalOutput": "terminal",
-      "otherOutput": "terminal"
-    },
-    "calva.useLegacyReplWindowPath": false,
-    "liveshare.accessibility.voiceEnabled": true,
-    "accessibility.voice.keywordActivation": "chatInContext",
-    "rewrap.wrappingColumn": 78,
-    "rewrap.doubleSentenceSpacing": true,
     "gitlens.launchpad.indicator.enabled": false,
-    "github.copilot.editor.enableAutoCompletions": true,
-    "calva.autoOpenREPLWindow": false,
-    "calva.autoOpenInspector": false,
-    "calva.fiddleFilePaths": null,
-    "diffEditor.ignoreTrimWhitespace": false,
+    "inlineChat.showDiff": false,
+    "javascript.referencesCodeLens.enabled": true,
+    "javascript.referencesCodeLens.showOnAllFunctions": true,
+    "jest.jestCommandLine": "npx yarn jest",
+    "liveshare.accessibility.voiceEnabled": true,
+    "liveshare.guestApprovalRequired": true,
+    "liveshare.launcherClient": "visualStudioCode",
+    "redhat.telemetry.enabled": true,
+    "remote.autoForwardPortsSource": "hybrid",
+    "rewrap.doubleSentenceSpacing": true,
+    "rewrap.wrappingColumn": 78,
+    "scm.inputFontFamily": "editor",
+    "search.exclude": {
+      "**/.calva/output-window/output.calva-repl": true,
+      ".calva/output-window/output.calva-repl": true
+    },
+    "security.workspace.trust.untrustedFiles": "open",
+    "settingsSync.ignoredSettings": [
+      "yaml.schemas",
+      "editor.fontSize"
+    ],
+    "task.saveBeforeRun": "never",
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "terminal.integrated.shellIntegration.history": 1000,
+    "terminal.integrated.stickyScroll.enabled": true,
+    "window.density.editorTabHeight": "compact",
+    "window.zoomLevel": -1,
+    "workbench.activityBar.location": "top",
+    "workbench.colorTheme": "Default Dark+",
+    "workbench.editor.empty.hint": "hidden",
+    "workbench.editor.highlightModifiedTabs": true,
+    "workbench.editor.pinnedTabsOnSeparateRow": true,
+    "workbench.preferredDarkColorTheme": "Default Dark+",
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.tree.enableStickyScroll": true,
+    "yaml.schemas": {
+      "file:///home/sean/.vscode-server/extensions/atlassian.atlascode-3.0.10/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    },
+    "atlascode.bitbucket.enabled": true,
+    "atlascode.bitbucket.issues.explorerEnabled": false,
+    "atlascode.bitbucket.pipelines.explorerEnabled": false,
+    "atlascode.bitbucket.statusbar.enabled": false,
+    "atlascode.jira.enabled": true,
+    "atlascode.jira.explorer.nestSubtasks": false,
+    "atlascode.jira.statusbar.enabled": true,
+    "atlascode.jira.statusbar.showLogin": false,
+    "atlascode.jira.statusbar.showProduct": false,
+    "atlascode.jira.statusbar.showUser": false,
+    "atlascode.jira.jqlList": [
+      {
+        "id": "eb6b067c-8124-43d4-aa91-41052ca528d9",
+        "enabled": true,
+        "name": "My wsnetworks Issues",
+        "query": "((assignee = currentUser() AND status != Backlog) OR (reporter = currentUser() AND createdDate > startOfDay())) AND type != Epic AND status in (Backlog,\"To Do\",\"New\",\"More Information Needed\",\"Selected For Development\",\"In Progress\") ORDER BY status ASC, lastViewed DESC",
+        "siteId": "cf226917-740d-419c-9013-ad19765f9a1d",
+        "monitor": true
+      }
+    ],
+    "atlascode.jira.lastCreateSiteAndProject": {
+      "siteId": "cf226917-740d-419c-9013-ad19765f9a1d",
+      "projectKey": "WS"
+    },
 }
