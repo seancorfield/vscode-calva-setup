@@ -23,11 +23,6 @@
     "calva.useLegacyReplWindowPath": false,
     "calva.useLiveShare": true,
     "calva.useTestExplorer": true,
-    "calva.outputDestinations": {
-      "evalResults": "terminal",
-      "evalOutput": "terminal",
-      "otherOutput": "terminal"
-    },
     "calva.autoEvaluateCode": {
       "onConnect": {
         "clj": "(when-let [requires (resolve 'clojure.main/repl-requires)] (clojure.core/apply clojure.core/require @requires))",
@@ -38,11 +33,27 @@
         "cljs": null
       }
     },
+    "calva.jackInDependencyVersions": {
+      "nrepl": "1.3.0",
+      "cider-nrepl": "0.49.3",
+      "cider/piggieback": "0.5.3"
+    },
     "calva.myCljAliases": [
       ":1.12",
       ":portal",
       ":dev/repl"
     ],
+    "calva.outputDestinations": {
+      "evalResults": "terminal",
+      "evalOutput": "terminal",
+      "otherOutput": "terminal"
+    },
+    "calva.prettyPrintingOptions": {
+      "printEngine": "calva",
+      "enabled": true,
+      "width": 120,
+      "maxLength": 50
+    },
     "calva.replConnectSequences": [
       {
         "name": "Assumed deps.edn Jack-In",
@@ -138,7 +149,6 @@
     "git.alwaysShowStagedChangesResourceGroup": true,
     "git.alwaysSignOff": true,
     "git.confirmSync": false,
-    "git.enableCommitSigning": true,
     "git.enableSmartCommit": true,
     "git.openRepositoryInParentFolders": "always",
     "git.pullTags": false,
@@ -151,7 +161,10 @@
       "markdown": true,
       "scminput": false
     },
+    "gitlens.advanced.blame.delayAfterEdit": 10000,
     "gitlens.launchpad.indicator.enabled": false,
+    "gitlens.plusFeatures.enabled": false,
+    "gitlens.virtualRepositories.enabled": false,
     "inlineChat.showDiff": false,
     "javascript.referencesCodeLens.enabled": true,
     "javascript.referencesCodeLens.showOnAllFunctions": true,
