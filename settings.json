@@ -58,15 +58,17 @@
       {
         "name": "Assumed deps.edn Jack-In",
         "projectType": "deps.edn",
-        "autoSelectForJackIn": true,
+        "cljsType": "none",
+        "autoSelectForJackIn": false,
+        "projectRootPath": ["."],
         "menuSelections": {
-          "cljAliases": ["1.12", "dev/repl", "portal", "test"]
+          "cljAliases": ["1.12", "dev/repl", "portal"]
         }
       },
       {
         "name": "Assumed deps.edn Connect",
         "projectType": "deps.edn",
-        "autoSelectForConnect": true
+        "autoSelectForConnect": false
       }
     ],
     "[clojure]": {
@@ -149,6 +151,7 @@
     "git.alwaysShowStagedChangesResourceGroup": true,
     "git.alwaysSignOff": true,
     "git.confirmSync": false,
+    "git.enableCommitSigning": true,
     "git.enableSmartCommit": true,
     "git.openRepositoryInParentFolders": "always",
     "git.pullTags": false,
