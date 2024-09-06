@@ -59,7 +59,7 @@
         "name": "Assumed deps.edn Jack-In",
         "projectType": "deps.edn",
         "cljsType": "none",
-        "autoSelectForJackIn": false,
+        "autoSelectForJackIn": true,
         "projectRootPath": ["."],
         "menuSelections": {
           "cljAliases": ["1.12", "dev/repl", "portal"]
@@ -68,7 +68,7 @@
       {
         "name": "Assumed deps.edn Connect",
         "projectType": "deps.edn",
-        "autoSelectForConnect": false
+        "autoSelectForConnect": true
       }
     ],
     "[clojure]": {
