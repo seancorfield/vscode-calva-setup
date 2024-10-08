@@ -16,6 +16,10 @@
   (str
    "(let [c-o-o " code
    " ^Class c (if (instance? Class c-o-o) c-o-o (class c-o-o))] "
+   "  ((requiring-resolve 'clojure.java.javadoc/add-remote-javadoc)"
+   "   \"java.\" \"https://docs.oracle.com/en/java/javase/21/docs/api/%s/\")"
+   "  ((requiring-resolve 'clojure.java.javadoc/add-remote-javadoc)"
+   "   \"javax.\" \"https://docs.oracle.com/en/java/javase/21/docs/api/%s/\")"
    "  (->"
    "   ((requiring-resolve 'clojure.java.javadoc/javadoc-url)"
    "    (.getName c))"
