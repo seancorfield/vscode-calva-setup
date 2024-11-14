@@ -6,8 +6,16 @@
               :aliases (read-string (str "[" (read-line) "]"))))}
   {:name "Run Current Test"
    :key "c"
-   :snippet (binding [clojure.test/*test-out* *out*]
-              (clojure.test/run-test $top-level-defined-symbol))}
+   :snippet (let [crt (try (requiring-resolve 'clojure.test/run-test-var)
+                           (catch Exception _))
+                  lrt (try (requiring-resolve 'lazytest.repl/run-test-var)
+                           (catch Exception _))]
+              (binding [clojure.test/*test-out* *out*]
+                (cond->> {}
+                  crt
+                  (merge-with + (crt (var $top-level-defined-symbol)))
+                  lrt
+                  (merge-with + (lrt (var $top-level-defined-symbol))))))}
   {:name "Tap Define Binding"
    :key "d"
    :snippet (tap> (def $selection))}
@@ -105,19 +113,34 @@
                '$ns))}
   {:name "Run Tests"
    :key "t"
-   :snippet (do
+   :snippet (let [crt (try (requiring-resolve 'clojure.test/run-tests)
+                           (catch Exception _))
+                  lrt (try (requiring-resolve 'lazytest.repl/run-tests)
+                           (catch Exception _))]
               (tap> "Testing $ns... ")
               (require '$ns)
-              (clojure.test/run-tests '$ns))}
+              (cond->> {}
+                crt
+                (merge-with + (crt '$ns))
+                lrt
+                (merge-with + (lrt '$ns))))}
   {:name "Run Tests For Source"
    :key "x"
-   :snippet (some (fn [seg]
-                    (let [nt (symbol (str "$ns-" seg))]
-                      (when (try (require nt) true
-                                 (catch Throwable _))
-                        (tap> (str "Testing " nt "... "))
-                        (clojure.test/run-tests nt))))
-                  ["test" "expectations"])}
+   :snippet (let [crt (try (requiring-resolve 'clojure.test/run-tests)
+                           (catch Exception _))
+                  lrt (try (requiring-resolve 'lazytest.repl/run-tests)
+                           (catch Exception _))]
+              (some (fn [seg]
+                      (let [nt (symbol (str "$ns-" seg))]
+                        (when (try (require nt) true
+                                   (catch Throwable _))
+                          (tap> (str "Testing " nt "... "))
+                          (cond->> {}
+                            crt
+                            (merge-with + (crt nt))
+                            lrt
+                            (merge-with + (lrt nt))))))
+                    ["test" "expectations"]))}
   {:name "Tap Namespace Cleanup"
    :key "z"
    :snippet (tap>
