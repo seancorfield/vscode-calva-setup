@@ -156,6 +156,9 @@
     "git.pullTags": false,
     "github.copilot-labs.showBrushesLenses": true,
     "github.copilot-labs.showTestGenerationLenses": true,
+    "github.copilot.chat.reviewSelection.instructions": [
+      {"text":"Do not suggest splitting let into multiple bindings"}
+    ],
     "github.copilot.editor.enableAutoCompletions": true,
     "github.copilot.enable": {
       "*": true,
@@ -164,7 +167,9 @@
       "scminput": false
     },
     "gitlens.advanced.blame.delayAfterEdit": 10000,
+    "gitlens.currentLine.enabled": false,
     "gitlens.launchpad.indicator.enabled": false,
+    "gitlens.mode.active": "zen",
     "gitlens.plusFeatures.enabled": false,
     "gitlens.virtualRepositories.enabled": false,
     "inlineChat.showDiff": false,

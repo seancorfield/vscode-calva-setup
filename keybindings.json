@@ -211,5 +211,19 @@
     {
       "key": "ctrl+alt+a ctrl+alt+s",
       "command": "workbench.action.files.saveFiles"
+    },
+    {
+      "key": "ctrl+alt+right",
+      "command": "editor.action.inlineSuggest.acceptNextWord",
+      "when": "inlineSuggestionVisible && !editorReadonly"
+    },
+    {
+      "key": "ctrl+right",
+      "command": "-editor.action.inlineSuggest.acceptNextWord",
+      "when": "inlineSuggestionVisible && !editorReadonly"
+    },
+    {
+      "key": "ctrl+shift+g ctrl+shift+b",
+      "command": "gitlens.toggleLineBlame"
     }
 ]
