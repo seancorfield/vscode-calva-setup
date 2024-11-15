@@ -9,13 +9,16 @@
    :snippet (let [crt (try (requiring-resolve 'clojure.test/run-test-var)
                            (catch Exception _))
                   lrt (try (requiring-resolve 'lazytest.repl/run-test-var)
+                           (catch Exception _))
+                  lrp (try @(requiring-resolve 'lazytest.reporters/nested)
                            (catch Exception _))]
               (binding [clojure.test/*test-out* *out*]
                 (cond->> {}
                   crt
                   (merge-with + (crt (var $top-level-defined-symbol)))
                   lrt
-                  (merge-with + (lrt (var $top-level-defined-symbol))))))}
+                  (merge-with + (lrt (var $top-level-defined-symbol)
+                                     {:reporters [lrp]})))))}
   {:name "Tap Define Binding"
    :key "d"
    :snippet (tap> (def $selection))}
@@ -116,6 +119,8 @@
    :snippet (let [crt (try (requiring-resolve 'clojure.test/run-tests)
                            (catch Exception _))
                   lrt (try (requiring-resolve 'lazytest.repl/run-tests)
+                           (catch Exception _))
+                  lrp (try @(requiring-resolve 'lazytest.reporters/nested)
                            (catch Exception _))]
               (tap> "Testing $ns... ")
               (require '$ns)
@@ -123,12 +128,14 @@
                 crt
                 (merge-with + (crt '$ns))
                 lrt
-                (merge-with + (lrt '$ns))))}
+                (merge-with + (lrt '$ns {:reporters [lrp]}))))}
   {:name "Run Tests For Source"
    :key "x"
    :snippet (let [crt (try (requiring-resolve 'clojure.test/run-tests)
                            (catch Exception _))
                   lrt (try (requiring-resolve 'lazytest.repl/run-tests)
+                           (catch Exception _))
+                  lrp (try @(requiring-resolve 'lazytest.reporters/nested)
                            (catch Exception _))]
               (some (fn [seg]
                       (let [nt (symbol (str "$ns-" seg))]
@@ -139,7 +146,7 @@
                             crt
                             (merge-with + (crt nt))
                             lrt
-                            (merge-with + (lrt nt))))))
+                            (merge-with + (lrt nt {:reporters [lrp]}))))))
                     ["test" "expectations"]))}
   {:name "Tap Namespace Cleanup"
    :key "z"
