@@ -11,14 +11,17 @@
                   lrt (try (requiring-resolve 'lazytest.repl/run-test-var)
                            (catch Exception _))
                   lrp (try @(requiring-resolve 'lazytest.reporters/nested)
-                           (catch Exception _))]
+                           (catch Exception _))
+                  rks (fn [summary]
+                        ((requiring-resolve 'clojure.set/rename-keys)
+                         summary {:total :test}))]
               (binding [clojure.test/*test-out* *out*]
                 (cond->> {}
                   crt
                   (merge-with + (crt (var $top-level-defined-symbol)))
                   lrt
-                  (merge-with + (lrt (var $top-level-defined-symbol)
-                                     {:reporters [lrp]})))))}
+                  (merge-with + (rks (lrt (var $top-level-defined-symbol)
+                                          {:reporters [lrp]}))))))}
   {:name "Tap Define Binding"
    :key "d"
    :snippet (tap> (def $selection))}
@@ -121,14 +124,17 @@
                   lrt (try (requiring-resolve 'lazytest.repl/run-tests)
                            (catch Exception _))
                   lrp (try @(requiring-resolve 'lazytest.reporters/nested)
-                           (catch Exception _))]
+                           (catch Exception _))
+                  rks (fn [summary]
+                        ((requiring-resolve 'clojure.set/rename-keys)
+                         summary {:total :test}))]
               (tap> "Testing $ns... ")
               (require '$ns)
               (cond->> {}
                 crt
                 (merge-with + (crt '$ns))
                 lrt
-                (merge-with + (lrt '$ns {:reporters [lrp]}))))}
+                (merge-with + (rks (lrt '$ns {:reporters [lrp]})))))}
   {:name "Run Tests For Source"
    :key "x"
    :snippet (let [crt (try (requiring-resolve 'clojure.test/run-tests)
@@ -136,7 +142,10 @@
                   lrt (try (requiring-resolve 'lazytest.repl/run-tests)
                            (catch Exception _))
                   lrp (try @(requiring-resolve 'lazytest.reporters/nested)
-                           (catch Exception _))]
+                           (catch Exception _))
+                  rks (fn [summary]
+                        ((requiring-resolve 'clojure.set/rename-keys)
+                         summary {:total :test}))]
               (some (fn [seg]
                       (let [nt (symbol (str "$ns-" seg))]
                         (when (try (require nt) true
@@ -146,7 +155,7 @@
                             crt
                             (merge-with + (crt nt))
                             lrt
-                            (merge-with + (lrt nt {:reporters [lrp]}))))))
+                            (merge-with + (rks (lrt nt {:reporters [lrp]})))))))
                     ["test" "expectations"]))}
   {:name "Tap Namespace Cleanup"
    :key "z"
