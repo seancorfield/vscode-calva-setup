@@ -18,7 +18,8 @@
                   crt
                   (merge-with + (crt (var $top-level-defined-symbol)))
                   lrt
-                  (merge-with + (rks (lrt (var $top-level-defined-symbol)))))))}
+                  (merge-with + (rks (lrt (var $top-level-defined-symbol)
+                                          {:output 'nested}))))))}
   {:name "Tap Define Binding"
    :key "d"
    :snippet (tap> (def $selection))}
