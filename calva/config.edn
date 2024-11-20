@@ -10,8 +10,6 @@
                            (catch Exception _))
                   lrt (try (requiring-resolve 'lazytest.repl/run-test-var)
                            (catch Exception _))
-                  lrp (try @(requiring-resolve 'lazytest.reporters/nested)
-                           (catch Exception _))
                   rks (fn [summary]
                         ((requiring-resolve 'clojure.set/rename-keys)
                          summary {:total :test}))]
@@ -20,8 +18,7 @@
                   crt
                   (merge-with + (crt (var $top-level-defined-symbol)))
                   lrt
-                  (merge-with + (rks (lrt (var $top-level-defined-symbol)
-                                          {:reporters [lrp]}))))))}
+                  (merge-with + (rks (lrt (var $top-level-defined-symbol)))))))}
   {:name "Tap Define Binding"
    :key "d"
    :snippet (tap> (def $selection))}
@@ -123,8 +120,6 @@
                            (catch Exception _))
                   lrt (try (requiring-resolve 'lazytest.repl/run-tests)
                            (catch Exception _))
-                  lrp (try @(requiring-resolve 'lazytest.reporters/nested)
-                           (catch Exception _))
                   rks (fn [summary]
                         ((requiring-resolve 'clojure.set/rename-keys)
                          summary {:total :test}))]
@@ -134,14 +129,12 @@
                 crt
                 (merge-with + (crt '$ns))
                 lrt
-                (merge-with + (rks (lrt '$ns {:reporters [lrp]})))))}
+                (merge-with + (rks (lrt '$ns {:output 'dots})))))}
   {:name "Run Tests For Source"
    :key "x"
    :snippet (let [crt (try (requiring-resolve 'clojure.test/run-tests)
                            (catch Exception _))
                   lrt (try (requiring-resolve 'lazytest.repl/run-tests)
-                           (catch Exception _))
-                  lrp (try @(requiring-resolve 'lazytest.reporters/nested)
                            (catch Exception _))
                   rks (fn [summary]
                         ((requiring-resolve 'clojure.set/rename-keys)
@@ -155,7 +148,7 @@
                             crt
                             (merge-with + (crt nt))
                             lrt
-                            (merge-with + (rks (lrt nt {:reporters [lrp]})))))))
+                            (merge-with + (rks (lrt nt {:output 'dots})))))))
                     ["test" "expectations"]))}
   {:name "Tap Namespace Cleanup"
    :key "z"
