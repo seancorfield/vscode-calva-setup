@@ -62,7 +62,7 @@
         "autoSelectForJackIn": true,
         "projectRootPath": ["."],
         "menuSelections": {
-          "cljAliases": ["1.12", "dev/repl", "portal"]
+          "cljAliases": ["1.12", "dev/repl", "portal", "test", "no-main"]
         }
       },
       {
@@ -98,9 +98,14 @@
       "swappable",
       "uberjars"
     ],
+    "cSpell.diagnosticLevel": "Hint",
+    "cSpell.diagnosticLevelFlaggedWords": "Hint",
+    "cSpell.textDecoration": "underline dotted lightblue",
+    "cSpell.textDecorationColor": "lightblue",
+    "cSpell.overviewRulerColor": "lightblue",
     "diffEditor.codeLens": true,
     "diffEditor.diffAlgorithm": "advanced",
-    "diffEditor.ignoreTrimWhitespace": false,
+    "diffEditor.ignoreTrimWhitespace": true,
     "editor.accessibilitySupport": "off",
     "editor.bracketPairColorization.enabled": true,
     "editor.cursorStyle": "block",
@@ -207,7 +212,7 @@
     "workbench.startupEditor": "newUntitledFile",
     "workbench.tree.enableStickyScroll": true,
     "yaml.schemas": {
-      "file:///home/sean/.vscode-server/extensions/atlassian.atlascode-3.0.10/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+      "file:///home/sean/.vscode-server/extensions/atlassian.atlascode-3.0.13/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
     },
     "atlascode.bitbucket.enabled": true,
     "atlascode.bitbucket.issues.explorerEnabled": false,
@@ -224,7 +229,7 @@
         "id": "eb6b067c-8124-43d4-aa91-41052ca528d9",
         "enabled": true,
         "name": "My wsnetworks Issues",
-        "query": "((assignee = currentUser() AND status != Backlog) OR (reporter = currentUser() AND createdDate > startOfDay())) AND type != Epic AND status in (Backlog,\"To Do\",\"New\",\"More Information Needed\",\"Selected For Development\",\"In Progress\") ORDER BY status ASC, lastViewed DESC",
+        "query": "((assignee = currentUser() AND status != Backlog AND status != 'To Do') OR (reporter = currentUser() AND createdDate > startOfDay())) AND type != Epic AND status in (Backlog,\"To Do\",\"New\",\"More Information Needed\",\"Selected For Development\",\"In Progress\") ORDER BY status ASC, lastViewed DESC",
         "siteId": "cf226917-740d-419c-9013-ad19765f9a1d",
         "monitor": true
       }
