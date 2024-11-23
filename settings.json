@@ -2,7 +2,7 @@
     "calva.autoConnectRepl": true,
     "calva.autoOpenInspector": false,
     "calva.autoOpenREPLWindow": false,
-    "calva.autoStartRepl": true,
+    "calva.autoStartRepl": false,
     "calva.clojureLspVersion": "nightly",
     "calva.customREPLHoverSnippets": [],
     "calva.enableJSCompletions": false,
@@ -56,10 +56,10 @@
     },
     "calva.replConnectSequences": [
       {
-        "name": "Assumed deps.edn Jack-In",
+        "name": "Loaded deps.edn Jack-In",
         "projectType": "deps.edn",
         "cljsType": "none",
-        "autoSelectForJackIn": true,
+        "autoSelectForJackIn": false,
         "projectRootPath": ["."],
         "menuSelections": {
           "cljAliases": ["1.12", "dev/repl", "portal", "test", "no-main"]
