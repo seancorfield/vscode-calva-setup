@@ -225,5 +225,25 @@
     {
       "key": "ctrl+shift+g ctrl+shift+b",
       "command": "gitlens.toggleLineBlame"
+    },
+    {
+      "key": "ctrl+alt+c right",
+      "command": "editor.action.insertCursorAtEndOfEachLineSelected",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "shift+alt+i",
+      "command": "-editor.action.insertCursorAtEndOfEachLineSelected",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "shift+alt+i",
+      "command": "inlineChat.start",
+      "when": "editorFocus && inlineChatHasProvider && inlineChatPossible && !editorReadonly"
+    },
+    {
+      "key": "ctrl+i",
+      "command": "-inlineChat.start",
+      "when": "editorFocus && inlineChatHasProvider && inlineChatPossible && !editorReadonly"
     }
 ]
