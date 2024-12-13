@@ -238,4 +238,8 @@
       "siteId": "cf226917-740d-419c-9013-ad19765f9a1d",
       "projectKey": "WS"
     },
+    "editor.quickSuggestionsDelay": 100,
+    "git.blame.editorDecoration.enabled": true,
+    "git.blame.statusBarItem.enabled": true,
+    "github.copilot.chat.temporalContext.enabled": true,
 }

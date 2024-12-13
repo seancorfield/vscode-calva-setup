@@ -245,5 +245,15 @@
       "key": "ctrl+i",
       "command": "-inlineChat.start",
       "when": "editorFocus && inlineChatHasProvider && inlineChatPossible && !editorReadonly"
+    },
+    {
+      "key": "ctrl+shift+g g",
+      "command": "workbench.view.scm",
+      "when": "workbench.scm.active"
+    },
+    {
+      "key": "ctrl+shift+g g",
+      "command": "-workbench.view.scm",
+      "when": "workbench.scm.active && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
     }
 ]
