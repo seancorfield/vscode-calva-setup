@@ -120,6 +120,7 @@
     "editor.inlineSuggest.enabled": true,
     "editor.largeFileOptimizations": false,
     "editor.multiDocumentOccurrencesHighlight": true,
+    "editor.quickSuggestionsDelay": 100,
     "editor.stickyScroll.enabled": true,
     "editor.suggestSelection": "first",
     "editor.tabSize": 2,
@@ -154,6 +155,8 @@
     },
     "git.alwaysShowStagedChangesResourceGroup": true,
     "git.alwaysSignOff": true,
+    "git.blame.editorDecoration.enabled": true,
+    "git.blame.statusBarItem.enabled": true,
     "git.confirmSync": false,
     "git.enableCommitSigning": true,
     "git.enableSmartCommit": true,
@@ -164,6 +167,7 @@
     "github.copilot.chat.reviewSelection.instructions": [
       {"text":"Do not suggest splitting let into multiple bindings"}
     ],
+    "github.copilot.chat.temporalContext.enabled": true,
     "github.copilot.editor.enableAutoCompletions": true,
     "github.copilot.enable": {
       "*": true,
@@ -212,7 +216,7 @@
     "workbench.startupEditor": "newUntitledFile",
     "workbench.tree.enableStickyScroll": true,
     "yaml.schemas": {
-      "file:///home/sean/.vscode-server/extensions/atlassian.atlascode-3.0.13/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+      "file:///home/sean/.vscode-server/extensions/atlassian.atlascode-3.0.15/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
     },
     "atlascode.bitbucket.enabled": true,
     "atlascode.bitbucket.issues.explorerEnabled": false,
