@@ -1,4 +1,6 @@
 {:cljfmt
  {:extra-indents
-  {expecting [[:block 1]]
+  {describe [[:block 1]]
+   expecting [[:block 1]]
+   it [[:block 1]]
    m/match [[:block 0]]}}}
