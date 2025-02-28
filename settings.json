@@ -34,9 +34,9 @@
       }
     },
     "calva.jackInDependencyVersions": {
-      "nrepl": "1.3.0",
-      "cider-nrepl": "0.50.3",
-      "cider/piggieback": "0.5.3"
+      "nrepl": "1.3.1",
+      "cider-nrepl": "0.52.1",
+      "cider/piggieback": "0.6.0"
     },
     "calva.myCljAliases": [
       ":1.12",
@@ -120,7 +120,6 @@
     "editor.inlineSuggest.enabled": true,
     "editor.largeFileOptimizations": false,
     "editor.multiDocumentOccurrencesHighlight": true,
-    "editor.quickSuggestionsDelay": 100,
     "editor.stickyScroll.enabled": true,
     "editor.suggestSelection": "first",
     "editor.tabSize": 2,
@@ -155,8 +154,6 @@
     },
     "git.alwaysShowStagedChangesResourceGroup": true,
     "git.alwaysSignOff": true,
-    "git.blame.editorDecoration.enabled": true,
-    "git.blame.statusBarItem.enabled": true,
     "git.confirmSync": false,
     "git.enableCommitSigning": true,
     "git.enableSmartCommit": true,
@@ -167,7 +164,6 @@
     "github.copilot.chat.reviewSelection.instructions": [
       {"text":"Do not suggest splitting let into multiple bindings"}
     ],
-    "github.copilot.chat.temporalContext.enabled": true,
     "github.copilot.editor.enableAutoCompletions": true,
     "github.copilot.enable": {
       "*": true,
@@ -216,7 +212,7 @@
     "workbench.startupEditor": "newUntitledFile",
     "workbench.tree.enableStickyScroll": true,
     "yaml.schemas": {
-      "file:///home/sean/.vscode-server/extensions/atlassian.atlascode-3.0.15/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+      "file:///home/sean/.vscode-server/extensions/atlassian.atlascode-3.4.11/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
     },
     "atlascode.bitbucket.enabled": true,
     "atlascode.bitbucket.issues.explorerEnabled": false,
@@ -245,5 +241,10 @@
     "editor.quickSuggestionsDelay": 100,
     "git.blame.editorDecoration.enabled": true,
     "git.blame.statusBarItem.enabled": true,
-    "github.copilot.chat.temporalContext.enabled": true,
+    "github.copilot.chat.editor.temporalContext.enabled": true,
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "github.copilot.advanced": {},
+    "terminal.integrated.fontLigatures.featureSettings": "",
+    "terminal.integrated.fontLigatures.enabled": true,
+    "calva.evaluationSendCodeToOutputWindow": false,
 }
