@@ -68,6 +68,7 @@
       {
         "name": "Assumed deps.edn Connect",
         "projectType": "deps.edn",
+        "projectRootPath": ["."],
         "autoSelectForConnect": true
       }
     ],
