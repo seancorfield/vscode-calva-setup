@@ -255,5 +255,19 @@
       "key": "ctrl+shift+g g",
       "command": "-workbench.view.scm",
       "when": "workbench.scm.active && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
+    },
+    {
+      "key": "ctrl+tab",
+      "command": "editor.action.inlineSuggest.jump",
+      "when": "inlineEditIsVisible && tabShouldJumpToInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+    },
+    {
+      "key": "tab",
+      "command": "-editor.action.inlineSuggest.jump",
+      "when": "inlineEditIsVisible && tabShouldJumpToInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+    },
+    {
+      "key": "ctrl+alt+a ctrl+alt+j",
+      "command": "atlascode.views.jira.assignedWorkItemsTreeView.focus"
     }
 ]
