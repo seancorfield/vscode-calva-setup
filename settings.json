@@ -6,6 +6,7 @@
     "calva.clojureLspVersion": "nightly",
     "calva.customREPLHoverSnippets": [],
     "calva.enableJSCompletions": false,
+    "calva.evaluationSendCodeToOutputWindow": false,
     "calva.fiddleFilePaths": [],
     "calva.fmt.configPath": "CLOJURE-LSP",
     "calva.highlight.cycleBracketColors": false,
@@ -71,6 +72,8 @@
         "autoSelectForConnect": true
       }
     ],
+    "calva-backseat-driver.autoStartMCPServer": true,
+    "calva-backseat-driver.enableReplEvaluation": true,
     "[clojure]": {
       "diffEditor.ignoreTrimWhitespace": true,
       "editor.autoClosingBrackets": "always",
@@ -85,9 +88,15 @@
       "files.trimTrailingWhitespace": true,
     },
     "accessibility.voice.keywordActivation": "chatInContext",
+    "chat.experimental.statusIndicator.enabled": true,
     "clock.alignment": "Right",
     "clock.format": "HH:MM:ss",
     "clojure.trace.server": "messages",
+    "cSpell.diagnosticLevel": "Hint",
+    "cSpell.diagnosticLevelFlaggedWords": "Hint",
+    "cSpell.textDecoration": "underline dotted lightblue",
+    "cSpell.textDecorationColor": "lightblue",
+    "cSpell.overviewRulerColor": "lightblue",
     "cSpell.userWords": [
       "classloader",
       "classpath",
@@ -98,11 +107,6 @@
       "swappable",
       "uberjars"
     ],
-    "cSpell.diagnosticLevel": "Hint",
-    "cSpell.diagnosticLevelFlaggedWords": "Hint",
-    "cSpell.textDecoration": "underline dotted lightblue",
-    "cSpell.textDecorationColor": "lightblue",
-    "cSpell.overviewRulerColor": "lightblue",
     "diffEditor.codeLens": true,
     "diffEditor.diffAlgorithm": "advanced",
     "diffEditor.ignoreTrimWhitespace": true,
@@ -120,6 +124,7 @@
     "editor.inlineSuggest.enabled": true,
     "editor.largeFileOptimizations": false,
     "editor.multiDocumentOccurrencesHighlight": true,
+    "editor.quickSuggestionsDelay": 1000,
     "editor.stickyScroll.enabled": true,
     "editor.suggestSelection": "first",
     "editor.tabSize": 2,
@@ -154,6 +159,8 @@
     },
     "git.alwaysShowStagedChangesResourceGroup": true,
     "git.alwaysSignOff": true,
+    "git.blame.editorDecoration.enabled": true,
+    "git.blame.statusBarItem.enabled": true,
     "git.confirmSync": false,
     "git.enableCommitSigning": true,
     "git.enableSmartCommit": true,
@@ -161,10 +168,14 @@
     "git.pullTags": false,
     "github.copilot-labs.showBrushesLenses": true,
     "github.copilot-labs.showTestGenerationLenses": true,
+    "github.copilot.advanced": {},
+    "github.copilot.chat.editor.temporalContext.enabled": true,
+    "github.copilot.editor.enableAutoCompletions": true,
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "github.copilot.nextEditSuggestions.fixes": true,
     "github.copilot.chat.reviewSelection.instructions": [
       {"text":"Do not suggest splitting let into multiple bindings"}
     ],
-    "github.copilot.editor.enableAutoCompletions": true,
     "github.copilot.enable": {
       "*": true,
       "plaintext": false,
@@ -177,6 +188,7 @@
     "gitlens.mode.active": "zen",
     "gitlens.plusFeatures.enabled": false,
     "gitlens.virtualRepositories.enabled": false,
+    "inlineChat.enableV2": true,
     "inlineChat.showDiff": false,
     "javascript.referencesCodeLens.enabled": true,
     "javascript.referencesCodeLens.showOnAllFunctions": true,
@@ -200,6 +212,8 @@
     ],
     "task.saveBeforeRun": "never",
     "terminal.integrated.enableMultiLinePasteWarning": false,
+    "terminal.integrated.fontLigatures.enabled": true,
+    "terminal.integrated.fontLigatures.featureSettings": "",
     "terminal.integrated.shellIntegration.history": 1000,
     "window.density.editorTabHeight": "compact",
     "window.zoomLevel": -1,
@@ -212,7 +226,7 @@
     "workbench.startupEditor": "newUntitledFile",
     "workbench.tree.enableStickyScroll": true,
     "yaml.schemas": {
-      "file:///home/sean/.vscode-server/extensions/atlassian.atlascode-3.6.4/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+      "file:///home/sean/.vscode-server/extensions/atlassian.atlascode-3.8.2/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
     },
     "atlascode.bitbucket.enabled": true,
     "atlascode.bitbucket.issues.explorerEnabled": false,
@@ -238,14 +252,4 @@
       "siteId": "cf226917-740d-419c-9013-ad19765f9a1d",
       "projectKey": "WS"
     },
-    "editor.quickSuggestionsDelay": 100,
-    "git.blame.editorDecoration.enabled": true,
-    "git.blame.statusBarItem.enabled": true,
-    "github.copilot.chat.editor.temporalContext.enabled": true,
-    "github.copilot.nextEditSuggestions.enabled": true,
-    "github.copilot.advanced": {},
-    "terminal.integrated.fontLigatures.featureSettings": "",
-    "terminal.integrated.fontLigatures.enabled": true,
-    "calva.evaluationSendCodeToOutputWindow": false,
-    "chat.experimental.statusIndicator.enabled": true,
 }
