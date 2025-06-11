@@ -144,7 +144,7 @@
                         ((requiring-resolve 'clojure.set/rename-keys)
                          summary {:total :test}))]
               (some (fn [seg]
-                      (let [nt (symbol (str "$ns-" seg))]
+                      (let [nt (symbol (str "$ns" "-" seg))]
                         (when (try (require nt) true
                                    (catch Throwable _))
                           (tap> (str "Testing " nt "... "))

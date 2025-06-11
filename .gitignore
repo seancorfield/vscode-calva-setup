@@ -1,8 +1,9 @@
+.calva/mcp-server/port
 .calva/repl.calva-repl
 .clj-kondo/.cache
 .lsp/.cache
 .portal/
-History
 globalStorage
+History
 sync
 workspaceStorage
