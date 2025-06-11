@@ -1,10 +1,5 @@
 {:customREPLCommandSnippets
- [{:name "Add Libs (Sync w/aliases)"
-   :key "a"
-   :snippet (tap>
-             ((requiring-resolve 'clojure.repl.deps/sync-deps)
-              :aliases (read-string (str "[" (read-line) "]"))))}
-  {:name "Run Current Test"
+ [{:name "Run Current Test"
    :key "c"
    :snippet (let [crt (try (requiring-resolve 'clojure.test/run-test-var)
                            (catch Exception _))
