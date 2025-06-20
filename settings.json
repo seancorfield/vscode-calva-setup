@@ -36,7 +36,7 @@
     },
     "calva.jackInDependencyVersions": {
       "nrepl": "1.3.1",
-      "cider-nrepl": "0.55.7",
+      "cider-nrepl": "0.56.0",
       "cider/piggieback": "0.6.0"
     },
     "calva.myCljAliases": [
@@ -226,7 +226,7 @@
     "workbench.startupEditor": "newUntitledFile",
     "workbench.tree.enableStickyScroll": true,
     "yaml.schemas": {
-      "file:///home/sean/.vscode-server/extensions/atlassian.atlascode-3.8.2/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+      "file:///home/sean/.vscode-server/extensions/atlassian.atlascode-3.8.3/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
     },
     "atlascode.bitbucket.enabled": true,
     "atlascode.bitbucket.issues.explorerEnabled": false,
@@ -252,4 +252,5 @@
       "siteId": "cf226917-740d-419c-9013-ad19765f9a1d",
       "projectKey": "WS"
     },
+    "docker.extension.enableComposeLanguageServer": false,
 }
