@@ -46,6 +46,11 @@
       "args": "javadoc.cljs"
     },
     {
+      "key": "ctrl+alt+space s",
+      "command": "joyride.runUserScript",
+      "args": "splint.cljs"
+    },
+    {
       "key": "ctrl+alt+space /",
       "command": "joyride.runUserScript",
       "args": "clojuredocs.cljs"
