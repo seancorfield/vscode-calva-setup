@@ -274,5 +274,15 @@
     {
       "key": "ctrl+alt+a ctrl+alt+j",
       "command": "atlascode.views.jira.assignedWorkItemsTreeView.focus"
+    },
+    {
+      "key": "ctrl+shift+alt+i",
+      "command": "atlascode.rovodev.askInteractive",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "ctrl+alt+i",
+      "command": "-atlascode.rovodev.askInteractive",
+      "when": "editorTextFocus"
     }
 ]
