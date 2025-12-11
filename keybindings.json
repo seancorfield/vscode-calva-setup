@@ -242,11 +242,6 @@
       "when": "editorTextFocus"
     },
     {
-      "key": "shift+alt+i",
-      "command": "inlineChat.start",
-      "when": "editorFocus && inlineChatHasProvider && inlineChatPossible && !editorReadonly"
-    },
-    {
       "key": "ctrl+i",
       "command": "-inlineChat.start",
       "when": "editorFocus && inlineChatHasProvider && inlineChatPossible && !editorReadonly"
@@ -284,5 +279,89 @@
       "key": "ctrl+alt+i",
       "command": "-atlascode.rovodev.askInteractive",
       "when": "editorTextFocus"
+    },
+    {
+      "key": "ctrl+right",
+      "command": "editor.action.inlineSuggest.commit",
+      "when": "inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+    },
+    {
+      "key": "tab",
+      "command": "-editor.action.inlineSuggest.commit",
+      "when": "inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+    },
+    {
+      "key": "ctrl+right",
+      "command": "editor.action.inlineSuggest.commit",
+      "when": "inInlineEditsPreviewEditor"
+    },
+    {
+      "key": "tab",
+      "command": "-editor.action.inlineSuggest.commit",
+      "when": "inInlineEditsPreviewEditor"
+    },
+    {
+      "key": "ctrl+right",
+      "command": "acceptSelectedSuggestion",
+      "when": "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus"
+    },
+    {
+      "key": "tab",
+      "command": "-acceptSelectedSuggestion",
+      "when": "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus"
+    },
+    {
+      "key": "ctrl+right",
+      "command": "insertBestCompletion",
+      "when": "atEndOfWord && textInputFocus && !hasOtherSuggestions && !inSnippetMode && !suggestWidgetVisible && config.editor.tabCompletion == 'on'"
+    },
+    {
+      "key": "tab",
+      "command": "-insertBestCompletion",
+      "when": "atEndOfWord && textInputFocus && !hasOtherSuggestions && !inSnippetMode && !suggestWidgetVisible && config.editor.tabCompletion == 'on'"
+    },
+    {
+      "key": "ctrl+right",
+      "command": "insertNextSuggestion",
+      "when": "hasOtherSuggestions && textInputFocus && !inSnippetMode && !suggestWidgetVisible && config.editor.tabCompletion == 'on'"
+    },
+    {
+      "key": "tab",
+      "command": "-insertNextSuggestion",
+      "when": "hasOtherSuggestions && textInputFocus && !inSnippetMode && !suggestWidgetVisible && config.editor.tabCompletion == 'on'"
+    },
+    {
+      "key": "ctrl+shift+right",
+      "command": "insertPrevSuggestion",
+      "when": "hasOtherSuggestions && textInputFocus && !inSnippetMode && !suggestWidgetVisible && config.editor.tabCompletion == 'on'"
+    },
+    {
+      "key": "shift+tab",
+      "command": "-insertPrevSuggestion",
+      "when": "hasOtherSuggestions && textInputFocus && !inSnippetMode && !suggestWidgetVisible && config.editor.tabCompletion == 'on'"
+    },
+    {
+      "key": "shift+alt+i",
+      "command": "inlineChat.start",
+      "when": "inlineChatHasEditsAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput && activeEditor != 'workbench.editor.notebook' || inlineChatHasNotebookAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput && activeEditor == 'workbench.editor.notebook' || inlineChatHasNotebookInline && inlineChatPossible && !editorReadonly && !editorSimpleInput && activeEditor == 'workbench.editor.notebook' || inlineChatHasProvider && inlineChatPossible && !editorReadonly && !editorSimpleInput && activeEditor != 'workbench.editor.notebook'"
+    },
+    {
+      "key": "ctrl+alt+i",
+      "command": "workbench.action.chat.openagent",
+      "when": "config.chat.agent.enabled && !chatSetupDisabled && !chatSetupHidden"
+    },
+    {
+      "key": "ctrl+shift+i",
+      "command": "-workbench.action.chat.openagent",
+      "when": "config.chat.agent.enabled && !chatSetupDisabled && !chatSetupHidden"
+    },
+    {
+      "key": "ctrl+alt+i",
+      "command": "-workbench.action.chat.open",
+      "when": "!chatSetupDisabled && !chatSetupHidden"
+    },
+    {
+      "key": "ctrl+shift+i",
+      "command": "workbench.action.chat.openPlan"
     }
 ]
