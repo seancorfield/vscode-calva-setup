@@ -228,10 +228,6 @@
       "when": "inlineSuggestionVisible && !editorReadonly"
     },
     {
-      "key": "ctrl+shift+g ctrl+shift+b",
-      "command": "gitlens.toggleLineBlame"
-    },
-    {
       "key": "ctrl+alt+c right",
       "command": "editor.action.insertCursorAtEndOfEachLineSelected",
       "when": "editorTextFocus"
@@ -250,11 +246,6 @@
       "key": "ctrl+shift+g g",
       "command": "workbench.view.scm",
       "when": "workbench.scm.active"
-    },
-    {
-      "key": "ctrl+shift+g g",
-      "command": "-workbench.view.scm",
-      "when": "workbench.scm.active && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
     },
     {
       "key": "ctrl+tab",

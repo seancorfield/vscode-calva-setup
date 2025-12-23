@@ -190,12 +190,6 @@
       "markdown": true,
       "scminput": false
     },
-    "gitlens.advanced.blame.delayAfterEdit": 10000,
-    "gitlens.currentLine.enabled": false,
-    "gitlens.launchpad.indicator.enabled": false,
-    "gitlens.mode.active": "zen",
-    "gitlens.plusFeatures.enabled": false,
-    "gitlens.virtualRepositories.enabled": false,
     "inlineChat.enableV2": true,
     "inlineChat.showDiff": false,
     "javascript.referencesCodeLens.enabled": true,
