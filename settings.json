@@ -21,7 +21,6 @@
     "calva.referencesCodeLens.enabled": true,
     "calva.showCalvaSaysOnStart": false,
     "calva.showDocstringInParameterHelp": true,
-    "calva.useLegacyReplWindowPath": false,
     "calva.useLiveShare": true,
     "calva.useTestExplorer": true,
     "calva.autoEvaluateCode": {
@@ -38,11 +37,6 @@
       "lsp",
       "repl"
     ],
-    "calva.jackInDependencyVersions": {
-      "nrepl": "1.5.0",
-      "cider-nrepl": "0.58.0",
-      "cider/piggieback": "0.6.0"
-    },
     "calva.myCljAliases": [
       ":1.12",
       ":portal",
@@ -77,9 +71,8 @@
       }
     ],
     "calva-backseat-driver.autoStartMCPServer": true,
-    "calva-backseat-driver.enableReplEvaluation": true,
     "[clojure]": {
-      "diffEditor.ignoreTrimWhitespace": true,
+      "diffEditor.ignoreTrimWhitespace": false,
       "editor.autoClosingBrackets": "always",
       "editor.autoClosingOvertype": "always",
       "editor.autoClosingQuotes": "always",
@@ -92,10 +85,7 @@
       "files.trimTrailingWhitespace": true,
     },
     "accessibility.voice.keywordActivation": "chatInContext",
-    "chat.emptyState.history.enabled": true,
-    "chat.experimental.statusIndicator.enabled": true,
     "chat.mcp.gallery.enabled": true,
-    "chat.todoListTool.enabled": true,
     "clock.alignment": "Right",
     "clock.format": "HH:MM:ss",
     "clojure.trace.server": "messages",
@@ -116,7 +106,7 @@
     ],
     "diffEditor.codeLens": true,
     "diffEditor.diffAlgorithm": "advanced",
-    "diffEditor.ignoreTrimWhitespace": true,
+    "diffEditor.ignoreTrimWhitespace": false,
     "editor.accessibilitySupport": "off",
     "editor.aiStats.enabled": true,
     "editor.bracketPairColorization.enabled": true,
@@ -129,9 +119,9 @@
     "editor.guides.bracketPairsHorizontal": true,
     "editor.hover.above": false,
     "editor.hover.delay": 1500,
+    "editor.hover.enabled": "onKeyboardModifier",
     "editor.inlineSuggest.enabled": true,
     "editor.largeFileOptimizations": false,
-    "editor.multiDocumentOccurrencesHighlight": true,
     "editor.quickSuggestionsDelay": 1000,
     "editor.stickyScroll.enabled": true,
     "editor.suggestSelection": "first",
@@ -174,34 +164,26 @@
     "git.enableSmartCommit": true,
     "git.openRepositoryInParentFolders": "always",
     "git.pullTags": false,
-    "github.copilot-labs.showBrushesLenses": true,
-    "github.copilot-labs.showTestGenerationLenses": true,
-    "github.copilot.advanced": {},
-    "github.copilot.chat.editor.temporalContext.enabled": true,
-    "github.copilot.editor.enableAutoCompletions": true,
     "github.copilot.nextEditSuggestions.enabled": true,
     "github.copilot.nextEditSuggestions.fixes": true,
+    "github.copilot.chat.githubMcpServer.enabled": true,
     "github.copilot.chat.reviewSelection.instructions": [
       {"text":"Do not suggest splitting let into multiple bindings"}
     ],
     "github.copilot.enable": {
       "*": true,
-      "plaintext": false,
+      "plaintext": true,
       "markdown": true,
       "scminput": false
     },
     "inlineChat.enableV2": true,
-    "inlineChat.showDiff": false,
     "javascript.referencesCodeLens.enabled": true,
     "javascript.referencesCodeLens.showOnAllFunctions": true,
     "jest.jestCommandLine": "npx yarn jest",
-    "liveshare.accessibility.voiceEnabled": true,
     "liveshare.guestApprovalRequired": true,
     "liveshare.launcherClient": "visualStudioCode",
     "redhat.telemetry.enabled": true,
     "remote.autoForwardPortsSource": "hybrid",
-    "rewrap.doubleSentenceSpacing": true,
-    "rewrap.wrappingColumn": 78,
     "scm.inputFontFamily": "editor",
     "search.exclude": {
       "**/.calva/output-window/output.calva-repl": true,
@@ -217,6 +199,9 @@
     "terminal.integrated.fontLigatures.enabled": true,
     "terminal.integrated.fontLigatures.featureSettings": "",
     "terminal.integrated.shellIntegration.history": 1000,
+    "terminal.integrated.suggest.selectionMode": "never",
+    "window.border": "system",
+    "window.customTitleBarVisibility": "windowed",
     "window.density.editorTabHeight": "compact",
     "window.zoomLevel": -1,
     "workbench.activityBar.location": "top",
@@ -228,10 +213,9 @@
     "workbench.startupEditor": "newUntitledFile",
     "workbench.tree.enableStickyScroll": true,
     "yaml.schemas": {
-      "file:///home/sean/.vscode-server/extensions/atlassian.atlascode-3.8.3/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+      "file:///home/sean/.vscode-server/extensions/atlassian.atlascode-4.1.75/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
     },
     "atlascode.bitbucket.enabled": true,
-    "atlascode.bitbucket.issues.explorerEnabled": false,
     "atlascode.bitbucket.pipelines.explorerEnabled": false,
     "atlascode.bitbucket.statusbar.enabled": false,
     "atlascode.jira.enabled": true,
@@ -250,10 +234,13 @@
         "monitor": true
       }
     ],
-    "atlascode.jira.lastCreateSiteAndProject": {
+    "atlascode.jira.lastCreatePreSelectedValues": {
       "siteId": "cf226917-740d-419c-9013-ad19765f9a1d",
-      "projectKey": "WS"
+      "projectKey": "WS",
+      "issueTypeId": "10002"
     },
+    "atlascode.rovodev.enabled": false,
+    "atlascode.rovodev.thinkingBlockEnabled": false,
     "docker.extension.enableComposeLanguageServer": false,
     "boxlang.settings.ignoreOldSettings": true,
     "auto-close-tag.activationOnLanguage": [

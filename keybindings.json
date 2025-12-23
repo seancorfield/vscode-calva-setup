@@ -354,5 +354,15 @@
     {
       "key": "ctrl+shift+i",
       "command": "workbench.action.chat.openPlan"
+    },
+    {
+      "key": "ctrl+alt+k",
+      "command": "-rest-client.cancel-request",
+      "when": "editorTextFocus && editorLangId == 'http'"
+    },
+    {
+      "key": "ctrl+alt+k",
+      "command": "-rest-client.cancel-request",
+      "when": "editorTextFocus && editorLangId == 'plaintext'"
     }
 ]
