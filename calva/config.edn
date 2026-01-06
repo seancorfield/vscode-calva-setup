@@ -73,11 +73,20 @@
                 "The reloadable implementation of submit."
                 [v]
                 (let [m (try (meta v) (catch Exception _))]
-                  (if (or (:portal.nrepl/eval m)
-                          (:dev.repl/logging m))
-                    (when-not (clojure.string/starts-with? (str (:code v)) "(tap>")
-                      (swap! other-taps conj v))
-                    (swap! my-taps conj v))))
+                  (cond (or (:portal.nrepl/eval m)
+                            (:dev.repl/logging m))
+                        (when-not (clojure.string/starts-with? (str (:code v)) "(tap>")
+                          (swap! other-taps conj v))
+                        ;; for rebel nrepl - just display the value, if readable:
+                        (and (:id v) (:session v))
+                        (when (contains? v :value)
+                          (try
+                            (let [rdr (requiring-resolve 'clojure.edn/read-string)]
+                              (swap! other-taps conj (rdr (:value v))))
+                            (catch Exception e
+                              (swap! other-taps conj (ex-message e)))))
+                        :else
+                        (swap! my-taps conj v))))
               (defonce ^{:doc "Fixed wrapper around submit*."}
                 submit (fn [v] (submit* v)))
               (def ^{:doc "Atom for current regular value."}
