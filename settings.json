@@ -53,23 +53,6 @@
       "width": 120,
       "maxLength": 50
     },
-    "calva.replConnectSequences": [
-      {
-        "name": "Loaded deps.edn Jack-In",
-        "projectType": "deps.edn",
-        "cljsType": "none",
-        "autoSelectForJackIn": false,
-        "projectRootPath": ["."],
-        "menuSelections": {
-          "cljAliases": ["1.12", "dev/repl", "portal", "test", "no-main"]
-        }
-      },
-      {
-        "name": "Assumed deps.edn Connect",
-        "projectType": "deps.edn",
-        "autoSelectForConnect": true
-      }
-    ],
     "calva-backseat-driver.autoStartMCPServer": true,
     "[clojure]": {
       "diffEditor.ignoreTrimWhitespace": false,

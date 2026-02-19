@@ -4,6 +4,7 @@
             ["path" :as path]
             ["vscode" :as vscode]
             [clojure.edn :as edn]
+            [clojure.set :as set]
             [promesa.core :as p]))
 
 (defn- start-tunnel [nrepl-port portal-port extension-port label remote-server]
@@ -18,7 +19,6 @@
                              " " remote-server))))
 
 (defn- connect-repl [nrepl-port]
-  (vscode/commands.executeCommand "calva.disconnect")
   (vscode/commands.executeCommand "calva.connect" #js {:port nrepl-port :connectSequence "Generic"}))
 
 (defn- portal-config []
@@ -30,11 +30,19 @@
        (fs/readFileSync #js {:encoding "utf8"})
        edn/read-string))
 
+(defn- repl-session-key-set []
+  (->> (calva/repl.listSessions)
+                      (map #(.-replSessionKey %))
+                      (set)))
+
 (defn repl-setup [nrepl-port portal-port label remote-server]
-  (let [config (portal-config)]
+  (let [config   (portal-config)
+        old-keys (repl-session-key-set)]
     (start-tunnel nrepl-port portal-port (:port config) label remote-server)
     (p/do
       (p/delay 2000)
       (connect-repl nrepl-port)
       (p/delay 1000)
-      (calva/repl.evaluateCode "clj" (pr-str (list 'spit ".portal/vs-code.edn" config))))))
+      (let [new-keys (repl-session-key-set)
+            new-key  (first (set/difference new-keys old-keys))]
+        (calva/repl.evaluateCode new-key (pr-str (list 'spit ".portal/vs-code.edn" config)))))))
