@@ -37,10 +37,18 @@
       "lsp",
       "repl"
     ],
+    "calva.html2HiccupOptions": {
+      "mapify-style?": false,
+      "kebab-attrs?": false,
+      "add-classes-to-tag-keyword?": true
+    },
+    "calva.jackInDependencyVersions": {
+      "nrepl": "1.6.0"
+    },
     "calva.myCljAliases": [
       ":1.12",
+      ":dev/repl",
       ":portal",
-      ":dev/repl"
     ],
     "calva.outputDestinations": {
       "evalResults": "terminal",
@@ -147,6 +155,8 @@
     "git.enableSmartCommit": true,
     "git.openRepositoryInParentFolders": "always",
     "git.pullTags": false,
+    "git.addAICoAuthor": "chatAndAgent",
+    "github.copilot.nextEditSuggestions.extendedRange": true,
     "github.copilot.nextEditSuggestions.enabled": true,
     "github.copilot.nextEditSuggestions.fixes": true,
     "github.copilot.chat.githubMcpServer.enabled": true,
@@ -159,6 +169,7 @@
       "markdown": true,
       "scminput": false
     },
+    "inlineChat.affordance": "editor",
     "inlineChat.enableV2": true,
     "javascript.referencesCodeLens.enabled": true,
     "javascript.referencesCodeLens.showOnAllFunctions": true,
@@ -177,6 +188,7 @@
       "yaml.schemas",
       "editor.fontSize"
     ],
+    "simpleBrowser.useIntegratedBrowser": true,
     "task.saveBeforeRun": "never",
     "terminal.integrated.enableMultiLinePasteWarning": false,
     "terminal.integrated.fontLigatures.enabled": true,
@@ -188,16 +200,17 @@
     "window.density.editorTabHeight": "compact",
     "window.zoomLevel": -1,
     "workbench.activityBar.location": "top",
+    "workbench.browser.dataStorage": "workspace",
+    "workbench.browser.enableChatTools": true,
+    "workbench.browser.openLocalhostLinks": true,
     "workbench.colorTheme": "Default Dark+",
     "workbench.editor.empty.hint": "hidden",
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.editor.pinnedTabsOnSeparateRow": true,
+    "workbench.editor.useModal": "some",
     "workbench.preferredDarkColorTheme": "Default Dark+",
     "workbench.startupEditor": "newUntitledFile",
     "workbench.tree.enableStickyScroll": true,
-    "yaml.schemas": {
-      "file:///home/sean/.vscode-server/extensions/atlassian.atlascode-4.1.75/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
-    },
     "atlascode.bitbucket.enabled": true,
     "atlascode.bitbucket.pipelines.explorerEnabled": false,
     "atlascode.bitbucket.statusbar.enabled": false,
