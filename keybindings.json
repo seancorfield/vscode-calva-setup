@@ -364,5 +364,9 @@
       "key": "ctrl+alt+k",
       "command": "-rest-client.cancel-request",
       "when": "editorTextFocus && editorLangId == 'plaintext'"
+    },
+    {
+      "key": "ctrl+alt+p ctrl+alt+v",
+      "command": "workbench.panel.markers.view.focus"
     }
 ]
