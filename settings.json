@@ -3,7 +3,6 @@
     "calva.autoOpenInspector": false,
     "calva.autoOpenREPLWindow": false,
     "calva.autoStartRepl": false,
-    "calva.clojureLspVersion": "nightly",
     "calva.customREPLHoverSnippets": [],
     "calva.enableJSCompletions": false,
     "calva.evaluationSendCodeToOutputWindow": false,
@@ -33,25 +32,15 @@
         "cljs": null
       }
     },
-    "calva.definitionProviderPriority": [
-      "lsp",
-      "repl"
-    ],
-    "calva.html2HiccupOptions": {
-      "mapify-style?": false,
-      "kebab-attrs?": false,
-      "add-classes-to-tag-keyword?": true
-    },
-    "calva.jackInDependencyVersions": {
-      "nrepl": "1.6.0"
-    },
     "calva.myCljAliases": [
       ":1.12",
       ":dev/repl",
       ":portal",
     ],
     "calva.outputDestinations": {
-      "evalResults": "terminal",
+
+
+      "evalResults": ["terminal", "repl-window"],
       "evalOutput": "terminal",
       "otherOutput": "terminal"
     },
@@ -76,7 +65,6 @@
       "files.trimTrailingWhitespace": true,
     },
     "accessibility.voice.keywordActivation": "chatInContext",
-    "chat.mcp.gallery.enabled": true,
     "clock.alignment": "Right",
     "clock.format": "HH:MM:ss",
     "clojure.trace.server": "messages",
@@ -99,7 +87,6 @@
     "diffEditor.diffAlgorithm": "advanced",
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.accessibilitySupport": "off",
-    "editor.aiStats.enabled": true,
     "editor.bracketPairColorization.enabled": true,
     "editor.cursorStyle": "block",
     "editor.detectIndentation": false,
@@ -110,11 +97,9 @@
     "editor.guides.bracketPairsHorizontal": true,
     "editor.hover.above": false,
     "editor.hover.delay": 1500,
-    "editor.hover.enabled": "onKeyboardModifier",
     "editor.inlineSuggest.enabled": true,
     "editor.largeFileOptimizations": false,
     "editor.quickSuggestionsDelay": 1000,
-    "editor.stickyScroll.enabled": true,
     "editor.suggestSelection": "first",
     "editor.tabSize": 2,
     "editor.wordWrapColumn": 78,
@@ -127,7 +112,6 @@
     "extensions.ignoreRecommendations": true,
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": true,
     "files.associations": {
       "*.cljr": "clojure",
       "*.clj_kondo": "clojure"
@@ -155,11 +139,8 @@
     "git.enableSmartCommit": true,
     "git.openRepositoryInParentFolders": "always",
     "git.pullTags": false,
-    "git.addAICoAuthor": "chatAndAgent",
-    "github.copilot.nextEditSuggestions.extendedRange": true,
     "github.copilot.nextEditSuggestions.enabled": true,
     "github.copilot.nextEditSuggestions.fixes": true,
-    "github.copilot.chat.githubMcpServer.enabled": true,
     "github.copilot.chat.reviewSelection.instructions": [
       {"text":"Do not suggest splitting let into multiple bindings"}
     ],
@@ -169,7 +150,6 @@
       "markdown": true,
       "scminput": false
     },
-    "inlineChat.affordance": "editor",
     "inlineChat.enableV2": true,
     "javascript.referencesCodeLens.enabled": true,
     "javascript.referencesCodeLens.showOnAllFunctions": true,
@@ -188,38 +168,27 @@
       "yaml.schemas",
       "editor.fontSize"
     ],
-    "simpleBrowser.useIntegratedBrowser": true,
     "task.saveBeforeRun": "never",
     "terminal.integrated.enableMultiLinePasteWarning": false,
     "terminal.integrated.fontLigatures.enabled": true,
     "terminal.integrated.fontLigatures.featureSettings": "",
     "terminal.integrated.shellIntegration.history": 1000,
-    "terminal.integrated.suggest.selectionMode": "never",
-    "window.border": "system",
-    "window.customTitleBarVisibility": "windowed",
     "window.density.editorTabHeight": "compact",
     "window.zoomLevel": -1,
     "workbench.activityBar.location": "top",
-    "workbench.browser.dataStorage": "workspace",
-    "workbench.browser.enableChatTools": true,
-    "workbench.browser.openLocalhostLinks": true,
     "workbench.colorTheme": "Dark+",
     "workbench.editor.empty.hint": "hidden",
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.editor.pinnedTabsOnSeparateRow": true,
-    "workbench.editor.useModal": "some",
     "workbench.preferredDarkColorTheme": "Dark+",
     "workbench.startupEditor": "newUntitledFile",
     "workbench.tree.enableStickyScroll": true,
     "atlascode.bitbucket.enabled": true,
-    "atlascode.bitbucket.pipelines.explorerEnabled": false,
     "atlascode.bitbucket.statusbar.enabled": false,
     "atlascode.jira.enabled": true,
     "atlascode.jira.explorer.nestSubtasks": false,
     "atlascode.jira.statusbar.enabled": true,
     "atlascode.jira.statusbar.showLogin": false,
-    "atlascode.jira.statusbar.showProduct": false,
-    "atlascode.jira.statusbar.showUser": false,
     "atlascode.jira.jqlList": [
       {
         "id": "eb6b067c-8124-43d4-aa91-41052ca528d9",
@@ -230,13 +199,6 @@
         "monitor": true
       }
     ],
-    "atlascode.jira.lastCreatePreSelectedValues": {
-      "siteId": "cf226917-740d-419c-9013-ad19765f9a1d",
-      "projectKey": "WS",
-      "issueTypeId": "10002"
-    },
-    "atlascode.rovodev.enabled": false,
-    "atlascode.rovodev.thinkingBlockEnabled": false,
     "docker.extension.enableComposeLanguageServer": false,
     "boxlang.settings.ignoreOldSettings": true,
     "auto-close-tag.activationOnLanguage": [
@@ -331,6 +293,7 @@
       "cfthrow",
       "cfwddx"
     ],
+    "editor.aiStats.enabled": true,
     "[dockercompose]": {
       "editor.insertSpaces": true,
       "editor.tabSize": 2,
@@ -344,5 +307,69 @@
     },
     "[github-actions-workflow]": {
       "editor.defaultFormatter": "redhat.vscode-yaml"
-    }
+    },
+    "chat.mcp.gallery.enabled": true,
+    "calva.definitionProviderPriority": [
+      "lsp",
+      "repl"
+    ],
+    "atlascode.rovodev.enabled": false,
+    "atlascode.rovodev.thinkingBlockEnabled": false,
+    "github.copilot.chat.githubMcpServer.enabled": true,
+    "editor.hover.enabled": "onKeyboardModifier",
+    "terminal.integrated.suggest.selectionMode": "never",
+    "window.border": "system",
+    "window.customTitleBarVisibility": "windowed",
+    "simpleBrowser.useIntegratedBrowser": true,
+    "workbench.browser.openLocalhostLinks": true,
+    "calva.html2HiccupOptions": {
+      "mapify-style?": false,
+      "kebab-attrs?": false,
+      "add-classes-to-tag-keyword?": true
+    },
+    "workbench.browser.enableChatTools": true,
+    "workbench.browser.dataStorage": "workspace",
+    "inlineChat.affordance": "editor",
+    "workbench.editor.useModal": "some",
+    "github.copilot.nextEditSuggestions.extendedRange": true,
+    "git.addAICoAuthor": "all",
+    "calva.jackInDependencyVersions": {
+      "nrepl": "1.7.0",
+      "cider-nrepl": "0.62.1",
+      "cider/piggieback": "0.7.0"
+    },
+    "github.copilot.chat.cli.forkSessions.enabled": true,
+    "chat.subagents.allowInvocationsFromSubagents": true,
+    "atlascode.rovodev.showEntitlementNotifications": false,
+    "atlascode.jira.lastCreatePreSelectedValues": {
+      "siteId": "cf226917-740d-419c-9013-ad19765f9a1d",
+      "projectKey": "WS",
+      "issueTypeId": "10002"
+    },
+    "chat.tools.urls.autoApprove": {
+      "https://code.visualstudio.com": true,
+      "https://github.com/microsoft/vscode/wiki/*": true,
+      "https://developer.inoviopay.com": true,
+      "https://helpdesk.inoviopay.com": true,
+      "https://cljdoc.org": true
+    },
+    "atlascode.outputLevel": "info",
+    "chat.experimental.incrementalRendering.enabled": true,
+    "atlascode.jira.statusbar.showUser": false,
+    "atlascode.jira.statusbar.showProduct": false,
+    "github.copilot.chat.switchAgent.enabled": true,
+    "github.copilot.chat.agent.backgroundTodoAgent.enabled": true,
+    "chat.agent.sandbox.enabled": "on",
+    "files.trimTrailingWhitespaceInRegexAndStrings": false,
+    "chat.tools.compressOutput.enabled": true,
+    "chat.autopilot.advanced.enabled": true,
+    "chat.agent.sandbox.allowNetwork": true,
+    "[markdown]": {
+      "diffEditor.ignoreTrimWhitespace": true
+    },
+    "calva.clojureLspVersion": "nightly",
+    "chat.agentHost.enabled": true,
+    "chat.agents.claude.preferAgentHost": true,
+    "chat.customizations.promptMigration.enabled": true,
+    "workbench.experimental.modernUI": true,
 }

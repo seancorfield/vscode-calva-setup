@@ -57,12 +57,12 @@
     },
     {
       "key": "ctrl+alt+b q",
-      "command": "joyride.runUserScript",
+      "command": "joyride.runWorkspaceScript",
       "args": "qa_repl.cljs"
     },
     {
       "key": "ctrl+alt+b p",
-      "command": "joyride.runUserScript",
+      "command": "joyride.runWorkspaceScript",
       "args": "prod_repl.cljs"
     },
     {
@@ -272,7 +272,7 @@
       "when": "editorTextFocus"
     },
     {
-      "key": "ctrl+right",
+      "key": "shift+alt+up",
       "command": "editor.action.inlineSuggest.commit",
       "when": "inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
     },
@@ -282,7 +282,7 @@
       "when": "inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
     },
     {
-      "key": "ctrl+right",
+      "key": "shift+alt+up",
       "command": "editor.action.inlineSuggest.commit",
       "when": "inInlineEditsPreviewEditor"
     },
@@ -364,6 +364,16 @@
       "key": "ctrl+alt+k",
       "command": "-rest-client.cancel-request",
       "when": "editorTextFocus && editorLangId == 'plaintext'"
+    },
+    {
+      "key": "ctrl+alt+r ctrl+alt+e",
+      "command": "github.copilot.nes.captureExpected.start",
+      "when": "editorTextFocus && github.copilot.inlineEditsEnabled"
+    },
+    {
+      "key": "ctrl+k ctrl+r",
+      "command": "-github.copilot.nes.captureExpected.start",
+      "when": "editorTextFocus && github.copilot.inlineEditsEnabled"
     },
     {
       "key": "ctrl+alt+p ctrl+alt+v",
