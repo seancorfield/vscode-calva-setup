@@ -12,4 +12,5 @@
        (fn [ns-val]
          (calva/repl.evaluateCode js/undefined (str "(clojure.core/tap> \""
                                                     (.-ns ns-val)
-                                                    " evaluated\")"))))))
+                                                    " evaluated\")")))))
+  nil)
