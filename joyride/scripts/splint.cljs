@@ -15,4 +15,5 @@
 (let [file vscode/window.activeTextEditor.document.fileName]
   (doto (find-or-create-terminal "Splint")
     (.show)
-    (.sendText (str splint-command " -o simple " file))))
+    (.sendText (str splint-command " -o simple " file)))
+  nil)
