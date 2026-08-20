@@ -92,14 +92,14 @@
               (def ^{:doc "Atom for current regular value."}
                 portal
                 ((requiring-resolve 'portal.api/open)
-                 {:launcher :vs-code
+                 {:launcher :vs-code :mode :ssr
                   :portal.colors/theme :portal.colors/zerodark
                   :portal.launcher/window-title (System/getProperty "user.dir")
                   :value my-taps}))
               (def ^{:doc "Atom for other values."}
                 portal-other
                 ((requiring-resolve 'portal.api/open)
-                 {:launcher :vs-code
+                 {:launcher :vs-code :mode :ssr
                   :portal.colors/theme :portal.colors/material-ui
                   :portal.launcher/window-title "** logging **"
                   :value other-taps}))
