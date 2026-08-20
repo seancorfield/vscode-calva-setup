@@ -92,7 +92,7 @@
               (def ^{:doc "Atom for current regular value."}
                 portal
                 ((requiring-resolve 'portal.api/open)
-                 {:launcher :vs-code :mode :ssr
+                 {:launcher :vs-code ; :mode :ssr - until ui state nav works
                   :portal.colors/theme :portal.colors/zerodark
                   :portal.launcher/window-title (System/getProperty "user.dir")
                   :value my-taps}))
