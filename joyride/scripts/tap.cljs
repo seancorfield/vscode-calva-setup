@@ -11,4 +11,4 @@
                 [(vscode/Range. p p) nil]
                 (calva/ranges.currentForm))]
   (calva/editor.replace vscode/window.activeTextEditor r
-                        (str "(doto " s (when s " ") "tap>)")))
+                        (str "(tap->" (when s " ") s ")")))
