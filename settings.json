@@ -38,9 +38,7 @@
       ":portal",
     ],
     "calva.outputDestinations": {
-
-
-      "evalResults": ["terminal", "repl-window"],
+      "evalResults": ["output-sidebar", "terminal"],
       "evalOutput": "terminal",
       "otherOutput": "terminal"
     },
@@ -92,7 +90,6 @@
     "editor.detectIndentation": false,
     "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
-    "editor.fontSize": 18,
     "editor.guides.bracketPairs": true,
     "editor.guides.bracketPairsHorizontal": true,
     "editor.hover.above": false,
@@ -176,7 +173,6 @@
     "window.density.editorTabHeight": "compact",
     "window.zoomLevel": -1,
     "workbench.activityBar.location": "top",
-    "workbench.colorTheme": "Dark+",
     "workbench.editor.empty.hint": "hidden",
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.editor.pinnedTabsOnSeparateRow": true,
@@ -334,9 +330,9 @@
     "github.copilot.nextEditSuggestions.extendedRange": true,
     "git.addAICoAuthor": "all",
     "calva.jackInDependencyVersions": {
-      "nrepl": "1.7.0",
-      "cider-nrepl": "0.62.1",
-      "cider/piggieback": "0.7.0"
+      "nrepl": "1.8.0",
+      "cider-nrepl": "0.63.1",
+      "cider/piggieback": "0.8.0"
     },
     "github.copilot.chat.cli.forkSessions.enabled": true,
     "chat.subagents.allowInvocationsFromSubagents": true,
@@ -363,7 +359,6 @@
     "files.trimTrailingWhitespaceInRegexAndStrings": false,
     "chat.tools.compressOutput.enabled": true,
     "chat.autopilot.advanced.enabled": true,
-    "chat.agent.sandbox.allowNetwork": true,
     "[markdown]": {
       "diffEditor.ignoreTrimWhitespace": true
     },
@@ -372,4 +367,25 @@
     "chat.agents.claude.preferAgentHost": true,
     "chat.customizations.promptMigration.enabled": true,
     "workbench.experimental.modernUI": true,
+    "agents.voice.showTranscript": true,
+    "agents.voice.liveTranscript": true,
+    "editor.fontSize": 18,
+    "workbench.colorTheme": "Dark+",
+    "calva.outputViews.wordWrap": "on",
+    "calva.outputViews.fontSizeScale": 0.75,
+    "markdown.experimental.richLinks.enabled": true,
+    "chat.experimental.richLinks.enabled": true,
+    "terminal.integrated.stickyScroll.enabled": false,
+    "yaml.disableSchemaDetection": [
+      "**/.github/workflows/*.yml",
+      "**/.github/workflows/*.yaml",
+      "**/.gitea/workflows/*.yml",
+      "**/.gitea/workflows/*.yaml",
+      "**/.forgejo/workflows/*.yml",
+      "**/.forgejo/workflows/*.yaml"
+    ],
+    "boxlang.lsp.lspVersion": "bx-lsp@1.14.0+13",
+    "boxlang.debugger.moduleVersion": "1.2.0+3",
+    "chat.agent.sandbox.network.allowNetwork": true,
+    "task.allowAutomaticTasks": "on",
 }

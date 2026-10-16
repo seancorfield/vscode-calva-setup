@@ -378,5 +378,22 @@
     {
       "key": "ctrl+alt+p ctrl+alt+v",
       "command": "workbench.panel.markers.view.focus"
+    },
+    {
+      "key": "ctrl+alt+`",
+      "command": "workbench.action.terminal.startVoice",
+      "when": "terminalDictationInProgress && terminalHasBeenCreated || terminalDictationInProgress && terminalProcessSupported || terminalHasBeenCreated && !speechToTextInProgress || terminalProcessSupported && !speechToTextInProgress"
+    },
+    {
+      "key": "ctrl+alt+c ctrl+alt+k",
+      "command": "calva.clearReplOutputSidebar"
+    },
+    {
+      "key": "ctrl+alt+c alt+z",
+      "command": "calva.toggleReplOutputWordWrap"
+    },
+    {
+      "key": "ctrl+m",
+      "command": "-editor.action.toggleTabFocusMode"
     }
 ]

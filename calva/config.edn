@@ -137,7 +137,7 @@
                 (merge-with + (rks (lrt '$ns {:output 'dots})))))}
   {:name "Uptime"
    :key "u"
-   :snippet (user/uptime)}
+   :snippet (dev.uptime/uptime)}
   {:name "Run Tests For Source"
    :key "x"
    :snippet (let [crt (try (requiring-resolve 'clojure.test/run-tests)
