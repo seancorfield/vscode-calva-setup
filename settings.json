@@ -28,16 +28,18 @@
         "cljs": "(try (require '[cljs.repl :refer [apropos dir doc find-doc print-doc pst source]]) (catch :default e (js/console.warn \"Failed to require cljs.repl utilities:\" (.-message e))))"
       },
       "onFileLoaded": {
-        "clj": null,
-        "cljs": null
+        "clj": "nil",
+        "cljs": "nil"
       }
     },
     "calva.myCljAliases": [
       ":1.12",
-      ":dev/repl",
+      ":1.13",
+      ":repl",
       ":portal",
     ],
     "calva.outputDestinations": {
+
       "evalResults": ["output-sidebar", "terminal"],
       "evalOutput": "terminal",
       "otherOutput": "terminal"
@@ -62,7 +64,6 @@
       "files.trimFinalNewlines": true,
       "files.trimTrailingWhitespace": true,
     },
-    "accessibility.voice.keywordActivation": "chatInContext",
     "clock.alignment": "Right",
     "clock.format": "HH:MM:ss",
     "clojure.trace.server": "messages",
@@ -147,9 +148,6 @@
       "markdown": true,
       "scminput": false
     },
-    "inlineChat.enableV2": true,
-    "javascript.referencesCodeLens.enabled": true,
-    "javascript.referencesCodeLens.showOnAllFunctions": true,
     "jest.jestCommandLine": "npx yarn jest",
     "liveshare.guestApprovalRequired": true,
     "liveshare.launcherClient": "visualStudioCode",
@@ -166,7 +164,7 @@
       "editor.fontSize"
     ],
     "task.saveBeforeRun": "never",
-    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
     "terminal.integrated.fontLigatures.enabled": true,
     "terminal.integrated.fontLigatures.featureSettings": "",
     "terminal.integrated.shellIntegration.history": 1000,
@@ -316,7 +314,6 @@
     "terminal.integrated.suggest.selectionMode": "never",
     "window.border": "system",
     "window.customTitleBarVisibility": "windowed",
-    "simpleBrowser.useIntegratedBrowser": true,
     "workbench.browser.openLocalhostLinks": true,
     "calva.html2HiccupOptions": {
       "mapify-style?": false,
@@ -331,10 +328,9 @@
     "git.addAICoAuthor": "all",
     "calva.jackInDependencyVersions": {
       "nrepl": "1.8.0",
-      "cider-nrepl": "0.63.1",
-      "cider/piggieback": "0.8.0"
+      "cider/piggieback": "0.8.0",
+      "cider-nrepl": "0.64.0"
     },
-    "github.copilot.chat.cli.forkSessions.enabled": true,
     "chat.subagents.allowInvocationsFromSubagents": true,
     "atlascode.rovodev.showEntitlementNotifications": false,
     "atlascode.jira.lastCreatePreSelectedValues": {
@@ -363,8 +359,6 @@
       "diffEditor.ignoreTrimWhitespace": true
     },
     "calva.clojureLspVersion": "nightly",
-    "chat.agentHost.enabled": true,
-    "chat.agents.claude.preferAgentHost": true,
     "chat.customizations.promptMigration.enabled": true,
     "workbench.experimental.modernUI": true,
     "agents.voice.showTranscript": true,
@@ -388,4 +382,5 @@
     "boxlang.debugger.moduleVersion": "1.2.0+3",
     "chat.agent.sandbox.network.allowNetwork": true,
     "task.allowAutomaticTasks": "on",
+    "multiDiffEditor.experimental.fileList": true,
 }

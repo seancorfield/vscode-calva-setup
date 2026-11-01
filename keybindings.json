@@ -84,11 +84,6 @@
       "command": "notifications.clearAll"
     },
     {
-      "key": "alt+home",
-      "command": "paredit.openList",
-      "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
-    },
-    {
       "key": "ctrl+home",
       "command": "-paredit.openList",
       "when": "calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
@@ -395,5 +390,25 @@
     {
       "key": "ctrl+m",
       "command": "-editor.action.toggleTabFocusMode"
+    },
+    {
+      "key": "ctrl+home",
+      "command": "-paredit.openList",
+      "when": "calva:keybindingsEnabled && calva:replInputFocused && paredit:keyMap =~ /original|strict/ || calva:keybindingsEnabled && calva:replInputFocused && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/ || calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/ || calva:keybindingsEnabled && calva:replInputFocused && calva:replInputLastFocused && inQuickOpen && paredit:keyMap =~ /original|strict/ || calva:keybindingsEnabled && calva:replInputFocused && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/ || calva:keybindingsEnabled && calva:replInputLastFocused && editorTextFocus && inQuickOpen && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
+    },
+    {
+      "key": "ctrl+shift+home",
+      "command": "-paredit.selectOpenList",
+      "when": "calva:keybindingsEnabled && calva:replInputFocused && paredit:keyMap =~ /original|strict/ || calva:keybindingsEnabled && calva:replInputFocused && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/ || calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/ || calva:keybindingsEnabled && calva:replInputFocused && calva:replInputLastFocused && inQuickOpen && paredit:keyMap =~ /original|strict/ || calva:keybindingsEnabled && calva:replInputFocused && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/ || calva:keybindingsEnabled && calva:replInputLastFocused && editorTextFocus && inQuickOpen && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
+    },
+    {
+      "key": "ctrl+end",
+      "command": "-paredit.closeList",
+      "when": "calva:keybindingsEnabled && calva:replInputFocused && paredit:keyMap =~ /original|strict/ || calva:keybindingsEnabled && calva:replInputFocused && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/ || calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/ || calva:keybindingsEnabled && calva:replInputFocused && calva:replInputLastFocused && inQuickOpen && paredit:keyMap =~ /original|strict/ || calva:keybindingsEnabled && calva:replInputFocused && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/ || calva:keybindingsEnabled && calva:replInputLastFocused && editorTextFocus && inQuickOpen && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
+    },
+    {
+      "key": "ctrl+shift+end",
+      "command": "-paredit.selectCloseList",
+      "when": "calva:keybindingsEnabled && calva:replInputFocused && paredit:keyMap =~ /original|strict/ || calva:keybindingsEnabled && calva:replInputFocused && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/ || calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/ || calva:keybindingsEnabled && calva:replInputFocused && calva:replInputLastFocused && inQuickOpen && paredit:keyMap =~ /original|strict/ || calva:keybindingsEnabled && calva:replInputFocused && editorTextFocus && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/ || calva:keybindingsEnabled && calva:replInputLastFocused && editorTextFocus && inQuickOpen && editorLangId == 'clojure' && paredit:keyMap =~ /original|strict/"
     }
 ]
